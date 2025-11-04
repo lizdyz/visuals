@@ -19,7 +19,7 @@
 
 ## Three Partnership Options
 
-| 🏆 **ANNUAL PARTNERSHIP**<br>**$256,000 • 80 Credits**<br>**$3,200/credit (20% savings)**<br><br>Includes territorial exclusivity<br><br>Build competitive moat, year-long capability development, proprietary workshops<br><br>*Without exclusivity available at same price* | 📈 **QUARTERLY**<br>**$72,000 • 20 Credits**<br>**$3,600/credit (10% savings)**<br><br>Test multiple approaches, scale what works, quarterly engagement | 🔬 **PROOF OF CONCEPT**<br>**$20,000 • 5 Credits**<br>**$4,000/credit**<br><br>Test one region, validate approach, prove value |
+| 🏆 **ANNUAL PARTNERSHIP**<br>**WITH EXCLUSIVITY**<br>**$256,000 • 80 Credits**<br>**$3,200/credit**<br><br>Territorial exclusivity included<br><br>Build competitive moat, year-long capability development, proprietary workshops<br><br>*Annual without exclusivity: $240,000 (80 credits at $3,000/credit)* | 📈 **QUARTERLY**<br>**$72,000 • 20 Credits**<br>**$3,600/credit**<br><br>Test multiple approaches, scale what works, quarterly engagement | 🔬 **PROOF OF CONCEPT**<br>**$20,000 • 5 Credits**<br>**$4,000/credit**<br><br>Test one region, validate approach, prove value |
 |---|---|---|
 
 ---
@@ -52,21 +52,6 @@ Advisors document current tools in 15-minute pre-work. During 75 minutes, create
 
 ---
 
-### **ELITE COHORT PROGRAM**
-**12-15 curated advisors — 3 credits/session**
-
-**High-touch program for your top advisors or hard-to-reach prospects.** Exclusive invitation to 3-6 session series (one 90-minute session per month) focused on shared goal.
-
-Unlike one-time workshops, cohort creates sustained transformation. Advisors work on real practice challenges between sessions with peer accountability.
-
-**Outcomes:** High-touch relationship building, win over prospects, sustained behavior change, deep capability development, internal champions, practice transformation
-
-**Value:** Individual transformation session costs $950 for one advisor. Cohort provides same depth for 12-15 advisors per session.
-
-**Implementation rate:** 85-95% (vs 60-70% for one-off workshops)
-
----
-
 ### **STRATEGY SESSION**
 **Your leadership team — 1 credit**
 
@@ -91,6 +76,21 @@ Wholesalers experience the same 90-minute workshop advisors receive. They work o
 Design workshop on YOUR specific topic for your strategic needs. Tested with real advisors, ready to repeat at standard workshop credits.
 
 **Outcomes:** Proprietary capability competitors can't copy, custom frameworks, innovation leadership
+
+---
+
+### **ELITE COHORT PROGRAM**
+**12-15 curated advisors — 3 credits/session — Minimum 4 sessions**
+
+**High-touch program for your top advisors or hard-to-reach prospects.** Exclusive invitation to monthly 90-minute sessions focused on shared goal (LinkedIn mastery, practice optimization, AI capability building).
+
+Unlike one-time workshops, cohort creates sustained transformation. Advisors work on real practice challenges between sessions with peer accountability.
+
+**Outcomes:** High-touch relationship building, win over prospects, sustained behavior change, deep capability development, internal champions, practice transformation
+
+**Value:** Individual transformation session costs $950 for one advisor. Cohort provides same depth for 12-15 advisors per session.
+
+**Implementation rate:** 85-95% (vs 60-70% for one-off workshops)
 
 ---
 
@@ -148,7 +148,7 @@ We capture your baseline (advisor engagement, LinkedIn activity, tech optimizati
 
 ## Investment Context
 
-**Access Arbitrage:** Individual transformation session costs $950 for one advisor. Your regional workshop (up to 100 advisors) = 2 credits = $6,400-$8,000 depending on package.
+**Access Arbitrage:** Individual transformation session costs $950 for one advisor. Your regional workshop (up to 100 advisors) = 2 credits = $6,000-$8,000 depending on package.
 
 **Build vs Leverage:** Build internally: $200k-350k+ (hire expert, develop curriculum, create tools, maintain). Partner with SweetBot: $20k-256k (3 years of knowhow ready now, continuously refined).
 
