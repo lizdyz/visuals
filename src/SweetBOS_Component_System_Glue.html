@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetBOS: Component System Logic - The Glue Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #005A9C 0%, #7B2D8E 100%);
+            color: #1a1a1a;
+            padding: 34px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 13px;
+            padding: 55px;
+            box-shadow: 0 21px 55px rgba(0,0,0,0.15);
+        }
+        
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 48px;
+            color: #005A9C;
+            margin-bottom: 21px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+        
+        h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 32px;
+            color: #7B2D8E;
+            margin-top: 55px;
+            margin-bottom: 21px;
+            padding-bottom: 13px;
+            border-bottom: 3px solid #00AEEF;
+            font-weight: 500;
+        }
+        
+        h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+            color: #005A9C;
+            margin-top: 34px;
+            margin-bottom: 13px;
+            font-weight: 500;
+        }
+        
+        h4 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 20px;
+            color: #7B2D8E;
+            margin-top: 21px;
+            margin-bottom: 13px;
+            font-weight: 500;
+        }
+        
+        .intro {
+            background: #f8f9fa;
+            padding: 21px;
+            border-radius: 8px;
+            margin-bottom: 34px;
+            border-left: 5px solid #00AEEF;
+        }
+        
+        .critical-concept {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 21px;
+            margin: 21px 0;
+            border-radius: 5px;
+        }
+        
+        .critical-concept strong {
+            color: #856404;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 21px;
+            border-radius: 8px;
+            margin: 21px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        
+        .logic-box {
+            background: #e7f3ff;
+            border-left: 5px solid #005A9C;
+            padding: 21px;
+            margin: 21px 0;
+            border-radius: 5px;
+        }
+        
+        .ui-spec {
+            background: #f0e6ff;
+            border-left: 5px solid #7B2D8E;
+            padding: 21px;
+            margin: 21px 0;
+            border-radius: 5px;
+        }
+        
+        .mermaid {
+            background: white;
+            padding: 21px;
+            border-radius: 8px;
+            margin: 21px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 21px 0;
+            background: white;
+        }
+        
+        th {
+            background: #005A9C;
+            color: white;
+            padding: 13px;
+            text-align: left;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+        }
+        
+        td {
+            padding: 13px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        ul, ol {
+            margin-left: 21px;
+            margin-top: 8px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        
+        .example-box {
+            background: #e8f5e9;
+            border-left: 5px solid #4caf50;
+            padding: 21px;
+            margin: 21px 0;
+            border-radius: 5px;
+        }
+        
+        .timestamp {
+            color: #6c757d;
+            font-size: 14px;
+            margin-bottom: 34px;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>The Component System: Technical Integration Guide</h1>
+        <p class="timestamp">The "Glue" Document | Generated: November 9, 2025</p>
+        
+        <div class="intro">
+            <p><strong>Purpose:</strong> This document bridges the high-level flows with the entity architecture. It answers: "How does this actually work in code?" This is what your developer needs to build the Component progression system that IS the platform.</p>
+            <p style="margin-top: 13px;"><strong>Why This Matters:</strong> Without this, your developer has beautiful flows and perfect database schemas, but no understanding of how they connect. This is the GLUE.</p>
+        </div>
+
+        <!-- SECTION 1: THE COMPONENT TRUTH -->
+        <h2>1. The Component Truth: What Actually Gets Leveled Up</h2>
+        
+        <div class="critical-concept">
+            <strong>CRITICAL CONCEPT:</strong>
+            The entire platform exists to level up Components. Everything else (Missions, Journeys, Quests, Sparks) is just the DELIVERY SYSTEM for Component advancement.
+        </div>
+        
+        <h3>The Filing Cabinet Mental Model</h3>
+        
+        <div class="mermaid">
+            graph TB
+                A[JOURNEY: Client Acquisition] --> B[Filing Cabinet]
+                B --> C[Drawer 1: Lead Generation System]
+                B --> D[Drawer 2: Marketing Channels]
+                B --> E[Drawer 3: Conversion Process]
+                B --> F[Drawer 4: Referral System]
+                B --> G[Drawer 5: Pipeline Management]
+                B --> H[Drawer 6: Acquisition Metrics]
+                
+                C --> I[Level: L2 Learning]
+                D --> J[Level: L1 Lacking]
+                E --> K[Level: L3 Launching]
+                F --> L[Level: L2 Learning]
+                G --> M[Level: L1 Lacking]
+                H --> N[Level: L2 Learning]
+                
+                style A fill:#005A9C,stroke:#003d6b,stroke-width:3px
+                style B fill:#00AEEF,stroke:#0086b3,stroke-width:2px
+                style I fill:#ffc107,stroke:#856404,stroke-width:2px
+                style J fill:#dc3545,stroke:#a71d2a,stroke-width:2px
+                style K fill:#28a745,stroke:#1e7e34,stroke-width:2px
+                style L fill:#ffc107,stroke:#856404,stroke-width:2px
+                style M fill:#dc3545,stroke:#a71d2a,stroke-width:2px
+                style N fill:#ffc107,stroke:#856404,stroke-width:2px
+        </div>
+        
+        <div class="logic-box">
+            <h4>What This Means in Code:</h4>
+            <ul>
+                <li><strong>Journey</strong> = Parent container (the filing cabinet)</li>
+                <li><strong>Component</strong> = Individual scoreable entity (each drawer)</li>
+                <li><strong>Maturity Level (L1-L5)</strong> = The current state of that drawer</li>
+                <li><strong>Quest</strong> = The project that fills a drawer (levels it up)</li>
+                <li><strong>Spark</strong> = Individual file you put in the drawer (task)</li>
+            </ul>
+        </div>
+
+        <!-- SECTION 2: COMPONENT STATE MACHINE -->
+        <h2>2. Component State Machine: The Leveling Logic</h2>
+        
+        <div class="critical-concept">
+            <strong>KEY INSIGHT:</strong>
+            A Component has TWO progress metrics that work together: LEVEL (discrete) and PROGRESS (continuous).
+        </div>
+        
+        <h3>The Two-Metric System</h3>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Type</th>
+                    <th>Values</th>
+                    <th>Meaning</th>
+                    <th>Database Field</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Current Maturity Level</strong></td>
+                    <td>Discrete State</td>
+                    <td>L1, L2, L3, L4, L5</td>
+                    <td>Where you ARE</td>
+                    <td><code>current_maturity_level</code></td>
+                </tr>
+                <tr>
+                    <td><strong>Progress to Next Level</strong></td>
+                    <td>Continuous Progress</td>
+                    <td>0-100%</td>
+                    <td>How far toward NEXT level</td>
+                    <td><code>progress_to_next_level</code></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>State Transition Flow</h3>
+        
+        <div class="mermaid">
+            stateDiagram-v2
+                [*] --> L1: Initial Assessment
+                L1 --> L2: Complete Quest 1<br/>Progress reaches 100%
+                L2 --> L3: Complete Quest 2<br/>Progress reaches 100%
+                L3 --> L4: Complete Quest 3<br/>Progress reaches 100%
+                L4 --> L5: Complete Quest 4<br/>Progress reaches 100%
+                L5 --> [*]: Mastery Achieved
+                
+                note right of L1
+                    L1 (Lacking)
+                    Progress: 0-100%
+                    → toward L2
+                end note
+                
+                note right of L2
+                    L2 (Learning)
+                    Progress: 0-100%
+                    → toward L3
+                end note
+                
+                note right of L3
+                    L3 (Launching)
+                    Progress: 0-100%
+                    → toward L4
+                end note
+                
+                note right of L4
+                    L4 (Leveraging)
+                    Progress: 0-100%
+                    → toward L5
+                end note
+                
+                note right of L5
+                    L5 (Leading)
+                    Progress: N/A
+                    (No next level)
+                end note
+        </div>
+        
+        <div class="logic-box">
+            <h4>State Transition Rules:</h4>
+            <ol>
+                <li><strong>Initial State:</strong> All Components start at L1 with 0% progress (set during MIRROR assessment)</li>
+                <li><strong>Progress Accumulation:</strong> As user completes Sparks within a Quest, progress increases</li>
+                <li><strong>Quest Completion Trigger:</strong> When Quest is completed, ALL Components it advances get checked</li>
+                <li><strong>Level Advancement:</strong> If progress >= 100%, Component advances one level</li>
+                <li><strong>Progress Reset:</strong> Upon leveling up, progress resets to 0% toward NEXT level</li>
+                <li><strong>L5 Special Case:</strong> At L5, progress_to_next_level becomes NULL (no next level exists)</li>
+            </ol>
+        </div>
+
+        <!-- SECTION 3: THE CRITICAL DATABASE LOGIC -->
+        <h2>3. Database Logic: What Fires When</h2>
+        
+        <h3>Component Table Schema (Expanded)</h3>
+        
+        <div class="code-block">
+CREATE TABLE components (
+    component_id UUID PRIMARY KEY,
+    component_name VARCHAR(255) NOT NULL,
+    parent_journey_id UUID NOT NULL REFERENCES journeys(journey_id),
+    description TEXT,
+    
+    -- THE TWO CRITICAL FIELDS --
+    current_maturity_level ENUM('L1', 'L2', 'L3', 'L4', 'L5') NOT NULL DEFAULT 'L1',
+    progress_to_next_level INTEGER CHECK (progress_to_next_level >= 0 AND progress_to_next_level <= 100) DEFAULT 0,
+    
+    -- TAGGING --
+    domain_tags INTEGER[] DEFAULT '{}',
+    tenet_tags INTEGER[] DEFAULT '{}',
+    
+    -- TRACKING --
+    last_updated_at TIMESTAMP DEFAULT NOW(),
+    created_at TIMESTAMP DEFAULT NOW(),
+    
+    -- METADATA --
+    time_at_current_level_days INTEGER DEFAULT 0,
+    total_quests_completed INTEGER DEFAULT 0,
+    deliverable_ids UUID[] DEFAULT '{}'
+);
+        </div>
+        
+        <h3>Quest Completion Trigger Logic</h3>
+        
+        <div class="code-block">
+-- TRIGGER: When Quest Status Changes to 'completed'
+CREATE OR REPLACE FUNCTION handle_quest_completion()
+RETURNS TRIGGER AS $$
+DECLARE
+    component_record RECORD;
+    advancement_weight INTEGER;
+BEGIN
+    -- Quest just completed, process all Components it advances
+    FOR component_record IN 
+        SELECT c.component_id, c.current_maturity_level, c.progress_to_next_level,
+               cqm.advancement_type
+        FROM components c
+        JOIN component_quest_map cqm ON c.component_id = cqm.component_id
+        WHERE cqm.quest_id = NEW.quest_id
+    LOOP
+        -- Determine progress increment based on Quest's target transition
+        advancement_weight := CASE
+            WHEN NEW.target_level_transition = 'L1→L2' THEN 100  -- Full advancement
+            WHEN NEW.target_level_transition = 'L2→L3' THEN 100
+            WHEN NEW.target_level_transition = 'L3→L4' THEN 100
+            WHEN NEW.target_level_transition = 'L4→L5' THEN 100
+            ELSE 50  -- Partial if supporting
+        END;
+        
+        -- Add progress
+        UPDATE components
+        SET progress_to_next_level = LEAST(progress_to_next_level + advancement_weight, 100),
+            last_updated_at = NOW()
+        WHERE component_id = component_record.component_id;
+        
+        -- Check if ready to level up
+        IF (component_record.progress_to_next_level + advancement_weight) >= 100 THEN
+            -- Level up the Component
+            UPDATE components
+            SET current_maturity_level = CASE
+                WHEN current_maturity_level = 'L1' THEN 'L2'
+                WHEN current_maturity_level = 'L2' THEN 'L3'
+                WHEN current_maturity_level = 'L3' THEN 'L4'
+                WHEN current_maturity_level = 'L4' THEN 'L5'
+                ELSE current_maturity_level  -- Stay at L5
+            END,
+            progress_to_next_level = CASE
+                WHEN current_maturity_level = 'L4' THEN NULL  -- Reached L5, no next level
+                ELSE 0  -- Reset for next level
+            END,
+            time_at_current_level_days = 0,
+            total_quests_completed = total_quests_completed + 1,
+            last_updated_at = NOW()
+            WHERE component_id = component_record.component_id
+            AND progress_to_next_level >= 100;
+            
+            -- Log the level advancement event
+            INSERT INTO component_level_events (component_id, old_level, new_level, quest_id, timestamp)
+            VALUES (
+                component_record.component_id,
+                component_record.current_maturity_level,
+                CASE
+                    WHEN component_record.current_maturity_level = 'L1' THEN 'L2'
+                    WHEN component_record.current_maturity_level = 'L2' THEN 'L3'
+                    WHEN component_record.current_maturity_level = 'L3' THEN 'L4'
+                    WHEN component_record.current_maturity_level = 'L4' THEN 'L5'
+                END,
+                NEW.quest_id,
+                NOW()
+            );
+        END IF;
+    END LOOP;
+    
+    -- Update Journey aggregate maturity
+    PERFORM update_journey_maturity(
+        (SELECT parent_journey_id FROM quests WHERE quest_id = NEW.quest_id)
+    );
+    
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER quest_completion_trigger
+AFTER UPDATE OF status ON quests
+FOR EACH ROW
+WHEN (NEW.status = 'completed' AND OLD.status != 'completed')
+EXECUTE FUNCTION handle_quest_completion();
+        </div>
+        
+        <h3>Journey Maturity Aggregation</h3>
+        
+        <div class="code-block">
+-- FUNCTION: Calculate Journey's overall maturity from its Components
+CREATE OR REPLACE FUNCTION update_journey_maturity(journey_id_param UUID)
+RETURNS VOID AS $$
+DECLARE
+    avg_level DECIMAL;
+    level_mapping JSONB := '{"L1": 1, "L2": 2, "L3": 3, "L4": 4, "L5": 5}'::JSONB;
+BEGIN
+    -- Calculate average Component level for this Journey
+    SELECT AVG(
+        CAST(level_mapping->>current_maturity_level AS INTEGER)
+    ) INTO avg_level
+    FROM components
+    WHERE parent_journey_id = journey_id_param;
+    
+    -- Map average back to discrete level
+    UPDATE journeys
+    SET current_maturity_level = CASE
+        WHEN avg_level < 1.5 THEN 'L1'
+        WHEN avg_level < 2.5 THEN 'L2'
+        WHEN avg_level < 3.5 THEN 'L3'
+        WHEN avg_level < 4.5 THEN 'L4'
+        ELSE 'L5'
+    END,
+    last_activity_at = NOW()
+    WHERE journey_id = journey_id_param;
+END;
+$$ LANGUAGE plpgsql;
+        </div>
+
+        <!-- SECTION 4: USER INTERFACE SPECIFICATIONS -->
+        <h2>4. User Interface: Where Components Appear</h2>
+        
+        <h3>Dashboard View: The Journey Cabinet</h3>
+        
+        <div class="ui-spec">
+            <h4>UI Component: Journey Card</h4>
+            <p><strong>Location:</strong> Main Dashboard</p>
+            <p><strong>Data Source:</strong> <code>journeys</code> table JOIN <code>components</code> table</p>
+            
+            <p style="margin-top: 13px;"><strong>Visual Layout:</strong></p>
+            <ul>
+                <li>Journey Name & Number (e.g., "J2: Client Acquisition")</li>
+                <li>Overall Journey Maturity Badge (L1-L5, calculated from Components)</li>
+                <li>Progress Ring showing % of Components at L3+</li>
+                <li>List of 6-10 Components with individual level badges</li>
+                <li>"Start Quest" CTA for next recommended Quest</li>
+            </ul>
+            
+            <p style="margin-top: 13px;"><strong>Example Rendering:</strong></p>
+        </div>
+        
+        <div class="example-box">
+            <h4>Journey Card Example: J2 - Client Acquisition</h4>
+            <pre style="font-family: 'Courier New', monospace; margin-top: 13px;">
+┌─────────────────────────────────────────────────────┐
+│ J2: Client Acquisition                      [L2] ●  │
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                     │
+│ Components:                                         │
+│  ├─ Lead Generation System            [L2] 40% →L3 │
+│  ├─ Marketing Channels                [L1]  0% →L2 │
+│  ├─ Conversion Process                [L3] 65% →L4 │
+│  ├─ Referral System                   [L2] 80% →L3 │
+│  ├─ Pipeline Management               [L1] 25% →L2 │
+│  └─ Acquisition Metrics               [L2] 15% →L3 │
+│                                                     │
+│ Next Recommended Quest:                             │
+│ [Start Quest] "Build Your Referral System" (L2→L3) │
+└─────────────────────────────────────────────────────┘
+            </pre>
+        </div>
+        
+        <h3>Component Detail View</h3>
+        
+        <div class="ui-spec">
+            <h4>UI Component: Component Progress Panel</h4>
+            <p><strong>Location:</strong> Clicked from Journey Card or accessed via search</p>
+            <p><strong>Data Source:</strong> Single <code>component</code> record + related <code>quests</code>, <code>deliverables</code>, <code>outcomes</code></p>
+            
+            <p style="margin-top: 13px;"><strong>Visual Sections:</strong></p>
+            <ol>
+                <li><strong>Header:</strong> Component name, current level badge, progress bar to next level</li>
+                <li><strong>Level Progression Timeline:</strong> Visual showing L1→L2→L3→L4→L5 with current position</li>
+                <li><strong>History:</strong> Story trail of completed Quests that advanced this Component</li>
+                <li><strong>Deliverables:</strong> List of artifacts created for this Component</li>
+                <li><strong>Outcomes:</strong> Measured business results from this Component</li>
+                <li><strong>Next Steps:</strong> Available Quests that advance this Component further</li>
+            </ol>
+        </div>
+        
+        <div class="example-box">
+            <h4>Component Detail Example: Referral System</h4>
+            <pre style="font-family: 'Courier New', monospace; margin-top: 13px;">
+┌──────────────────────────────────────────────────────────┐
+│ Referral System                                    [L2]  │
+│ Parent Journey: J2 - Client Acquisition                  │
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                           │
+│ Current Progress to L3:                                   │
+│ ████████████████████████░░░░░░░░  80%                    │
+│                                                           │
+│ Level Timeline:                                           │
+│ [L1]──>[L2]──>[L3]────[L4]────[L5]                       │
+│   ✓     ●     20% left                                   │
+│                                                           │
+│ Recent Quest Completions:                                 │
+│  ✓ "Understand Why This Matters" (L1→L2) - 45 days ago   │
+│  ⏳ "Build Your Foundation" (L2→L3) - In Progress (80%)  │
+│                                                           │
+│ Deliverables Created:                                     │
+│  • Referral Request Email Template                        │
+│  • Referral Incentive Structure Document                  │
+│                                                           │
+│ Measured Outcomes:                                        │
+│  • +3 referrals/month (vs 1 before)                      │
+│  • 15% of new clients from referrals                     │
+│                                                           │
+│ Next Steps:                                               │
+│ [Continue Quest] Complete remaining 2 Sparks              │
+│ [View Quest] "Make It Real" (L3→L4) - Locked until L3    │
+└──────────────────────────────────────────────────────────┘
+            </pre>
+        </div>
+
+        <!-- SECTION 5: QUEST-COMPONENT CONNECTION -->
+        <h2>5. Quest-Component Connection: How They Link</h2>
+        
+        <div class="critical-concept">
+            <strong>KEY RELATIONSHIP:</strong>
+            One Quest advances 1-3 Components. One Component is advanced by 1-4 Quests (the standard Quest sequence).
+        </div>
+        
+        <h3>The Mapping Table</h3>
+        
+        <div class="code-block">
+CREATE TABLE component_quest_map (
+    map_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    component_id UUID NOT NULL REFERENCES components(component_id),
+    quest_id UUID NOT NULL REFERENCES quests(quest_id),
+    
+    -- HOW this Quest affects this Component
+    advancement_type VARCHAR(50) NOT NULL CHECK (advancement_type IN ('primary', 'secondary', 'supporting')),
+    
+    -- WHAT level transition this represents
+    from_level ENUM('L1', 'L2', 'L3', 'L4') NOT NULL,
+    to_level ENUM('L2', 'L3', 'L4', 'L5') NOT NULL,
+    
+    -- WEIGHT of this Quest's impact (usually 100 for primary, 50 for secondary)
+    progress_weight INTEGER NOT NULL DEFAULT 100,
+    
+    created_at TIMESTAMP DEFAULT NOW(),
+    
+    UNIQUE(component_id, quest_id)
+);
+        </div>
+        
+        <h3>Real-World Example: LinkedIn Workshop Quest</h3>
+        
+        <div class="mermaid">
+            graph LR
+                Q[Quest: Build LinkedIn Brand<br/>L1→L3 in J1] --> C1[Component: Brand Identity<br/>Primary Advancement]
+                Q --> C2[Component: Marketing Channels<br/>Secondary Advancement]
+                Q --> C3[Component: Content Creation<br/>Supporting Advancement]
+                
+                C1 --> R1[+100% progress<br/>L1→L2 then L2→L3]
+                C2 --> R2[+50% progress<br/>toward next level]
+                C3 --> R3[+25% progress<br/>toward next level]
+                
+                style Q fill:#7B2D8E,stroke:#5a1f69,stroke-width:3px
+                style C1 fill:#28a745,stroke:#1e7e34,stroke-width:2px
+                style C2 fill:#00AEEF,stroke:#005A9C,stroke-width:2px
+                style C3 fill:#ffc107,stroke:#856404,stroke-width:2px
+        </div>
+        
+        <div class="logic-box">
+            <h4>Mapping Logic for LinkedIn Workshop:</h4>
+            <ul>
+                <li><strong>Primary Component:</strong> "Brand Identity" gets 100% progress (L1→L2, then immediate L2→L3 upon completion)</li>
+                <li><strong>Secondary Component:</strong> "Marketing Channels" gets 50% progress toward its next level</li>
+                <li><strong>Supporting Component:</strong> "Content Creation System" gets 25% progress as a bonus</li>
+            </ul>
+            <p style="margin-top: 13px;"><strong>Database Entries:</strong></p>
+        </div>
+        
+        <div class="code-block">
+-- Insert mapping for LinkedIn Workshop Quest
+INSERT INTO component_quest_map (component_id, quest_id, advancement_type, from_level, to_level, progress_weight)
+VALUES
+    ('brand-identity-uuid', 'linkedin-workshop-quest-uuid', 'primary', 'L1', 'L3', 100),
+    ('marketing-channels-uuid', 'linkedin-workshop-quest-uuid', 'secondary', 'L1', 'L2', 50),
+    ('content-creation-uuid', 'linkedin-workshop-quest-uuid', 'supporting', 'L2', 'L3', 25);
+        </div>
+
+        <!-- SECTION 6: THE SPARK-TO-COMPONENT FLOW -->
+        <h2>6. The Complete Flow: Spark → Component Level Change</h2>
+        
+        <div class="mermaid">
+            sequenceDiagram
+                participant User
+                participant UI
+                participant API
+                participant DB
+                participant NotificationService
+                
+                User->>UI: Completes final Spark in Quest
+                UI->>API: POST /sparks/{spark_id}/complete
+                API->>DB: UPDATE sparks SET status='completed'
+                DB->>DB: Check: All Sparks in Quest completed?
+                
+                alt All Sparks Complete
+                    DB->>DB: UPDATE quests SET status='completed'
+                    DB->>DB: TRIGGER: handle_quest_completion()
+                    
+                    loop For Each Mapped Component
+                        DB->>DB: Add progress_weight to component
+                        
+                        alt Progress >= 100%
+                            DB->>DB: Advance maturity_level by 1
+                            DB->>DB: Reset progress_to_next_level = 0
+                            DB->>DB: INSERT component_level_events
+                            DB->>NotificationService: Component leveled up!
+                        end
+                    end
+                    
+                    DB->>DB: Update Journey aggregate maturity
+                    DB->>API: Quest completion + Component updates
+                    API->>UI: Completion data + level changes
+                    UI->>User: 🎉 Show celebration + new levels
+                    
+                else Sparks Remaining
+                    DB->>API: Spark completed, Quest still in progress
+                    API->>UI: Progress update
+                    UI->>User: Show next Spark
+                end
+        </div>
+        
+        <div class="logic-box">
+            <h4>Step-by-Step Execution:</h4>
+            <ol>
+                <li><strong>User Action:</strong> Completes Spark (fills out form, answers question, creates content)</li>
+                <li><strong>Spark Update:</strong> Spark record marked as <code>completed</code></li>
+                <li><strong>Quest Check:</strong> System checks if ALL Sparks in parent Quest are now complete</li>
+                <li><strong>Quest Completion:</strong> If yes, Quest status → <code>completed</code>, triggers database function</li>
+                <li><strong>Component Loop:</strong> For each Component mapped to this Quest:
+                    <ul>
+                        <li>Add progress based on advancement_type (100%, 50%, 25%)</li>
+                        <li>If progress >= 100%, level up and reset progress</li>
+                        <li>Log the level change event</li>
+                    </ul>
+                </li>
+                <li><strong>Journey Update:</strong> Recalculate Journey's aggregate maturity from all its Components</li>
+                <li><strong>UI Feedback:</strong> Show celebration, updated badges, new unlocked Quests</li>
+                <li><strong>Story Trail:</strong> Log achievement to user's Story Trail for reflection</li>
+            </ol>
+        </div>
+
+        <!-- SECTION 7: RECOMMENDATION ENGINE -->
+        <h2>7. Recommendation Engine: What Quest Next?</h2>
+        
+        <div class="critical-concept">
+            <strong>KEY QUESTION:</strong>
+            How does the system decide which Quest to recommend to the user next?
+        </div>
+        
+        <h3>Recommendation Algorithm</h3>
+        
+        <div class="code-block">
+-- FUNCTION: Get next best Quest recommendation for user
+CREATE OR REPLACE FUNCTION get_recommended_quest(user_id_param UUID)
+RETURNS TABLE (
+    quest_id UUID,
+    quest_name VARCHAR(255),
+    reason TEXT,
+    score INTEGER
+) AS $$
+BEGIN
+    RETURN QUERY
+    WITH user_context AS (
+        -- Get user's current state
+        SELECT 
+            mission_id,
+            array_agg(DISTINCT journey_id) as active_journeys,
+            array_agg(DISTINCT component_id) as components_below_l3
+        FROM user_missions um
+        JOIN mission_journey_map mjm USING (mission_id)
+        JOIN components c ON c.parent_journey_id = mjm.journey_id
+        WHERE um.user_id = user_id_param
+          AND um.status = 'active'
+          AND c.current_maturity_level IN ('L1', 'L2')
+        GROUP BY mission_id
+    ),
+    quest_scores AS (
+        -- Score all available Quests
+        SELECT 
+            q.quest_id,
+            q.quest_name,
+            -- Scoring logic
+            (CASE WHEN q.parent_journey_id = ANY(uc.active_journeys) THEN 50 ELSE 0 END) +
+            (CASE WHEN EXISTS (
+                SELECT 1 FROM component_quest_map cqm
+                WHERE cqm.quest_id = q.quest_id
+                  AND cqm.component_id = ANY(uc.components_below_l3)
+            ) THEN 30 ELSE 0 END) +
+            (CASE WHEN q.status = 'not_started' THEN 20 ELSE -50 END) AS score,
+            
+            -- Reason text
+            CASE 
+                WHEN q.parent_journey_id = ANY(uc.active_journeys) 
+                    THEN 'Advances your active Journey'
+                WHEN EXISTS (
+                    SELECT 1 FROM component_quest_map cqm
+                    WHERE cqm.quest_id = q.quest_id
+                      AND cqm.component_id = ANY(uc.components_below_l3)
+                )
+                    THEN 'Levels up Components needing attention'
+                ELSE 'Available Quest'
+            END AS reason
+        FROM quests q
+        CROSS JOIN user_context uc
+        WHERE q.status != 'completed'
+    )
+    SELECT 
+        qs.quest_id,
+        qs.quest_name,
+        qs.reason,
+        qs.score
+    FROM quest_scores qs
+    ORDER BY qs.score DESC
+    LIMIT 5;
+END;
+$$ LANGUAGE plpgsql;
+        </div>
+        
+        <h3>Scoring Factors</h3>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Factor</th>
+                    <th>Points</th>
+                    <th>Reasoning</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Quest is in active Journey</td>
+                    <td>+50</td>
+                    <td>User chose this Journey in their Mission</td>
+                </tr>
+                <tr>
+                    <td>Advances Component(s) below L3</td>
+                    <td>+30</td>
+                    <td>Fills identified gaps from MIRROR assessment</td>
+                </tr>
+                <tr>
+                    <td>Quest not yet started</td>
+                    <td>+20</td>
+                    <td>Fresh experience, avoid repetition</td>
+                </tr>
+                <tr>
+                    <td>Quest already completed</td>
+                    <td>-50</td>
+                    <td>Strongly discourage repeats (can still access)</td>
+                </tr>
+                <tr>
+                    <td>Sequential prerequisite met</td>
+                    <td>+15</td>
+                    <td>Natural Quest 1→2→3→4 progression</td>
+                </tr>
+                <tr>
+                    <td>Multiple Components advanced</td>
+                    <td>+10</td>
+                    <td>Efficient use of time</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- SECTION 8: MIRROR TO MISSION FLOW -->
+        <h2>8. MIRROR Assessment to Mission Activation</h2>
+        
+        <div class="critical-concept">
+            <strong>CRITICAL FLOW:</strong>
+            MIRROR assessment SETS all Component initial levels. Mission selection ACTIVATES Journeys and recommends Quest sequence.
+        </div>
+        
+        <h3>The Complete Onboarding Flow</h3>
+        
+        <div class="mermaid">
+            graph TD
+                A[User Pays & Enters System] --> B[MIRROR Pre-Assessment]
+                B --> C[User Answers 25-50 Questions]
+                C --> D[AI Processing 48hr]
+                D --> E[Generate Component Scores L1-L5]
+                E --> F[Create Component Records in DB]
+                F --> G[Aggregate to Journey Maturity Levels]
+                
+                G --> H[Present Results Dashboard]
+                H --> I[Show 12 Journeys with Maturity]
+                I --> J[Identify Gaps/Opportunities]
+                
+                J --> K{User Selects Mission}
+                K --> L[Mission: 'Operational Excellence']
+                K --> M[Mission: 'I'm Drowning']
+                K --> N[Mission: 'Scale Past Me']
+                
+                L --> O[Activate 4-6 Journeys]
+                M --> O
+                N --> O
+                
+                O --> P[Run Recommendation Engine]
+                P --> Q[Present Top 5 Quests]
+                Q --> R[User Selects & Starts First Quest]
+                
+                style B fill:#7B2D8E,stroke:#5a1f69,stroke-width:3px
+                style E fill:#ffc107,stroke:#856404,stroke-width:2px
+                style K fill:#005A9C,stroke:#003d6b,stroke-width:3px
+                style Q fill:#28a745,stroke:#1e7e34,stroke-width:2px
+        </div>
+        
+        <div class="logic-box">
+            <h4>MIRROR Assessment → Component Initial State:</h4>
+            <p>The MIRROR assessment questions map to specific Components. Example:</p>
+            <ul>
+                <li><strong>Question:</strong> "How systematized is your client onboarding?" (1-5 scale)</li>
+                <li><strong>Mapping:</strong> Sets Component "Client Onboarding System" initial level based on answer</li>
+                <li><strong>Database:</strong> Creates component record with <code>current_maturity_level</code> and <code>progress_to_next_level = 0</code></li>
+            </ul>
+        </div>
+        
+        <div class="code-block">
+-- Example: MIRROR assessment result processing
+INSERT INTO components (component_id, component_name, parent_journey_id, current_maturity_level, progress_to_next_level)
+SELECT 
+    gen_random_uuid(),
+    component_name,
+    journey_id,
+    -- Map user's answer (1-5) to maturity level
+    CASE 
+        WHEN mirror_score = 1 THEN 'L1'
+        WHEN mirror_score = 2 THEN 'L2'
+        WHEN mirror_score = 3 THEN 'L3'
+        WHEN mirror_score = 4 THEN 'L4'
+        WHEN mirror_score = 5 THEN 'L5'
+    END,
+    0  -- Always start with 0% progress toward next level
+FROM mirror_assessment_results
+WHERE user_id = 'user-uuid'
+  AND assessment_type = 'initial';
+        </div>
+
+        <!-- SECTION 9: DEVELOPER CHECKLIST -->
+        <h2>9. Developer Implementation Checklist</h2>
+        
+        <div class="logic-box">
+            <h4>Database Setup:</h4>
+            <ol>
+                <li>✅ Create <code>components</code> table with dual progress tracking</li>
+                <li>✅ Create <code>component_quest_map</code> junction table</li>
+                <li>✅ Create <code>component_level_events</code> audit table</li>
+                <li>✅ Implement <code>handle_quest_completion()</code> trigger function</li>
+                <li>✅ Implement <code>update_journey_maturity()</code> aggregation function</li>
+                <li>✅ Implement <code>get_recommended_quest()</code> recommendation function</li>
+            </ol>
+        </div>
+        
+        <div class="logic-box">
+            <h4>API Endpoints:</h4>
+            <ol>
+                <li>✅ <code>GET /components/{id}</code> - Get Component detail with progress</li>
+                <li>✅ <code>GET /journeys/{id}/components</code> - List Components in Journey with levels</li>
+                <li>✅ <code>GET /users/{id}/dashboard</code> - Full dashboard with all Journeys and Components</li>
+                <li>✅ <code>POST /sparks/{id}/complete</code> - Complete Spark (triggers Quest check)</li>
+                <li>✅ <code>GET /users/{id}/recommended-quests</code> - Get next best Quests</li>
+                <li>✅ <code>GET /components/{id}/history</code> - Component Story Trail</li>
+            </ol>
+        </div>
+        
+        <div class="logic-box">
+            <h4>UI Components:</h4>
+            <ol>
+                <li>✅ Journey Card (dashboard) - Shows maturity + Components list</li>
+                <li>✅ Component Badge - Visual L1-L5 indicator with color coding</li>
+                <li>✅ Progress Bar - Shows % toward next level</li>
+                <li>✅ Level-Up Animation - Celebration when Component advances</li>
+                <li>✅ Component Detail Panel - Full history and outcomes view</li>
+                <li>✅ Story Trail - Achievement logging and reflection</li>
+                <li>✅ Recommendation Widget - "Next Best Quest" suggestions</li>
+            </ol>
+        </div>
+        
+        <div class="logic-box">
+            <h4>Integration Points:</h4>
+            <ol>
+                <li>✅ MIRROR Assessment → Component Initial States</li>
+                <li>✅ Quest Completion → Component Progress Update</li>
+                <li>✅ Deliverable Creation → Component Evidence</li>
+                <li>✅ Outcome Tracking → Component Business Results</li>
+                <li>✅ Workshop Credits → Quest Unlocking</li>
+            </ol>
+        </div>
+
+        <!-- SECTION 10: CRITICAL QUESTIONS ANSWERED -->
+        <h2>10. Critical Questions Answered</h2>
+        
+        <div class="example-box">
+            <h4>Q: How do you know WHICH Components to level up?</h4>
+            <p><strong>A:</strong> The MIRROR assessment sets initial levels. The recommendation engine suggests Quests that advance Components below L3 first, prioritizing those in the user's active Mission.</p>
+        </div>
+        
+        <div class="example-box">
+            <h4>Q: Can one Quest advance multiple Components at once?</h4>
+            <p><strong>A:</strong> Yes! That's the power of the system. The LinkedIn Workshop Quest advances "Brand Identity" (primary), "Marketing Channels" (secondary), and "Content Creation" (supporting) simultaneously.</p>
+        </div>
+        
+        <div class="example-box">
+            <h4>Q: What happens if a user skips Quests and jumps ahead?</h4>
+            <p><strong>A:</strong> The system tracks progress per Component, not per Quest sequence. If they skip Quest 2, their Component stays at its current level. Quest 3 won't advance them from L1 to L4 - each Quest moves them ONE level based on its target_level_transition.</p>
+        </div>
+        
+        <div class="example-box">
+            <h4>Q: How does Journey maturity get calculated if Components are at different levels?</h4>
+            <p><strong>A:</strong> Journey maturity is the AVERAGE of its Component levels (converted to numbers: L1=1, L2=2, etc.), then rounded back to the nearest level. So if 4 Components are L2 and 2 are L3, the Journey shows as L2.</p>
+        </div>
+        
+        <div class="example-box">
+            <h4>Q: Where does the 22 Domains and 22 Tenets fit in?</h4>
+            <p><strong>A:</strong> They are TAGS. Every Component, Quest, and Spark can be tagged with relevant Domains (operational perspective) and Tenets (skill development perspective). This enables filtering, gap analysis, and cross-journey pattern detection.</p>
+        </div>
+        
+        <div class="example-box">
+            <h4>Q: What's the difference between Component progress and Quest progress?</h4>
+            <p><strong>A:</strong> Quest progress = % of Sparks completed in that Quest. Component progress = % toward next maturity level (accumulated from multiple Quests). Quest completion is binary (done/not done). Component progress is cumulative.</p>
+        </div>
+
+        <!-- FOOTER -->
+        <div style="margin-top: 89px; padding-top: 21px; border-top: 2px solid #e0e0e0; text-align: center; color: #6c757d;">
+            <p><strong>SweetBOS Component System - The Glue Document</strong></p>
+            <p>This bridges the flows with the database. Your developer now has everything needed to build the Component progression system.</p>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            },
+            sequence: {
+                useMaxWidth: true,
+                wrap: true
+            }
+        });
+    </script>
+</body>
+</html>

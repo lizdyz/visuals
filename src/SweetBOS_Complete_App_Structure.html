@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetBOS Complete Application Structure</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #005A9C 0%, #7B2D8E 100%);
+            color: #1a1a1a;
+            padding: 34px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 13px;
+            padding: 55px;
+            box-shadow: 0 21px 55px rgba(0,0,0,0.15);
+        }
+        
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 52px;
+            color: #005A9C;
+            margin-bottom: 21px;
+            font-weight: 600;
+        }
+        
+        h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 36px;
+            color: #7B2D8E;
+            margin-top: 55px;
+            margin-bottom: 21px;
+            padding-bottom: 13px;
+            border-bottom: 3px solid #00AEEF;
+            font-weight: 500;
+        }
+        
+        h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            color: #005A9C;
+            margin-top: 34px;
+            margin-bottom: 13px;
+            font-weight: 500;
+        }
+        
+        .intro {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 34px;
+            border-radius: 13px;
+            margin-bottom: 34px;
+            border-left: 8px solid #00AEEF;
+            font-size: 18px;
+        }
+        
+        .section-card {
+            background: white;
+            border: 3px solid #7B2D8E;
+            border-radius: 13px;
+            padding: 34px;
+            margin: 21px 0;
+            box-shadow: 0 8px 21px rgba(123,45,142,0.15);
+        }
+        
+        .mermaid {
+            background: #f8f9fa;
+            padding: 21px;
+            border-radius: 8px;
+            margin: 21px 0;
+        }
+        
+        .mockup {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            border-radius: 8px;
+            padding: 21px;
+            margin: 21px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+            white-space: pre;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 21px;
+            margin: 21px 0;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            border-left: 5px solid #00AEEF;
+            padding: 21px;
+            border-radius: 5px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 21px 0;
+        }
+        
+        th {
+            background: #005A9C;
+            color: white;
+            padding: 13px;
+            text-align: left;
+            font-family: 'Oswald', sans-serif;
+        }
+        
+        td {
+            padding: 13px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .icon {
+            font-size: 24px;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SweetBOS Complete Application Structure</h1>
+        <p style="color: #6c757d; font-size: 14px; margin-bottom: 34px;">The Full Platform Architecture | Generated: November 9, 2025</p>
+        
+        <div class="intro">
+            <p><strong>Purpose:</strong> This document maps EVERY major section of the SweetBOS application - all the "rooms" users can navigate to, what they contain, and how they connect.</p>
+            <p style="margin-top: 13px;"><strong>Think of it as:</strong> The complete floor plan of the platform. Each section serves a specific purpose in the advisor's transformation journey.</p>
+        </div>
+
+        <!-- APPLICATION MAP -->
+        <h2>1. Complete Application Map</h2>
+        
+        <div class="mermaid">
+            graph TD
+                A[🏠 SweetBOS Platform] --> B[👤 Profile]
+                A --> C[📊 Dashboard]
+                A --> D[🤖 Liz AI]
+                A --> E[🗄️ Vault]
+                A --> F[📚 Resource Library]
+                A --> G[📈 Analytics]
+                A --> H[🎯 Sessions Hub]
+                A --> I[🌐 Community]
+                
+                C --> C1[Mission View]
+                C --> C2[Journey Grid]
+                C --> C3[Active Quests]
+                C --> C4[Story Trail]
+                
+                D --> D1[Chat Interface]
+                D --> D2[Context Picker]
+                D --> D3[Quick Actions]
+                
+                E --> E1[Deliverables]
+                E --> E2[Templates]
+                E --> E3[SOPs]
+                E --> E4[My Files]
+                
+                F --> F1[Industry Stats]
+                F --> F2[December Resources]
+                F --> F3[Frameworks]
+                F --> F4[Workshops]
+                
+                G --> G1[Component Metrics]
+                G --> G2[Outcome Tracking]
+                G --> G3[Progress Reports]
+                
+                H --> H1[Live Sessions]
+                H --> H2[Office Hours]
+                H --> H3[Workshops]
+                H --> H4[Recordings]
+                
+                I --> I1[Network]
+                I --> I2[Co-Working]
+                I --> I3[Chat Roulette]
+                I --> I4[Share Quest]
+                
+                style A fill:#005A9C,stroke:#003d6b,stroke-width:4px,color:#fff
+                style C fill:#7B2D8E,stroke:#5a1f69,stroke-width:3px,color:#fff
+                style D fill:#00AEEF,stroke:#0086b3,stroke-width:3px
+                style E fill:#28a745,stroke:#1e7e34,stroke-width:3px
+                style F fill:#ffc107,stroke:#856404,stroke-width:3px
+                style G fill:#17a2b8,stroke:#117a8b,stroke-width:3px
+                style H fill:#dc3545,stroke:#a71d2a,stroke-width:3px
+                style I fill:#6f42c1,stroke:#4e2a84,stroke-width:3px
+        </div>
+
+        <!-- MAIN NAVIGATION -->
+        <h2>2. Primary Navigation Structure</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Section</th>
+                    <th>Icon</th>
+                    <th>Primary Purpose</th>
+                    <th>User Goes Here To...</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Profile</strong></td>
+                    <td>👤</td>
+                    <td>Identity & Settings</td>
+                    <td>Manage account, view MIRROR results, update preferences</td>
+                </tr>
+                <tr>
+                    <td><strong>Dashboard</strong></td>
+                    <td>📊</td>
+                    <td>Progress Command Center</td>
+                    <td>See all Journeys, track Component levels, continue Quests</td>
+                </tr>
+                <tr>
+                    <td><strong>Liz AI</strong></td>
+                    <td>🤖</td>
+                    <td>Conversational Intelligence</td>
+                    <td>Ask questions, get guidance, work through problems</td>
+                </tr>
+                <tr>
+                    <td><strong>Vault</strong></td>
+                    <td>🗄️</td>
+                    <td>Asset Repository</td>
+                    <td>Access deliverables, templates, SOPs, uploaded files</td>
+                </tr>
+                <tr>
+                    <td><strong>Resource Library</strong></td>
+                    <td>📚</td>
+                    <td>Knowledge Base</td>
+                    <td>Find industry stats, frameworks, guides, workshop materials</td>
+                </tr>
+                <tr>
+                    <td><strong>Analytics</strong></td>
+                    <td>📈</td>
+                    <td>Business Intelligence</td>
+                    <td>View metrics, outcomes, ROI, business results</td>
+                </tr>
+                <tr>
+                    <td><strong>Sessions Hub</strong></td>
+                    <td>🎯</td>
+                    <td>Live Interaction Center</td>
+                    <td>Join sessions, workshops, office hours, view recordings</td>
+                </tr>
+                <tr>
+                    <td><strong>Community</strong></td>
+                    <td>🌐</td>
+                    <td>Social & Collaboration</td>
+                    <td>Network, co-work, chat roulette, share progress</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- PROFILE SECTION -->
+        <h2>3. Profile Section 👤</h2>
+        
+        <div class="section-card">
+            <h3>What Lives Here:</h3>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Personal Information</h4>
+                    <ul>
+                        <li>Name, photo, bio</li>
+                        <li>Practice details (firm, AUM, years)</li>
+                        <li>Location & timezone</li>
+                        <li>Contact information</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>MIRROR Assessment Results</h4>
+                    <ul>
+                        <li>Initial Component scores (L1-L5)</li>
+                        <li>Identified gaps & strengths</li>
+                        <li>Recommended Mission</li>
+                        <li>Priority Journeys</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>Preferences & Settings</h4>
+                    <ul>
+                        <li>Notification settings</li>
+                        <li>UI preferences (view modes)</li>
+                        <li>Privacy controls</li>
+                        <li>Integration connections</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>Subscription & Credits</h4>
+                    <ul>
+                        <li>Current plan (Mirror/Map/Machine/SweetSync)</li>
+                        <li>Workshop credits remaining</li>
+                        <li>Payment history</li>
+                        <li>Upgrade options</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mockup" style="margin-top: 21px;">┌──────────────────────────────────────────────────────────────────┐
+│ PROFILE - John Anderson                                     [Edit]│
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│  [Photo]   John Anderson, CFP®                                  │
+│            Senior Wealth Advisor                                │
+│            Anderson Financial Group                             │
+│            Toronto, ON  |  15 years experience  |  $125M AUM    │
+│                                                                  │
+│  Member Since: Oct 2025  |  Mission: Operational Excellence     │
+│  Plan: Machine ($14,000)  |  Workshop Credits: 18 remaining     │
+│                                                                  │
+│ ──────────────────────────────────────────────────────────────  │
+│                                                                  │
+│  MIRROR ASSESSMENT RESULTS (Oct 29, 2025)                       │
+│  Overall Practice Maturity: L2.4 (Learning → Launching)         │
+│                                                                  │
+│  Top Strengths:                    Priority Gaps:               │
+│  • Operations (L4)                 • Time Management (L1)       │
+│  • Strategic Vision (L3)           • Marketing Channels (L1)    │
+│  • Service Delivery (L3)           • Technology Integration (L2)│
+│                                                                  │
+│  [View Full MIRROR Results]  [Retake Assessment]                │
+│                                                                  │
+│ ──────────────────────────────────────────────────────────────  │
+│                                                                  │
+│  SETTINGS                                                        │
+│  • Notifications: [Email: On] [Push: On] [Digest: Weekly]      │
+│  • Dashboard View: [Grid View]                                  │
+│  • Spark Display: [One-at-a-Time]                               │
+│  • Privacy: [Profile Visible to Community]                      │
+│                                                                  │
+│  INTEGRATIONS                                                    │
+│  ✓ Google Calendar    ✓ Google Drive    ✗ CRM                  │
+│                                                                  │
+└──────────────────────────────────────────────────────────────────┘</div>
+        </div>
+
+        <!-- DASHBOARD SECTION -->
+        <h2>4. Dashboard Section 📊</h2>
+        
+        <div class="section-card">
+            <h3>The Progress Command Center</h3>
+            <p style="margin-bottom: 21px;">This is where users spend most of their time - seeing their Mission, Journeys, Components, and active Quests.</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Mission Overview</h4>
+                    <ul>
+                        <li>Active Mission status</li>
+                        <li>Activated Journeys (4-6 typically)</li>
+                        <li>Overall progress toward Mission</li>
+                        <li>Time invested this month</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>Journey Grid/List/Timeline</h4>
+                    <ul>
+                        <li>All 12 Journeys with maturity badges</li>
+                        <li>Component counts & levels per Journey</li>
+                        <li>Active Quest indicators</li>
+                        <li>Priority rankings (user-set)</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>Active Quests Widget</h4>
+                    <ul>
+                        <li>In-progress Quests (cross-Journey)</li>
+                        <li>Completion % per Quest</li>
+                        <li>"Continue" quick actions</li>
+                        <li>Next recommended Quest</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>Story Trail Preview</h4>
+                    <ul>
+                        <li>Recent completions</li>
+                        <li>Level-up celebrations</li>
+                        <li>This week's achievements</li>
+                        <li>Link to full Story Trail</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <p style="margin-top: 21px;"><strong>Note:</strong> This is covered extensively in the Visual Experience Design document - see Dashboard View Options section.</p>
+        </div>
+
+        <!-- LIZ AI SECTION -->
+        <h2>5. Liz AI Section 🤖</h2>
+        
+        <div class="section-card">
+            <h3>Conversational Intelligence Layer</h3>
+            
+            <div class="mockup">┌──────────────────────────────────────────────────────────────────┐
+│ LIZ AI                                             [New Chat] │
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│  Context: [Active Mission ▼]  BizzyBot: [Auto-Select ▼]        │
+│                                                                  │
+│  Quick Actions:                                                  │
+│  [💡 Brainstorm Solution] [✍️ Draft Content] [🔍 Research]     │
+│  [📊 Analyze Data] [🎯 Make Decision] [📝 Summarize]           │
+│                                                                  │
+│ ──────────────────────────────────────────────────────────────  │
+│                                                                  │
+│  You: How can I improve my referral system conversion rate?     │
+│                                                                  │
+│  Liz AI: [StratBot + DataBits active]                           │
+│                                                                  │
+│  I see you completed "Build Your Foundation" quest for your     │
+│  Referral System component (now at L3). Let's analyze your      │
+│  current conversion data:                                        │
+│                                                                  │
+│  Your referrals → clients: 45% (3 of 7 this month converted)    │
+│  Industry benchmark: 60-70% for established systems              │
+│                                                                  │
+│  Three leverage points to test:                                 │
+│                                                                  │
+│  1. Follow-up timing: You're averaging 4.2 days from referral   │
+│     to first contact. Test same-day contact with next 5.        │
+│                                                                  │
+│  2. Referrer communication: Only 2 of 7 referrers received      │
+│     thank-you within 24 hours. Build this into your workflow.   │
+│                                                                  │
+│  3. Value articulation: Review your referral welcome email      │
+│     (in Vault). Does it clearly state why the referrer trusted  │
+│     you?                                                         │
+│                                                                  │
+│  Want me to help you create a 30-day test plan?                 │
+│                                                                  │
+│  [Yes, create plan] [Show me the data] [Different approach]     │
+│                                                                  │
+│ ──────────────────────────────────────────────────────────────  │
+│                                                                  │
+│  [Type your message...]                                          │
+│                                                                  │
+└──────────────────────────────────────────────────────────────────┘</div>
+            
+            <div class="feature-grid" style="margin-top: 21px;">
+                <div class="feature-card">
+                    <h4>Context Awareness</h4>
+                    <ul>
+                        <li>Knows current Mission & Journeys</li>
+                        <li>Sees Component levels & progress</li>
+                        <li>Accesses Vault deliverables</li>
+                        <li>References completed Quests</li>
+                        <li>Understands advisor's practice details</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>BizzyBot Integration</h4>
+                    <ul>
+                        <li>Auto-selects relevant BizzyBots</li>
+                        <li>SweetBot for values & authenticity</li>
+                        <li>StratBot for strategic thinking</li>
+                        <li>BizBot for operations</li>
+                        <li>DataBits for analysis</li>
+                        <li>+ 5 more specialized perspectives</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>Framework Application</h4>
+                    <ul>
+                        <li>OCDA (Observe → Choose → Decide → Act)</li>
+                        <li>4Ds (Discover → Define → Develop → Deliver)</li>
+                        <li>Rhetorical Triangle (Ethos/Pathos/Kairos/Logos)</li>
+                        <li>Co-Evolution modes (Explore/Attune/Integrate/Recalibrate)</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>Action Capabilities</h4>
+                    <ul>
+                        <li>Draft content (emails, posts, scripts)</li>
+                        <li>Analyze uploaded documents</li>
+                        <li>Research topics with web access</li>
+                        <li>Create deliverables</li>
+                        <li>Recommend next Quests</li>
+                        <li>Export conversations to Vault</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- VAULT SECTION -->
+        <h2>6. Vault Section 🗄️</h2>
+        
+        <div class="section-card">
+            <h3>Your Asset Repository</h3>
+            
+            <p style="margin-bottom: 21px;">Every deliverable created, every template, every SOP, every file you upload - all organized and searchable.</p>
+            
+            <div class="mockup">┌──────────────────────────────────────────────────────────────────┐
+│ VAULT                                                   [Upload] │
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│  Filter: [All Types ▼] [All Journeys ▼]   Sort: [Recent ▼]     │
+│  Search: [_________________________________]  View: [Grid ●]     │
+│                                                                  │
+│  DELIVERABLES (28)                                               │
+│  ┌────────────────┐  ┌────────────────┐  ┌────────────────┐   │
+│  │ 📄 Referral    │  │ 📄 Welcome     │  │ 📊 Ideal       │   │
+│  │ Request Email  │  │ Email Template │  │ Client Profile │   │
+│  │                │  │                │  │                │   │
+│  │ J2 Quest 2     │  │ J7 Quest 2     │  │ J1 Quest 1     │   │
+│  │ Nov 4, 2025    │  │ Oct 28, 2025   │  │ Oct 15, 2025   │   │
+│  │ ✓ Validated    │  │ ✓ Validated    │  │ ✓ Validated    │   │
+│  │ Used: 12x      │  │ Used: 24x      │  │ Used: 6x       │   │
+│  └────────────────┘  └────────────────┘  └────────────────┘   │
+│                                                                  │
+│  TEMPLATES (15)                                                  │
+│  • Meeting Agenda Template (J7)                                 │
+│  • Annual Review Checklist (J7)                                 │
+│  • Client Onboarding Workflow (J7)                              │
+│  • Quarterly Newsletter Template (J2)                           │
+│  • Referral Tracking Spreadsheet (J2)                           │
+│  [View All Templates]                                            │
+│                                                                  │
+│  SOPs (Standard Operating Procedures) (8)                       │
+│  • Client Onboarding Process (J7) - 5 steps                     │
+│  • Meeting Preparation Workflow (J7) - 8 steps                  │
+│  • Referral Request Process (J2) - 4 steps                      │
+│  • Tax Planning Review Process (J7) - 6 steps                   │
+│  [View All SOPs]                                                 │
+│                                                                  │
+│  MY UPLOADS (42 files)                                           │
+│  Recent: compliance_docs.pdf, brand_guidelines.pdf,             │
+│          client_segmentation.xlsx                               │
+│  [Browse All Files]                                              │
+│                                                                  │
+│  📦 BULK ACTIONS                                                │
+│  [Export Selected] [Share to Community] [Create Collection]     │
+│                                                                  │
+└──────────────────────────────────────────────────────────────────┘</div>
+            
+            <div class="feature-grid" style="margin-top: 21px;">
+                <div class="feature-card">
+                    <h4>Organization System</h4>
+                    <ul>
+                        <li>Auto-tagged by Journey & Component</li>
+                        <li>Searchable by keyword, date, type</li>
+                        <li>Filterable by validation status</li>
+                        <li>Custom collections/folders</li>
+                        <li>Version history for edits</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>Usage Tracking</h4>
+                    <ul>
+                        <li>View count per asset</li>
+                        <li>Last accessed date</li>
+                        <li>Most used assets highlighted</li>
+                        <li>Stale asset alerts (unused 90+ days)</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>Integration Options</h4>
+                    <ul>
+                        <li>Export to Google Drive</li>
+                        <li>Download as PDF/DOCX/XLSX</li>
+                        <li>Email directly from Vault</li>
+                        <li>Share link with expiration</li>
+                        <li>Embed in presentations</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>Validation Layer</h4>
+                    <ul>
+                        <li>AI quality scoring</li>
+                        <li>Elizabeth/expert validation</li>
+                        <li>Peer review (community)</li>
+                        <li>Compliance check status</li>
+                        <li>Update recommendations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESOURCE LIBRARY -->
+        <h2>7. Resource Library Section 📚</h2>
+        
+        <div class="section-card">
+            <h3>External Knowledge Repository</h3>
+            
+            <p style="margin-bottom: 21px;">This is separate from user-created Vault assets - it's SweetBot-curated industry resources, statistics, frameworks, and workshop materials.</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Industry Statistics & Data</h4>
+                    <ul>
+                        <li>Advisor benchmarking data</li>
+                        <li>AUM trends & growth rates</li>
+                        <li>Client retention statistics</li>
+                        <li>Technology adoption rates</li>
+                        <li>Compensation benchmarks</li>
+                        <li>Practice valuation multiples</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>December Resource Library</h4>
+                    <ul>
+                        <li>Year-end tax planning templates</li>
+                        <li>Holiday communication scripts</li>
+                        <li>TFSA/RRSP campaign materials</li>
+                        <li>Tax loss selling guides</li>
+                        <li>Client appreciation ideas</li>
+                        <li>Q1 planning resources</li>
+                    </ul>
+                    <p style="margin-top: 8px; font-style: italic;">*Month-specific collections</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>Framework Documentation</h4>
+                    <ul>
+                        <li>OCDA Framework (full guide)</li>
+                        <li>4D Communication (Rhetorical)</li>
+                        <li>Co-Evolution stages</li>
+                        <li>Gestalt (Past/Present/Future)</li>
+                        <li>3Cs (Consent/Control/Collab)</li>
+                        <li>5Ls Maturity Model</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>Workshop Materials</h4>
+                    <ul>
+                        <li>LinkedIn Positioning workbook</li>
+                        <li>Tech Stack Optimization guide</li>
+                        <li>Wholesaler enablement decks</li>
+                        <li>Pre-work forms</li>
+                        <li>Post-workshop action plans</li>
+                        <li>Custom GPT access</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mockup" style="margin-top: 21px;">┌──────────────────────────────────────────────────────────────────┐
+│ RESOURCE LIBRARY                                    [Suggest Add]│
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│  Browse: [By Topic ▼] [By Month ▼] [By Framework ▼]            │
+│  Search: [_________________________________]                     │
+│                                                                  │
+│  🔥 FEATURED THIS MONTH: December Year-End Resources            │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│  📊 INDUSTRY BENCHMARKS                                         │
+│  • 2025 Advisor Compensation Study (PDF)                        │
+│  • Client Retention Rates by AUM Band (Interactive)             │
+│  • Technology Adoption Among Canadian Advisors (Report)         │
+│  • Practice Valuation Multiples Q4 2025 (Spreadsheet)           │
+│                                                                  │
+│  📚 FRAMEWORKS & METHODOLOGIES                                  │
+│  • OCDA Framework Complete Guide (35 pages)                     │
+│  • 4D Communication (Rhetorical Triangle) Workbook              │
+│  • Co-Evolution Implementation Guide                            │
+│  • Gestalt Framework Application Examples                       │
+│                                                                  │
+│  🎯 WORKSHOP MATERIALS                                          │
+│  • LinkedIn Positioning Pre-Work Form                           │
+│  • Tech Stack Optimization Workbook                             │
+│  • Custom GPT: Tech Stack Analyzer (Launch)                     │
+│  • Post-Workshop Action Plan Template                           │
+│                                                                  │
+│  📖 READING LIST                                                │
+│  • "The Advisor's Guide to AI" - Elizabeth Dykes (eBook)       │
+│  • Behavioral Finance Applications (Articles)                   │
+│  • Client Communication Best Practices (Video Series)           │
+│                                                                  │
+└──────────────────────────────────────────────────────────────────┘</div>
+        </div>
+
+        <!-- ANALYTICS SECTION -->
+        <h2>8. Analytics Section 📈</h2>
+        
+        <div class="section-card">
+            <h3>Business Intelligence & Measurement</h3>
+            
+            <p style="margin-bottom: 21px;">This is where the Outcome tracking happens - measuring actual business results from Component advancement.</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Component-Level Metrics</h4>
+                    <ul>
+                        <li>Current maturity level (L1-L5)</li>
+                        <li>Progress toward next level</li>
+                        <li>Time at current level</li>
+                        <li>Advancement velocity</li>
+                        <li>Quest completion rate</li>
+                        <li>Deliverable quality scores</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>Business Outcome Tracking</h4>
+                    <ul>
+                        <li>Revenue impact ($ per Component)</li>
+                        <li>Time savings (hours per Component)</li>
+                        <li>Client satisfaction changes</li>
+                        <li>Lead generation increases</li>
+                        <li>Conversion rate improvements</li>
+                        <li>Efficiency gains (% improvement)</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>Journey-Level Analytics</h4>
+                    <ul>
+                        <li>Overall Journey maturity</li>
+                        <li>Component coverage (%)</li>
+                        <li>Quest completion count</li>
+                        <li>Time investment (hours)</li>
+                        <li>Journey priority vs progress</li>
+                        <li>Recommended next actions</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>Mission Progress</h4>
+                    <ul>
+                        <li>Journey constellation health</li>
+                        <li>Overall business transformation</li>
+                        <li>Time to achievement tracking</li>
+                        <li>ROI calculation (investment vs results)</li>
+                        <li>Peer comparison (anonymized)</li>
+                        <li>Progress reports (weekly/monthly)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <p style="margin-top: 21px;"><strong>Note:</strong> See Visual Experience Design document Section 6 (Outcome Tracking View) for detailed mockups.</p>
+        </div>
+
+        <!-- SESSIONS HUB -->
+        <h2>9. Sessions Hub 🎯</h2>
+        
+        <div class="section-card">
+            <h3>Live Interaction Center</h3>
+            
+            <p style="margin-bottom: 21px;">All real-time sessions - Mirror/Map/Machine, workshops, office hours, and recordings.</p>
+            
+            <div class="mockup">┌──────────────────────────────────────────────────────────────────┐
+│ SESSIONS HUB                                           [Calendar]│
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│  View: [Upcoming] [Past] [Recordings]   Type: [All ▼]           │
+│                                                                  │
+│  UPCOMING SESSIONS                                               │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│  📅 Wed, Nov 13 | 2:00 PM EST (in 4 days)                       │
+│  ┌────────────────────────────────────────────────────────────┐ │
+│  │ MAP Session #2: Strategic Vision Deep Dive                 │ │
+│  │                                                            │ │
+│  │ With: Elizabeth Dykes                                      │ │
+│  │ Duration: 90 minutes                                       │ │
+│  │ Focus: Building your 3-year vision for J1                  │ │
+│  │                                                            │ │
+│  │ Pre-Work Due: Nov 12                                       │ │
+│  │ ✓ Complete "Define Your Values" Spark                     │ │
+│  │ ⏳ Complete "Vision Statement Draft" Spark (45 mins left) │ │
+│  │                                                            │ │
+│  │ [Complete Pre-Work] [Join Session] [Reschedule]           │ │
+│  └────────────────────────────────────────────────────────────┘ │
+│                                                                  │
+│  📅 Thu, Nov 14 | 12:00 PM EST (in 5 days)                      │
+│  ┌────────────────────────────────────────────────────────────┐ │
+│  │ OFFICE HOURS: Ask Elizabeth Anything                       │ │
+│  │                                                            │ │
+│  │ Drop-in session (30 min slots)                             │ │
+│  │ Your slot: 12:15-12:45 PM                                  │ │
+│  │ 8 other advisors attending                                 │ │
+│  │                                                            │ │
+│  │ [Join Session] [Cancel Slot]                               │ │
+│  └────────────────────────────────────────────────────────────┘ │
+│                                                                  │
+│  📅 Tue, Nov 19 | 11:00 AM EST (in 10 days)                     │
+│  ┌────────────────────────────────────────────────────────────┐ │
+│  │ WORKSHOP: LinkedIn Positioning for Advisors (Regional)     │ │
+│  │                                                            │ │
+│  │ With: Elizabeth Dykes + 24 Ontario advisors                │ │
+│  │ Duration: 75 minutes                                       │ │
+│  │ Credits: 2 (you have 18 remaining)                         │ │
+│  │                                                            │ │
+│  │ Pre-Work: 15 minutes (due Nov 18)                          │ │
+│  │ Deliverables: LinkedIn profile copy, content bank, GPT     │ │
+│  │                                                            │ │
+│  │ [Complete Pre-Work] [Join Session] [Invite Peer]          │ │
+│  └────────────────────────────────────────────────────────────┘ │
+│                                                                  │
+│  RECORDINGS (18 available)                                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│  Recent:                                                         │
+│  • MAP Session #1: Mission Activation (Nov 6) - 87 mins         │
+│  • Office Hours: Q4 Planning (Nov 1) - 42 mins                  │
+│  • Workshop: Tech Stack Optimization (Oct 22) - 75 mins         │
+│                                                                  │
+│  [View All Recordings]                                           │
+│                                                                  │
+└──────────────────────────────────────────────────────────────────┘</div>
+            
+            <div class="feature-grid" style="margin-top: 21px;">
+                <div class="feature-card">
+                    <h4>Mirror/Map/Machine Sessions</h4>
+                    <ul>
+                        <li>1-on-1 facilitated sessions with Elizabeth</li>
+                        <li>Pre-work Sparks required</li>
+                        <li>AI synthesis before session</li>
+                        <li>Post-session deliverable generation</li>
+                        <li>Follow 48-hour execution pattern</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>Workshops (Credit-Based)</h4>
+                    <ul>
+                        <li>Regional cohorts (10-30 advisors)</li>
+                        <li>LinkedIn Positioning (2 credits)</li>
+                        <li>Tech Stack Optimization (2 credits)</li>
+                        <li>Custom GPTs provided</li>
+                        <li>Peer networking included</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>Office Hours</h4>
+                    <ul>
+                        <li>Drop-in Q&A sessions</li>
+                        <li>30-minute time slots</li>
+                        <li>See other attendees</li>
+                        <li>Group problem-solving</li>
+                        <li>No pre-work required</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>Recording Library</h4>
+                    <ul>
+                        <li>All past sessions saved</li>
+                        <li>Searchable by topic</li>
+                        <li>Timestamped chapters</li>
+                        <li>Transcript available</li>
+                        <li>Key takeaways summarized</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- COMMUNITY SECTION -->
+        <h2>10. Community Section 🌐</h2>
+        
+        <div class="section-card">
+            <h3>Social & Collaboration Space</h3>
+            
+            <p style="margin-bottom: 21px;">This is where advisors connect, co-work, share progress, and network - the "third place" within SweetBOS.</p>
+            
+            <div class="mockup">┌──────────────────────────────────────────────────────────────────┐
+│ COMMUNITY                                            [My Network]│
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│  [🎲 Chat Roulette] [💼 Co-Working] [🎯 Find Peer] [💬 Forum]  │
+│                                                                  │
+│  ACTIVE NOW (47 advisors online)                                │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│  🟢 CO-WORKING ROOM #1 (8 advisors)                             │
+│  Theme: "Client Communication Projects"                         │
+│  Active Quests: J7 Service Delivery (4), J2 Marketing (4)       │
+│  [Join Room] [Start Chat]                                       │
+│                                                                  │
+│  🟢 CO-WORKING ROOM #2 (12 advisors)                            │
+│  Theme: "Tech Stack & Automation"                               │
+│  Active Quests: J5 Tech Integration (7), J8 Operations (5)      │
+│  [Join Room] [Start Chat]                                       │
+│                                                                  │
+│  🟢 CO-WORKING ROOM #3 (6 advisors)                             │
+│  Theme: "Strategic Planning - Silent Focus"                     │
+│  Active Quests: J1 Strategy (4), J12 Performance (2)            │
+│  [Join Room] [Respect Silence Mode]                             │
+│                                                                  │
+│  RECENT ACTIVITY                                                 │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│  🎉 Sarah M. just leveled up Component "Marketing Channels" L2→L3│
+│     12 reactions  |  3 comments  |  [Congratulate]              │
+│                                                                  │
+│  💡 James T. shared Quest: "Build Referral System"              │
+│     "This template saved me 3 hours - highly recommend!"        │
+│     [View Quest] [Use Template]                                 │
+│                                                                  │
+│  📊 Michael R. posted Outcome: +$47k monthly revenue             │
+│     Component: Referral System (L2→L3)                          │
+│     "The follow-up workflow made all the difference"            │
+│     [View Details] [Ask Question]                               │
+│                                                                  │
+│  NETWORK (Your Connections: 23)                                  │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│  [Photo] Sarah Mitchell, CFP - Toronto, ON                      │
+│          Similar Mission | 3 shared Quests                      │
+│          Last connected: 2 days ago                             │
+│          [Message] [View Profile]                               │
+│                                                                  │
+│  [Photo] James Torres, CIM - Vancouver, BC                      │
+│          Different Mission | 1 shared Quest                     │
+│          Last connected: 1 week ago                             │
+│          [Message] [View Profile]                               │
+│                                                                  │
+│  [View All Connections] [Find Similar Advisors]                 │
+│                                                                  │
+└──────────────────────────────────────────────────────────────────┘</div>
+            
+            <div class="feature-grid" style="margin-top: 21px;">
+                <div class="feature-card">
+                    <h4>Chat Roulette</h4>
+                    <ul>
+                        <li>Random 1-on-1 matching</li>
+                        <li>Filter by Mission or Journey</li>
+                        <li>15-minute video chat</li>
+                        <li>Option to connect afterward</li>
+                        <li>Icebreaker prompts provided</li>
+                        <li>"Next Match" button</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>Co-Working Rooms</h4>
+                    <ul>
+                        <li>Theme-based rooms (max 15 people)</li>
+                        <li>Video optional (can just be present)</li>
+                        <li>See what Quests others working on</li>
+                        <li>Chat sidebar for questions</li>
+                        <li>Silent mode option</li>
+                        <li>Pomodoro timer integration</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>Quest Sharing</h4>
+                    <ul>
+                        <li>Share completed Quest results</li>
+                        <li>Show your deliverables (optional)</li>
+                        <li>Others can "Use This Approach"</li>
+                        <li>Comments & questions thread</li>
+                        <li>Upvoting for quality</li>
+                        <li>Expert validation badges</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>Find Your Peer</h4>
+                    <ul>
+                        <li>Match by similar practice (AUM, years)</li>
+                        <li>Match by shared Mission</li>
+                        <li>Match by active Journey overlap</li>
+                        <li>Accountability partner pairing</li>
+                        <li>Mastermind group formation</li>
+                        <li>Geography-based (optional)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- NAVIGATION PATTERNS -->
+        <h2>11. Cross-Section Navigation Patterns</h2>
+        
+        <div class="section-card">
+            <h3>How Users Move Between Sections</h3>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>User Intent</th>
+                        <th>Entry Point</th>
+                        <th>Common Path</th>
+                        <th>Exit Point</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Continue working on Quest</td>
+                        <td>Dashboard</td>
+                        <td>Dashboard → Journey Card → Quest → Spark</td>
+                        <td>Quest completion → Dashboard</td>
+                    </tr>
+                    <tr>
+                        <td>Ask AI for help</td>
+                        <td>Any section</td>
+                        <td>Quick Action "Ask Liz" → Liz AI</td>
+                        <td>Back to previous section</td>
+                    </tr>
+                    <tr>
+                        <td>Find a deliverable</td>
+                        <td>Liz AI or Dashboard</td>
+                        <td>Search → Vault → Download/View</td>
+                        <td>Stay in Vault or back</td>
+                    </tr>
+                    <tr>
+                        <td>Check progress metrics</td>
+                        <td>Dashboard</td>
+                        <td>Dashboard → Component Detail → Analytics</td>
+                        <td>Analytics → Dashboard</td>
+                    </tr>
+                    <tr>
+                        <td>Join office hours</td>
+                        <td>Email notification or Dashboard</td>
+                        <td>Link → Sessions Hub → Join</td>
+                        <td>Session ends → Dashboard</td>
+                    </tr>
+                    <tr>
+                        <td>Network with peers</td>
+                        <td>Community or Dashboard widget</td>
+                        <td>Community → Chat Roulette or Co-Working</td>
+                        <td>Stay in Community or Dashboard</td>
+                    </tr>
+                    <tr>
+                        <td>Find industry benchmark</td>
+                        <td>Liz AI question or Dashboard</td>
+                        <td>Liz AI suggests → Resource Library</td>
+                        <td>Download → Back to context</td>
+                    </tr>
+                    <tr>
+                        <td>Share Quest results</td>
+                        <td>Quest completion screen</td>
+                        <td>Quest → "Share to Community" → Community</td>
+                        <td>Community → Dashboard</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- FOOTER -->
+        <div style="margin-top: 89px; padding-top: 21px; border-top: 2px solid #e0e0e0; text-align: center; color: #6c757d;">
+            <p><strong>SweetBOS Complete Application Structure</strong></p>
+            <p>All major sections mapped - your developer now knows every "room" in the platform</p>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            }
+        });
+    </script>
+</body>
+</html>

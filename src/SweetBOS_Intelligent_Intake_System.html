@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetBOS Intelligent Intake & Validation System</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #005A9C 0%, #7B2D8E 100%);
+            color: #1a1a1a;
+            padding: 34px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 13px;
+            padding: 55px;
+            box-shadow: 0 21px 55px rgba(0,0,0,0.15);
+        }
+        
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 52px;
+            color: #005A9C;
+            margin-bottom: 21px;
+            font-weight: 600;
+        }
+        
+        h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 36px;
+            color: #7B2D8E;
+            margin-top: 55px;
+            margin-bottom: 21px;
+            padding-bottom: 13px;
+            border-bottom: 3px solid #00AEEF;
+            font-weight: 500;
+        }
+        
+        h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            color: #005A9C;
+            margin-top: 34px;
+            margin-bottom: 13px;
+            font-weight: 500;
+        }
+        
+        .intro {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            padding: 34px;
+            border-radius: 13px;
+            margin-bottom: 34px;
+            border-left: 8px solid #ffc107;
+            font-size: 18px;
+        }
+        
+        .critical-concept {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 21px;
+            margin: 21px 0;
+            border-radius: 5px;
+        }
+        
+        .critical-concept strong {
+            color: #856404;
+            font-size: 20px;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .ux-principle {
+            background: #e7f3ff;
+            border-left: 5px solid #005A9C;
+            padding: 21px;
+            margin: 21px 0;
+            border-radius: 5px;
+        }
+        
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 21px;
+            margin: 21px 0;
+        }
+        
+        .before {
+            background: #ffebee;
+            border: 3px solid #dc3545;
+            border-radius: 8px;
+            padding: 21px;
+        }
+        
+        .after {
+            background: #e8f5e9;
+            border: 3px solid #28a745;
+            border-radius: 8px;
+            padding: 21px;
+        }
+        
+        .mockup {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            border-radius: 8px;
+            padding: 21px;
+            margin: 21px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+            white-space: pre;
+        }
+        
+        .mermaid {
+            background: #f8f9fa;
+            padding: 21px;
+            border-radius: 8px;
+            margin: 21px 0;
+        }
+        
+        .example-box {
+            background: white;
+            border: 2px solid #7B2D8E;
+            border-radius: 8px;
+            padding: 21px;
+            margin: 21px 0;
+            box-shadow: 0 5px 13px rgba(123,45,142,0.15);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 21px;
+            margin: 21px 0;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            border-left: 5px solid #00AEEF;
+            padding: 21px;
+            border-radius: 5px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 21px 0;
+        }
+        
+        th {
+            background: #005A9C;
+            color: white;
+            padding: 13px;
+            text-align: left;
+            font-family: 'Oswald', sans-serif;
+        }
+        
+        td {
+            padding: 13px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Intelligent Intake & Validation System</h1>
+        <p style="color: #6c757d; font-size: 14px; margin-bottom: 34px;">Extract → Validate → Guide | Generated: November 9, 2025</p>
+        
+        <div class="intro">
+            <p><strong>Core Philosophy:</strong> Advisors already HAVE most of their answers - buried in documents, to-do lists, emails, notes, and existing systems. Don't make them manually input everything. EXTRACT intelligence from what they already have, then guide them to validate and fill gaps.</p>
+            <p style="margin-top: 13px;"><strong>The UX Revolution:</strong> Every interaction should minimize clicks, scrolls, and manual entry. If we can parse it, we parse it. If we can infer it, we infer it. If we can auto-complete it, we auto-complete it. Users only validate, correct, and fill gaps.</p>
+        </div>
+
+        <!-- CORE PRINCIPLE -->
+        <h2>1. The Core UX Principle: Minimum Viable Friction</h2>
+        
+        <div class="ux-principle">
+            <h3 style="color: #005A9C; margin-top: 0;">Every Click Costs Momentum</h3>
+            <p>Traditional form design:</p>
+            <ul style="margin: 13px 0 13px 21px;">
+                <li>Click on field</li>
+                <li>Type answer</li>
+                <li>Scroll to next field</li>
+                <li>Click on field</li>
+                <li>Type answer</li>
+                <li>Scroll to submit</li>
+                <li>Click submit</li>
+                <li><strong>Result: 7+ interactions for 2 answers</strong></li>
+            </ul>
+            
+            <p style="margin-top: 13px;"><strong>SweetBOS Philosophy:</strong></p>
+            <ul style="margin: 13px 0 13px 21px;">
+                <li>User drops in existing document</li>
+                <li>AI extracts answers</li>
+                <li>User sees pre-filled fields</li>
+                <li>User validates with single click per answer</li>
+                <li>Only stops to manually answer what's missing</li>
+                <li><strong>Result: 2 interactions for 2 answers (if data exists)</strong></li>
+            </ul>
+        </div>
+
+        <!-- BEFORE/AFTER -->
+        <h2>2. Before & After: The Paradigm Shift</h2>
+        
+        <div class="before-after">
+            <div class="before">
+                <h3 style="color: #dc3545; margin-top: 0;">❌ OLD WAY: Manual Entry</h3>
+                <p><strong>Scenario:</strong> Building FAQ list</p>
+                <ol style="margin: 13px 0 13px 21px;">
+                    <li>Click "Add FAQ"</li>
+                    <li>Type question #1</li>
+                    <li>Click "Add Answer"</li>
+                    <li>Type answer #1</li>
+                    <li>Click "Save"</li>
+                    <li>Repeat 10-50 times</li>
+                </ol>
+                <p style="margin-top: 13px;"><strong>Total Interactions: 50+ clicks for 10 FAQs</strong></p>
+                <p><strong>Time Required: 45-60 minutes</strong></p>
+                <p><strong>User Experience: Tedious, high abandonment</strong></p>
+            </div>
+            
+            <div class="after">
+                <h3 style="color: #28a745; margin-top: 0;">✅ NEW WAY: Intelligent Extraction</h3>
+                <p><strong>Scenario:</strong> Building FAQ list</p>
+                <ol style="margin: 13px 0 13px 21px;">
+                    <li>Drag/drop existing FAQ doc</li>
+                    <li>AI parses all Q&As</li>
+                    <li>Review parsed pairs</li>
+                    <li>Click ✓ on correct ones</li>
+                    <li>Edit only what needs fixing</li>
+                    <li>Click "Confirm All"</li>
+                </ol>
+                <p style="margin-top: 13px;"><strong>Total Interactions: 5-10 clicks for 10 FAQs</strong></p>
+                <p><strong>Time Required: 5-10 minutes</strong></p>
+                <p><strong>User Experience: Fast, feels magical</strong></p>
+            </div>
+        </div>
+
+        <!-- THE EXTRACTION FLOW -->
+        <h2>3. The Universal Extraction Flow</h2>
+        
+        <div class="mermaid">
+            graph TD
+                A[User Intent: Complete Quest/Spark] --> B{Does User Have Existing Content?}
+                
+                B -->|Yes - Upload| C[Intelligent Intake]
+                B -->|No - Create New| D[Manual Entry Mode]
+                
+                C --> E[AI Processing]
+                E --> F[Content Analysis]
+                F --> G[Pattern Detection]
+                G --> H[Entity Extraction]
+                H --> I[Structured Output]
+                
+                I --> J[Validation Screen]
+                J --> K{User Reviews Pre-Filled Data}
+                
+                K -->|Accept All| L[Quest/Spark Complete]
+                K -->|Edit Some| M[User Corrects Specific Items]
+                K -->|Missing Data| N[Show Gaps to Fill]
+                
+                M --> L
+                N --> O[Focused Questions on Gaps Only]
+                O --> L
+                
+                D --> P[Smart Form with Autocomplete]
+                P --> Q[Progressive Disclosure]
+                Q --> L
+                
+                style C fill:#28a745,stroke:#1e7e34,stroke-width:3px,color:#fff
+                style E fill:#7B2D8E,stroke:#5a1f69,stroke-width:2px,color:#fff
+                style J fill:#00AEEF,stroke:#005A9C,stroke-width:2px
+                style L fill:#ffc107,stroke:#856404,stroke-width:2px
+        </div>
+
+        <!-- SPECIFIC USE CASES -->
+        <h2>4. Specific Use Cases: How It Works in Practice</h2>
+        
+        <h3>Use Case 1: FAQ Builder Quest</h3>
+        
+        <div class="example-box">
+            <h4>Current Problem:</h4>
+            <p>Advisors have FAQs in various places - email templates, website, notes, Word docs. Forcing them to manually type each Q&A into separate fields is painful.</p>
+            
+            <h4 style="margin-top: 21px;">SweetBOS Solution:</h4>
+            
+            <div class="mockup" style="margin-top: 13px;">┌──────────────────────────────────────────────────────────────────┐
+│ Quest: Build Your FAQ Library                        [Step 2 of 5]│
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│ Choose Your Method:                                              │
+│                                                                  │
+│ ┌────────────────────┐  ┌────────────────────┐  ┌────────────┐ │
+│ │ 📄 Upload Document │  │ 📋 Paste Text      │  │ 🎤 Speak   │ │
+│ │                    │  │                    │  │            │ │
+│ │ Drop your existing │  │ Copy/paste from    │  │ Record     │ │
+│ │ FAQ doc, website   │  │ anywhere - we'll   │  │ yourself   │ │
+│ │ content, or notes  │  │ parse it for you   │  │ answering  │ │
+│ │                    │  │                    │  │ questions  │ │
+│ │ [Choose]           │  │ [Choose]           │  │ [Choose]   │ │
+│ └────────────────────┘  └────────────────────┘  └────────────┘ │
+│                                                                  │
+│ ┌────────────────────┐  ┌────────────────────┐                 │
+│ │ ✍️ Manual Entry    │  │ 🔗 Import from URL │                 │
+│ │                    │  │                    │                 │
+│ │ Type Q&As one by   │  │ Pull from your     │                 │
+│ │ one (if you prefer │  │ website or CRM     │                 │
+│ │ starting fresh)    │  │                    │                 │
+│ │                    │  │                    │                 │
+│ │ [Choose]           │  │ [Choose]           │                 │
+│ └────────────────────┘  └────────────────────┘                 │
+│                                                                  │
+│ 💡 Tip: Most advisors already have FAQs somewhere. We'll        │
+│ extract them and you just validate - much faster!               │
+│                                                                  │
+└──────────────────────────────────────────────────────────────────┘</div>
+
+            <h4 style="margin-top: 21px;">After Upload/Paste - Validation Screen:</h4>
+            
+            <div class="mockup">┌──────────────────────────────────────────────────────────────────┐
+│ AI Extracted 12 Q&A Pairs - Please Validate               [3 of 5]│
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│ We found these Q&As in your document. Click ✓ to accept, ✏️ to  │
+│ edit, or ✕ to remove.                                           │
+│                                                                  │
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│ Q1: What is your minimum to open an account?                    │
+│ A1: Our minimum initial investment is $250,000 for new clients. │
+│     We do make exceptions for family members of existing        │
+│     clients or those with significant accumulation potential.   │
+│                                                                  │
+│ Confidence: 95%  [✓ Accept] [✏️ Edit] [✕ Remove]                │
+│                                                                  │
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│ Q2: How often will we meet?                                     │
+│ A2: We meet with all clients at least twice per year for       │
+│     comprehensive reviews. Many clients choose quarterly        │
+│     meetings, and we're available anytime by phone or email.    │
+│                                                                  │
+│ Confidence: 92%  [✓ Accept] [✏️ Edit] [✕ Remove]                │
+│                                                                  │
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│ Q3: What happens in a typical review meeting?                   │
+│ A3: [⚠️ LOW CONFIDENCE - Could not extract clear answer]        │
+│                                                                  │
+│ Suggested Answer: [Click to generate AI suggestion]             │
+│ Or Write Your Own: [Text input field]                           │
+│                                                                  │
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│ Progress: 9/12 validated  |  3 need attention                   │
+│                                                                  │
+│ [✓ Accept All High Confidence (9)] [Review All] [Skip for Now] │
+│                                                                  │
+└──────────────────────────────────────────────────────────────────┘</div>
+        </div>
+
+        <h3>Use Case 2: To-Do List → Formalized Task System</h3>
+        
+        <div class="example-box">
+            <h4>Current Problem:</h4>
+            <p>Advisors have messy to-do lists everywhere - sticky notes, Apple Notes, CRM tasks, email flags. They need to be parsed, prioritized, assigned to Journeys/Components, and validated.</p>
+            
+            <h4 style="margin-top: 21px;">SweetBOS Solution:</h4>
+            
+            <div class="mockup" style="margin-top: 13px;">┌──────────────────────────────────────────────────────────────────┐
+│ Task Intelligence Import                                         │
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│ Paste your to-do list, sticky notes, or random task lists here. │
+│ We'll parse, categorize, and map them to your Journeys.         │
+│                                                                  │
+│ ┌──────────────────────────────────────────────────────────────┐ │
+│ │ - Update client review templates                            │ │
+│ │ - Call Sarah about Q4 tax planning                           │ │
+│ │ - Fix CRM workflow for new leads                             │ │
+│ │ - Write LinkedIn post about estate planning                  │ │
+│ │ - Research new portfolio rebalancing software                │ │
+│ │ - Schedule team meeting about referral process               │ │
+│ │ - Update website FAQ page                                    │ │
+│ │ - Send thank you notes to referrers                          │ │
+│ │ - Review compliance checklist                                │ │
+│ │ - Prep for Johnson annual review Friday                      │ │
+│ └──────────────────────────────────────────────────────────────┘ │
+│                                                                  │
+│ [🤖 Process with AI]  [Clear]  [Import from File Instead]       │
+│                                                                  │
+└──────────────────────────────────────────────────────────────────┘
+
+           ↓ (AI Processing - 3 seconds)
+
+┌──────────────────────────────────────────────────────────────────┐
+│ AI Parsed 10 Tasks - Categorized & Mapped                       │
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│ We analyzed your tasks and mapped them to your Journeys. Review │
+│ and confirm or adjust assignments.                               │
+│                                                                  │
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│ J7: Client Service Delivery (3 tasks)                           │
+│                                                                  │
+│ ✓ Update client review templates                                │
+│   Component: Service Standards | Priority: Medium | Est: 30m    │
+│   [✓] [Edit Details] [Reassign Journey]                         │
+│                                                                  │
+│ ✓ Call Sarah about Q4 tax planning                              │
+│   Component: Client Communication | Priority: High | Est: 15m   │
+│   Due: This week | [✓] [Edit] [Reassign]                        │
+│                                                                  │
+│ ✓ Prep for Johnson annual review Friday                         │
+│   Component: Meeting Preparation | Priority: Urgent | Est: 45m  │
+│   Due: Nov 14 | [✓] [Edit] [Reassign]                           │
+│                                                                  │
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│ J2: Client Acquisition (3 tasks)                                │
+│                                                                  │
+│ ✓ Write LinkedIn post about estate planning                     │
+│   Component: Marketing Channels | Priority: Medium | Est: 20m   │
+│   Suggested Quest: "Build Content Bank" (L2→L3)                 │
+│   [✓] [Edit] [Reassign] [Start Quest Now]                       │
+│                                                                  │
+│ ✓ Update website FAQ page                                       │
+│   Component: Marketing Content | Priority: Medium | Est: 45m    │
+│   Links to Quest: "Build FAQ Library" | [✓] [Edit] [Reassign]  │
+│                                                                  │
+│ ✓ Send thank you notes to referrers                             │
+│   Component: Referral System | Priority: High | Est: 15m        │
+│   [✓] [Edit] [Reassign]                                         │
+│                                                                  │
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│ J5: Technology Integration (2 tasks)                            │
+│ J8: Operations Management (1 task)                              │
+│ J9: Compliance & Risk (1 task)                                  │
+│                                                                  │
+│ [View All] [Accept All Assignments] [Review Quest Suggestions]  │
+│                                                                  │
+└──────────────────────────────────────────────────────────────────┘</div>
+        </div>
+
+        <h3>Use Case 3: Document Upload for Component Scoring</h3>
+        
+        <div class="example-box">
+            <h4>Scenario:</h4>
+            <p>Instead of answering 25 MIRROR assessment questions, advisor uploads their practice documents (client onboarding guide, service calendar, marketing plan, etc.) and AI scores Components based on what exists.</p>
+            
+            <div class="mockup" style="margin-top: 13px;">┌──────────────────────────────────────────────────────────────────┐
+│ MIRROR Assessment - Accelerated Path                            │
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│ Option 1: Answer Questions (Traditional - 25 questions, 20 mins)│
+│ Option 2: Upload Documents (Fast - AI analyzes, 5 min review)   │
+│                                                                  │
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│ Upload Your Practice Documents (Option 2)                       │
+│                                                                  │
+│ Drop or select files that describe how your practice operates:  │
+│                                                                  │
+│ [Drag files here or click to browse]                            │
+│                                                                  │
+│ Suggested Documents:                                             │
+│ ✓ Client onboarding guide/checklist                             │
+│ ✓ Service calendar or meeting schedule                          │
+│ ✓ Marketing plan or materials                                   │
+│ ✓ Team org chart or role descriptions                           │
+│ ✓ Technology stack list                                         │
+│ ✓ Compliance documentation                                      │
+│ ✓ Financial statements or metrics                               │
+│ ✓ Any SOPs or process docs                                      │
+│                                                                  │
+│ Already Uploaded (5 files):                                     │
+│ • client_onboarding_2025.pdf                                    │
+│ • annual_service_calendar.xlsx                                  │
+│ • marketing_strategy_2025.docx                                  │
+│ • tech_stack_inventory.pdf                                      │
+│ • team_roles.pdf                                                │
+│                                                                  │
+│ [Add More Files] [🤖 Analyze Now]                                │
+│                                                                  │
+│ 💡 AI will extract information to score your Components (L1-L5).│
+│ You'll review and validate the scores - much faster than        │
+│ answering questions manually!                                    │
+│                                                                  │
+└──────────────────────────────────────────────────────────────────┘
+
+           ↓ (AI Analysis - 30-60 seconds)
+
+┌──────────────────────────────────────────────────────────────────┐
+│ AI Analysis Complete - Review Component Scores                  │
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│ Based on your documents, we scored 64 of 78 Components.         │
+│ 14 Components need additional info - we'll ask focused questions│
+│                                                                  │
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│ J7: Client Service Delivery | Overall: L3 (Launching)           │
+│                                                                  │
+│ ✓ Client Onboarding System: L3                                  │
+│   Evidence: Found comprehensive 8-step onboarding checklist in  │
+│   client_onboarding_2025.pdf. Documented, team can execute.     │
+│   [✓ Accurate] [Adjust Score] [View Evidence]                   │
+│                                                                  │
+│ ✓ Meeting Cadence: L4                                           │
+│   Evidence: annual_service_calendar.xlsx shows systematic       │
+│   bi-annual reviews with 85% completion rate tracked.           │
+│   [✓ Accurate] [Adjust] [View Evidence]                         │
+│                                                                  │
+│ ⚠️ Client Communication Protocols: L2 (Low Confidence)          │
+│   Evidence: Found email templates but unclear if systematized.  │
+│   [Need More Info] [Score Anyway] [View What We Found]          │
+│                                                                  │
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│ Next Steps:                                                      │
+│ 1. Review 64 AI-scored Components (est: 8 mins)                 │
+│ 2. Answer focused questions for 14 remaining Components (5 mins)│
+│ 3. Mission recommendation (instant)                              │
+│                                                                  │
+│ [Start Review] [See All Scores] [Upload More Documents]         │
+│                                                                  │
+└──────────────────────────────────────────────────────────────────┘</div>
+        </div>
+
+        <!-- TECHNICAL IMPLEMENTATION -->
+        <h2>5. Technical Implementation: How AI Parsing Works</h2>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4>Step 1: Content Ingestion</h4>
+                <ul>
+                    <li>Accept multiple formats (PDF, DOCX, TXT, paste, URL)</li>
+                    <li>Extract text with layout preservation</li>
+                    <li>Handle tables, lists, formatting</li>
+                    <li>OCR for scanned documents</li>
+                    <li>Speech-to-text for audio</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h4>Step 2: Pattern Detection</h4>
+                <ul>
+                    <li>Identify Q&A patterns (question markers)</li>
+                    <li>Detect list structures (bullets, numbers)</li>
+                    <li>Find section headers and boundaries</li>
+                    <li>Recognize entity types (dates, names, metrics)</li>
+                    <li>Map to expected schema</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h4>Step 3: Entity Extraction</h4>
+                <ul>
+                    <li>Use frameworks (OCDA, 4Ds) as extraction lenses</li>
+                    <li>BizzyBot perspectives for context</li>
+                    <li>Component-specific patterns</li>
+                    <li>Journey-level requirements</li>
+                    <li>Confidence scoring per extraction</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h4>Step 4: Validation UI</h4>
+                <ul>
+                    <li>High confidence (90%+): Green checkmark default</li>
+                    <li>Medium confidence (70-89%): Yellow, user reviews</li>
+                    <li>Low confidence (<70%): Red, manual entry required</li>
+                    <li>Show original source context</li>
+                    <li>One-click accept for high confidence</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SMART FORM PATTERNS -->
+        <h2>6. Smart Form Patterns: When Manual Entry Is Required</h2>
+        
+        <div class="critical-concept">
+            <strong>Principle:</strong>
+            Even when we CAN'T extract from documents, we still minimize friction with smart forms.
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Pattern</th>
+                    <th>How It Works</th>
+                    <th>Friction Reduced</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Auto-Advance</strong></td>
+                    <td>On selection/completion, auto-moves to next field</td>
+                    <td>Eliminates "click to next" step</td>
+                </tr>
+                <tr>
+                    <td><strong>Inline Validation</strong></td>
+                    <td>Check correctness as they type, no submit-then-error</td>
+                    <td>Prevents do-overs</td>
+                </tr>
+                <tr>
+                    <td><strong>Keyboard Shortcuts</strong></td>
+                    <td>Tab to advance, Enter to submit, Esc to skip</td>
+                    <td>Mouse-free flow</td>
+                </tr>
+                <tr>
+                    <td><strong>Contextual Autocomplete</strong></td>
+                    <td>Suggests based on other users' patterns</td>
+                    <td>Reduces typing</td>
+                </tr>
+                <tr>
+                    <td><strong>Smart Defaults</strong></td>
+                    <td>Pre-fill with intelligent guesses</td>
+                    <td>User only changes if wrong</td>
+                </tr>
+                <tr>
+                    <td><strong>Progressive Disclosure</strong></td>
+                    <td>Only show follow-up fields if relevant</td>
+                    <td>Eliminates irrelevant questions</td>
+                </tr>
+                <tr>
+                    <td><strong>Batch Actions</strong></td>
+                    <td>"Accept All" for high confidence items</td>
+                    <td>One click instead of many</td>
+                </tr>
+                <tr>
+                    <td><strong>Natural Language Input</strong></td>
+                    <td>Accept freeform text, parse intent</td>
+                    <td>Removes need to fit rigid format</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- GAP FILLING STRATEGY -->
+        <h2>7. Gap-Filling Strategy: Focused Questions Only</h2>
+        
+        <div class="ux-principle">
+            <h3 style="color: #005A9C; margin-top: 0;">Only Ask What We Don't Know</h3>
+            <p>After extraction, we have a "completeness map" showing what's missing. Only ask focused questions on gaps, not everything.</p>
+        </div>
+        
+        <div class="example-box">
+            <h4>Gap Detection Example:</h4>
+            
+            <div class="mockup">┌──────────────────────────────────────────────────────────────────┐
+│ Component Completeness Check: "Referral System"                 │
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│ We analyzed your documents and found:                            │
+│                                                                  │
+│ ✅ COMPLETE (No questions needed):                              │
+│ • Referral sources identified (COIs, clients, centers)          │
+│ • Request email template exists                                 │
+│ • Tracking system defined (spreadsheet)                         │
+│ • Incentive structure documented (thank you + event)            │
+│                                                                  │
+│ ⚠️ GAPS (Need answers):                                         │
+│ • Follow-up timing: Not specified                               │
+│ • Referrer communication: Process unclear                       │
+│ • Success metrics: Not tracking                                 │
+│                                                                  │
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                  │
+│ Let's fill the gaps (3 quick questions):                        │
+│                                                                  │
+│ 1. How soon after receiving a referral do you typically make    │
+│    first contact?                                                │
+│                                                                  │
+│    ○ Same day    ○ Within 24 hours    ○ Within 2-3 days         │
+│    ○ Within a week    ○ No consistent timing                    │
+│                                                                  │
+│ 2. Do you have a process for thanking the referrer?             │
+│                                                                  │
+│    ○ Yes, automatic (triggered by system)                       │
+│    ○ Yes, manual (I remember to do it)                          │
+│    ○ Sometimes (inconsistent)                                   │
+│    ○ No (should add this)                                       │
+│                                                                  │
+│ 3. How do you currently measure referral success?               │
+│                                                                  │
+│    ☐ Track conversion rate (referral → client)                  │
+│    ☐ Track referrals per source                                 │
+│    ☐ Track revenue from referrals                               │
+│    ☐ Track referrer satisfaction                                │
+│    ☐ Not currently tracking                                     │
+│                                                                  │
+│ [Complete Assessment] ← (Auto-enabled when all answered)        │
+│                                                                  │
+└──────────────────────────────────────────────────────────────────┘</div>
+        </div>
+
+        <!-- CONFIGURABLE VALIDATION RULES -->
+        <h2>8. Configurable Validation Rules Engine</h2>
+        
+        <div class="critical-concept">
+            <strong>The Power of Configuration:</strong>
+            Every Quest, Component, and Spark can have custom validation rules defined that determine what "good enough" looks like and what questions to ask next.
+        </div>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4>Validation Rule Types</h4>
+                <ul>
+                    <li><strong>Completeness:</strong> All required fields filled?</li>
+                    <li><strong>Quality:</strong> Meets minimum standard?</li>
+                    <li><strong>Consistency:</strong> Matches other answers?</li>
+                    <li><strong>Specificity:</strong> Detailed enough?</li>
+                    <li><strong>Evidence:</strong> Backed by document/data?</li>
+                    <li><strong>Actionability:</strong> Can be implemented?</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h4>Rule Configuration</h4>
+                <ul>
+                    <li>Minimum field count (e.g., "3 referral sources")</li>
+                    <li>Minimum text length (e.g., "50 words")</li>
+                    <li>Required evidence type (document, metric, example)</li>
+                    <li>Cross-validation (checks against other Components)</li>
+                    <li>Framework application (must pass OCDA lens)</li>
+                    <li>BizzyBot validation (DataBits checks numbers)</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h4>Adaptive Questioning</h4>
+                <ul>
+                    <li>If validation fails → ask clarifying question</li>
+                    <li>If answer is vague → prompt for specifics</li>
+                    <li>If incomplete → show exactly what's missing</li>
+                    <li>If inconsistent → highlight conflict</li>
+                    <li>If low quality → offer AI improvement</li>
+                    <li>If uncertain → lower confidence, flag for review</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h4>Graduated Acceptance</h4>
+                <ul>
+                    <li><strong>Green (90%+):</strong> Auto-accept available</li>
+                    <li><strong>Yellow (70-89%):</strong> Requires review</li>
+                    <li><strong>Orange (50-69%):</strong> Needs edits</li>
+                    <li><strong>Red (<50%):</strong> Manual entry required</li>
+                    <li>Users can override with "Accept Anyway"</li>
+                    <li>Elizabeth can set stricter thresholds per Quest</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- EXAMPLE RULE CONFIGURATIONS -->
+        <h2>9. Example: Quest-Specific Validation Rules</h2>
+        
+        <div class="example-box">
+            <h4>Quest: "Build Your Referral System" (L2→L3)</h4>
+            
+            <table style="margin-top: 13px;">
+                <thead>
+                    <tr>
+                        <th>Field/Requirement</th>
+                        <th>Validation Rule</th>
+                        <th>What Happens If Failed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Referral Sources</td>
+                        <td>Minimum 3 specific sources identified</td>
+                        <td>Prompt: "Add at least 2 more referral sources"</td>
+                    </tr>
+                    <tr>
+                        <td>Request Email Template</td>
+                        <td>Contains personalization tokens, clear ask, easy path</td>
+                        <td>AI suggests improvements with highlighting</td>
+                    </tr>
+                    <tr>
+                        <td>Tracking System</td>
+                        <td>Defines source, date, status, outcome</td>
+                        <td>Show template tracking spreadsheet to adopt</td>
+                    </tr>
+                    <tr>
+                        <td>Follow-up Workflow</td>
+                        <td>Specifies Day 0, Day 1-3, Week 1, Week 2-4 actions</td>
+                        <td>Provide workflow template with blanks to fill</td>
+                    </tr>
+                    <tr>
+                        <td>Incentive Structure</td>
+                        <td>Non-monetary or compliant with regulations</td>
+                        <td>Securitron BizzyBot flags compliance risk</td>
+                    </tr>
+                    <tr>
+                        <td>Success Metrics</td>
+                        <td>At least 1 measurable metric defined</td>
+                        <td>Prompt: "How will you measure if this works?"</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- IMPLEMENTATION ROADMAP -->
+        <h2>10. Implementation Roadmap for Your Developer</h2>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4>Phase 1: Basic Extraction (Week 1-2)</h4>
+                <ul>
+                    <li>PDF text extraction</li>
+                    <li>DOCX parsing</li>
+                    <li>Plain text paste handling</li>
+                    <li>Simple Q&A pattern detection</li>
+                    <li>Validation UI with accept/edit/reject</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h4>Phase 2: Smart Parsing (Week 3-4)</h4>
+                <ul>
+                    <li>Advanced pattern detection (lists, sections)</li>
+                    <li>Entity extraction (dates, names, metrics)</li>
+                    <li>Confidence scoring</li>
+                    <li>Framework-based extraction (OCDA)</li>
+                    <li>Gap detection and focused questions</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h4>Phase 3: Validation Engine (Week 5-6)</h4>
+                <ul>
+                    <li>Configurable rule system</li>
+                    <li>BizzyBot integration for validation</li>
+                    <li>Cross-Component consistency checks</li>
+                    <li>Adaptive questioning based on gaps</li>
+                    <li>Quality scoring and improvement suggestions</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h4>Phase 4: Advanced Features (Week 7-8)</h4>
+                <ul>
+                    <li>Speech-to-text for audio input</li>
+                    <li>URL scraping for website content</li>
+                    <li>CRM integration for data pull</li>
+                    <li>Bulk document analysis</li>
+                    <li>Auto-mapping to Journeys/Components</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- DEVELOPER NOTES -->
+        <h2>11. Critical Developer Notes</h2>
+        
+        <div class="ux-principle">
+            <h3 style="color: #005A9C; margin-top: 0;">The "Magic Wand" User Experience</h3>
+            <ol style="margin: 13px 0 13px 21px;">
+                <li><strong>Always offer the extraction path first:</strong> Don't hide it as "advanced option"</li>
+                <li><strong>Show progress during AI processing:</strong> "Analyzing... found 12 Q&As... extracting details... checking quality..."</li>
+                <li><strong>Make "Accept All" prominent:</strong> For high-confidence items, one-click acceptance should be obvious</li>
+                <li><strong>Show original source context:</strong> When user reviews extracted data, show where it came from in original doc</li>
+                <li><strong>Enable inline editing:</strong> Don't force them to a separate edit screen - edit right in validation view</li>
+                <li><strong>Auto-save everything:</strong> No "Save" button needed - every change persists immediately</li>
+                <li><strong>Provide "Skip for Now":</strong> Always allow partial completion - come back later for gaps</li>
+                <li><strong>Use optimistic UI:</strong> Assume success, show immediate results, handle errors gracefully</li>
+            </ol>
+        </div>
+
+        <!-- FOOTER -->
+        <div style="margin-top: 89px; padding-top: 21px; border-top: 2px solid #e0e0e0; text-align: center; color: #6c757d;">
+            <p><strong>SweetBOS Intelligent Intake & Validation System</strong></p>
+            <p>Extract → Validate → Guide | Minimize every click, maximize intelligence</p>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            }
+        });
+    </script>
+</body>
+</html>

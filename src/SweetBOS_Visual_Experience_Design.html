@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetBOS Visual Experience Design System</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #005A9C 0%, #7B2D8E 100%);
+            color: #1a1a1a;
+            padding: 34px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 13px;
+            padding: 55px;
+            box-shadow: 0 21px 55px rgba(0,0,0,0.15);
+        }
+        
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 52px;
+            color: #005A9C;
+            margin-bottom: 21px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+        
+        h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 36px;
+            color: #7B2D8E;
+            margin-top: 55px;
+            margin-bottom: 21px;
+            padding-bottom: 13px;
+            border-bottom: 3px solid #00AEEF;
+            font-weight: 500;
+        }
+        
+        h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            color: #005A9C;
+            margin-top: 34px;
+            margin-bottom: 13px;
+            font-weight: 500;
+        }
+        
+        h4 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 22px;
+            color: #7B2D8E;
+            margin-top: 21px;
+            margin-bottom: 13px;
+            font-weight: 500;
+        }
+        
+        .intro {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 34px;
+            border-radius: 13px;
+            margin-bottom: 34px;
+            border-left: 8px solid #00AEEF;
+            font-size: 18px;
+        }
+        
+        .view-option {
+            background: white;
+            border: 3px solid #00AEEF;
+            border-radius: 13px;
+            padding: 34px;
+            margin: 21px 0;
+            box-shadow: 0 8px 21px rgba(0,90,156,0.1);
+        }
+        
+        .mockup {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            padding: 21px;
+            margin: 21px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+            white-space: pre;
+        }
+        
+        .toggle-group {
+            background: #e7f3ff;
+            border-left: 5px solid #005A9C;
+            padding: 21px;
+            margin: 21px 0;
+            border-radius: 5px;
+        }
+        
+        .spark-type {
+            background: #f0e6ff;
+            border-left: 5px solid #7B2D8E;
+            padding: 21px;
+            margin: 21px 0;
+            border-radius: 5px;
+        }
+        
+        .visual-example {
+            background: white;
+            border: 2px solid #7B2D8E;
+            border-radius: 13px;
+            padding: 34px;
+            margin: 21px 0;
+            box-shadow: 0 5px 13px rgba(123,45,142,0.15);
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 21px;
+            margin: 21px 0;
+        }
+        
+        .comparison-card {
+            background: white;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            padding: 21px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+        
+        .color-scheme {
+            display: inline-block;
+            width: 34px;
+            height: 34px;
+            border-radius: 5px;
+            margin-right: 8px;
+            vertical-align: middle;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 21px 0;
+            background: white;
+        }
+        
+        th {
+            background: #005A9C;
+            color: white;
+            padding: 13px;
+            text-align: left;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+        }
+        
+        td {
+            padding: 13px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 5px 13px;
+            border-radius: 13px;
+            font-size: 14px;
+            font-weight: 600;
+            margin: 3px;
+        }
+        
+        .badge-l1 { background: #dc3545; color: white; }
+        .badge-l2 { background: #ffc107; color: #1a1a1a; }
+        .badge-l3 { background: #17a2b8; color: white; }
+        .badge-l4 { background: #28a745; color: white; }
+        .badge-l5 { background: #7B2D8E; color: white; }
+        
+        .timestamp {
+            color: #6c757d;
+            font-size: 14px;
+            margin-bottom: 34px;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SweetBOS Visual Experience Design System</h1>
+        <p class="timestamp">The Interface Layer | Generated: November 9, 2025</p>
+        
+        <div class="intro">
+            <p><strong>Purpose:</strong> This document defines HOW users SEE and INTERACT with every level of the system - from Mission to Spark. It provides multiple view options and toggle states so users can experience their progress in the way that works best for them.</p>
+            <p style="margin-top: 13px;"><strong>Core Principle:</strong> The experience IS the product. Every visual element must reduce cognitive load, provide focused context, and make advancement feel natural and rewarding.</p>
+        </div>
+
+        <!-- SECTION 1: MATURITY LEVEL VISUAL SYSTEM -->
+        <h2>1. Maturity Level Visual System (L1-L5)</h2>
+        
+        <h3>Color Coding & Visual Language</h3>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Level</th>
+                    <th>Color</th>
+                    <th>Badge</th>
+                    <th>Meaning</th>
+                    <th>Visual Metaphor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>L1 - Lacking</strong></td>
+                    <td><span class="color-scheme" style="background:#dc3545;"></span> Red</td>
+                    <td><span class="badge badge-l1">L1</span></td>
+                    <td>No system, unaware</td>
+                    <td>Empty/Unfilled</td>
+                </tr>
+                <tr>
+                    <td><strong>L2 - Learning</strong></td>
+                    <td><span class="color-scheme" style="background:#ffc107;"></span> Yellow</td>
+                    <td><span class="badge badge-l2">L2</span></td>
+                    <td>Researching, understanding</td>
+                    <td>Partially Filled</td>
+                </tr>
+                <tr>
+                    <td><strong>L3 - Launching</strong></td>
+                    <td><span class="color-scheme" style="background:#17a2b8;"></span> Cyan</td>
+                    <td><span class="badge badge-l3">L3</span></td>
+                    <td>Basic system in place</td>
+                    <td>Half Filled</td>
+                </tr>
+                <tr>
+                    <td><strong>L4 - Leveraging</strong></td>
+                    <td><span class="color-scheme" style="background:#28a745;"></span> Green</td>
+                    <td><span class="badge badge-l4">L4</span></td>
+                    <td>Systematized, optimizing</td>
+                    <td>Mostly Filled</td>
+                </tr>
+                <tr>
+                    <td><strong>L5 - Leading</strong></td>
+                    <td><span class="color-scheme" style="background:#7B2D8E;"></span> Purple</td>
+                    <td><span class="badge badge-l5">L5</span></td>
+                    <td>Mastery, teaching others</td>
+                    <td>Fully Filled + Star</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- SECTION 2: DASHBOARD VIEW OPTIONS -->
+        <h2>2. Dashboard View Options (Main Entry Point)</h2>
+        
+        <div class="toggle-group">
+            <h4>🎚️ User-Controlled Toggles:</h4>
+            <ul>
+                <li><strong>View Mode:</strong> Grid View | List View | Timeline View</li>
+                <li><strong>Filter By:</strong> All Journeys | Active Mission | By Maturity Level | By Domain</li>
+                <li><strong>Detail Level:</strong> Summary | Detailed | Full Breakdown</li>
+                <li><strong>Sort By:</strong> Journey Number | Priority | Recent Activity | Maturity Level</li>
+            </ul>
+        </div>
+        
+        <h3>Option A: Grid View (Visual, Spatial)</h3>
+        
+        <div class="view-option">
+            <h4>Best For: Visual learners, seeing everything at once</h4>
+            
+            <div class="mockup">┌──────────────────────────────────────────────────────────────────────────────────┐
+│                          DASHBOARD - Grid View                               │
+│                                                                              │
+│  Filter: [Active Mission: Operational Excellence ▼]    View: [Grid ●] List  │
+│  Detail: [Summary]  Sort: [Priority ▼]                                      │
+│ ─────────────────────────────────────────────────────────────────────────────│
+│                                                                              │
+│  ┌───────────────────┐  ┌───────────────────┐  ┌───────────────────┐      │
+│  │ J1: Strategic     │  │ J2: Client        │  │ J3: Service       │      │
+│  │ Vision            │  │ Acquisition       │  │ Design            │      │
+│  │                   │  │                   │  │                   │      │
+│  │       [L3]        │  │       [L2]        │  │       [L3]        │      │
+│  │   ████████░░░     │  │   █████░░░░░░     │  │   ████████░░░     │      │
+│  │   6/10 Components │  │   4/10 Components │  │   7/10 Components │      │
+│  │                   │  │                   │  │                   │      │
+│  │ Priority: ★★★     │  │ Priority: ★★★★★   │  │ Priority: ★★★     │      │
+│  │ Active Quests: 2  │  │ Active Quests: 3  │  │ Active Quests: 1  │      │
+│  │                   │  │                   │  │                   │      │
+│  │ [Continue Work]   │  │ [Start Next]      │  │ [View Details]    │      │
+│  └───────────────────┘  └───────────────────┘  └───────────────────┘      │
+│                                                                              │
+│  ┌───────────────────┐  ┌───────────────────┐  ┌───────────────────┐      │
+│  │ J7: Client        │  │ J8: Operations    │  │ J10: Time         │      │
+│  │ Service           │  │ Management        │  │ Management        │      │
+│  │                   │  │                   │  │                   │      │
+│  │       [L2]        │  │       [L4]        │  │       [L1]        │      │
+│  │   ████░░░░░░░     │  │   ████████████    │  │   ██░░░░░░░░░     │      │
+│  │   3/10 Components │  │   9/10 Components │  │   2/10 Components │      │
+│  │                   │  │                   │  │                   │      │
+│  │ Priority: ★★      │  │ Priority: ★★★★    │  │ Priority: ★★★★★   │      │
+│  │ Active Quests: 1  │  │ Active Quests: 0  │  │ Active Quests: 4  │      │
+│  │                   │  │                   │  │                   │      │
+│  │ [Begin Journey]   │  │ [Maintain]        │  │ [Critical Path]   │      │
+│  └───────────────────┘  └───────────────────┘  └───────────────────┘      │
+│                                                                              │
+│  💡 Recommended Next: "Build Your Referral System" (J2) - 45 mins          │
+│  ⚡ Quick Win Available: "Define Ideal Client" (J2) - 5 mins                │
+└──────────────────────────────────────────────────────────────────────────────┘</div>
+        </div>
+        
+        <h3>Option B: List View (Detailed, Scannable)</h3>
+        
+        <div class="view-option">
+            <h4>Best For: Detail-oriented users, linear thinkers</h4>
+            
+            <div class="mockup">┌──────────────────────────────────────────────────────────────────────────────────┐
+│                          DASHBOARD - List View                               │
+│                                                                              │
+│  Filter: [All Journeys]    View: Grid [List ●]    Detail: [Detailed ▼]     │
+│  Sort: [Recent Activity ▼]                                                  │
+│ ─────────────────────────────────────────────────────────────────────────────│
+│                                                                              │
+│  J2: Client Acquisition                                      [L2] ★★★★★     │
+│  ├─ Components: 10 total | 1@L3, 3@L2, 6@L1                                │
+│  ├─ Active Quests: 3 in progress                                            │
+│  ├─ Recent: "Build Your Foundation" completed 2 days ago                    │
+│  ├─ Next: "Define Referral Incentives" recommended                          │
+│  └─ [▶ Continue Journey]  [📊 View Components]  [⚡ Start Quest]            │
+│                                                                              │
+│ ──────────────────────────────────────────────────────────────────────────  │
+│                                                                              │
+│  J10: Time Management                                        [L1] ★★★★★     │
+│  ├─ Components: 10 total | 0@L3, 2@L2, 8@L1                                │
+│  ├─ Active Quests: 4 in progress (Critical Path Activated)                  │
+│  ├─ Gap Alert: This is your highest-priority area needing attention         │
+│  ├─ Next: "Understand Why Time Matters" - 15 mins                           │
+│  └─ [▶ Begin Critical Path]  [📖 Learn More]  [⏰ Schedule Session]        │
+│                                                                              │
+│ ──────────────────────────────────────────────────────────────────────────  │
+│                                                                              │
+│  J8: Operations Management                                   [L4] ★★★★      │
+│  ├─ Components: 10 total | 6@L4, 3@L3, 1@L2                                │
+│  ├─ Active Quests: 0 in progress                                            │
+│  ├─ Status: Maintain & Optimize - you're doing great here!                  │
+│  ├─ Next: "Refine & Scale Operations" unlocks at 7@L4                       │
+│  └─ [✓ Maintaining]  [📈 View Analytics]  [📚 View History]                │
+│                                                                              │
+│ ──────────────────────────────────────────────────────────────────────────  │
+│                                                                              │
+│  J1: Strategic Vision & Positioning                          [L3] ★★★       │
+│  ├─ Components: 10 total | 2@L4, 5@L3, 3@L2                                │
+│  ├─ Active Quests: 2 in progress                                            │
+│  ├─ Deliverables: 8 created, 2 validated by Elizabeth                       │
+│  ├─ Next: "Build Brand Identity System" - 60 mins                           │
+│  └─ [▶ Continue Work]  [📁 View Deliverables]  [🎯 Set Priority]          │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘</div>
+        </div>
+        
+        <h3>Option C: Timeline View (Progress-Focused)</h3>
+        
+        <div class="view-option">
+            <h4>Best For: Seeing momentum, tracking progress over time</h4>
+            
+            <div class="mockup">┌──────────────────────────────────────────────────────────────────────────────────┐
+│                        DASHBOARD - Timeline View                             │
+│                                                                              │
+│  Filter: [Last 90 Days]    View: Grid List [Timeline ●]    Detail: [Full]  │
+│ ─────────────────────────────────────────────────────────────────────────────│
+│                                                                              │
+│  ◀ Oct 2025          November 2025 (Today: Nov 9)          Dec 2025 ▶      │
+│                                                                              │
+│  Week of Nov 4 ─────────────────────────────────────── [This Week]          │
+│    Mon 11/4    │ J2: Completed "Build Your Foundation" (L2→L3)             │
+│                │ → Component "Referral System" advanced to L3               │
+│                │                                                            │
+│    Wed 11/6    │ J10: Started "Understand Why Time Matters"                │
+│                │ → 3/5 Sparks completed                                     │
+│                │                                                            │
+│    Today       │ J1: Completed "Define Brand Values" Spark                 │
+│    Sat 11/9    │ → Quest "Build Brand System" at 80% (4/5 Sparks)         │
+│                │                                                            │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  │
+│                                                                              │
+│  Week of Oct 28 ────────────────────────────────────── [Last Week]          │
+│    Tue 10/29   │ J2: Completed "Understand Referral Importance"            │
+│                │ → Component "Referral System" advanced to L2               │
+│                │                                                            │
+│    Thu 10/31   │ MIRROR Assessment completed                               │
+│                │ → All 78 Components scored, Mission activated              │
+│                │                                                            │
+│    Sat 11/2    │ J1: Started "Build Brand System" Quest                    │
+│                │                                                            │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  │
+│                                                                              │
+│  📊 This Month's Progress:                                                  │
+│    • 3 Components leveled up                                                │
+│    • 8 Quests completed                                                     │
+│    • 12 Deliverables created                                                │
+│    • 45 total hours invested                                                │
+│                                                                              │
+│  🎯 Upcoming Milestones:                                                    │
+│    • Nov 15: Complete J10 Critical Path (5 Quests remaining)                │
+│    • Nov 30: J2 reaches L3 overall (2 more Components needed)               │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘</div>
+        </div>
+
+        <!-- SECTION 3: COMPONENT DETAIL VIEW -->
+        <h2>3. Component Detail View (The "Drawer" Experience)</h2>
+        
+        <div class="toggle-group">
+            <h4>🎚️ Component View Toggles:</h4>
+            <ul>
+                <li><strong>View Mode:</strong> Progress Focus | History Focus | Outcome Focus</li>
+                <li><strong>Show:</strong> All Quests | Only Available | Only Completed</li>
+                <li><strong>Detail:</strong> Compact | Standard | Expanded</li>
+            </ul>
+        </div>
+        
+        <div class="visual-example">
+            <h4>Component: "Referral System" (Progress Focus View)</h4>
+            
+            <div class="mockup">┌──────────────────────────────────────────────────────────────────────────────────┐
+│  ← Back to J2: Client Acquisition                                           │
+│                                                                              │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │                        Referral System                            [L2]  │ │
+│  │  Component in Journey: J2 - Client Acquisition                         │ │
+│  │                                                                        │ │
+│  │  Current Progress to L3:                                               │ │
+│  │  ████████████████████████░░░░░░░  80% complete                         │ │
+│  │                                                                        │ │
+│  │  Level Timeline:                                                       │ │
+│  │  [L1]─────>[L2]─────>[L3]──────[L4]──────[L5]                         │ │
+│  │    ✓        ●         20%                                              │ │
+│  │  Lacking Learning  Launching  Leveraging  Leading                      │ │
+│  │                                                                        │ │
+│  │  Time at L2: 18 days  |  Est. Time to L3: 5-7 days                    │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                                                                              │
+│  Quest Progress (Standard 4-Quest Path)                                     │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  │
+│                                                                              │
+│  ✓  Quest 1: "Understand Why This Matters" (L1→L2)                         │
+│      Completed: Oct 29, 2025                                                │
+│      Impact: +100% progress, Component L1→L2                                │
+│      Deliverables: Referral Importance Analysis                             │
+│      [View Quest Details]  [See Deliverables]                               │
+│                                                                              │
+│  ⏳ Quest 2: "Build Your Foundation" (L2→L3)                                │
+│      In Progress: 80% complete (4/5 Sparks done)                            │
+│      Started: Nov 4, 2025  |  Est. Completion: Nov 11, 2025                │
+│      Remaining Sparks:                                                      │
+│        ✓ Define referral sources                                            │
+│        ✓ Create referral request email                                      │
+│        ✓ Design referral tracking system                                    │
+│        ✓ Build referral incentive structure                                 │
+│        ⏱ Set up referral follow-up workflow  [▶ Complete Now - 15 mins]   │
+│      [Continue Quest]  [View Progress]                                      │
+│                                                                              │
+│  🔒 Quest 3: "Make It Real" (L3→L4)                                         │
+│      Locked: Complete Quest 2 to unlock                                     │
+│      Duration: 45 mins  |  Prerequisites met: No                            │
+│      Preview: Implement referral system, send first requests                │
+│      [Preview Quest]                                                        │
+│                                                                              │
+│  🔒 Quest 4: "Refine & Scale" (L4→L5)                                       │
+│      Locked: Complete Quest 3 to unlock                                     │
+│      Duration: 60 mins  |  Prerequisites met: No                            │
+│      Preview: Optimize referral process, measure ROI, train team            │
+│      [Preview Quest]                                                        │
+│                                                                              │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  │
+│                                                                              │
+│  Deliverables Created (3)                    Outcomes Measured (2)          │
+│  • Referral Request Email Template           • +3 referrals/month          │
+│  • Referral Tracking Spreadsheet             • 15% new clients from refs    │
+│  • Referral Incentive Policy                                                │
+│                                                                              │
+│  [📁 View All Deliverables]  [📊 View Detailed Analytics]  [📖 Story Trail]│
+└──────────────────────────────────────────────────────────────────────────────┘</div>
+        </div>
+
+        <!-- SECTION 4: QUEST EXPERIENCE -->
+        <h2>4. Quest Experience (The "Project" View)</h2>
+        
+        <div class="toggle-group">
+            <h4>🎚️ Quest View Options:</h4>
+            <ul>
+                <li><strong>Spark Display:</strong> One-at-a-Time | All Visible | Grouped by Type</li>
+                <li><strong>Navigation:</strong> Linear (Next/Prev) | Free (Jump to Any) | Guided</li>
+                <li><strong>Context:</strong> Minimal | Standard | Full (with help text)</li>
+            </ul>
+        </div>
+        
+        <h3>Option A: One-at-a-Time (Focused Execution)</h3>
+        
+        <div class="view-option">
+            <h4>Best For: Reducing overwhelm, maintaining focus</h4>
+            
+            <div class="mockup">┌──────────────────────────────────────────────────────────────────────────────────┐
+│  Quest: "Build Your Foundation" (L2→L3)                                     │
+│  Component: Referral System  |  Journey: J2 - Client Acquisition            │
+│                                                                              │
+│  Progress: ████████████████████░░░░░  80% (4/5 Sparks)        Est: 15 mins │
+│  [Spark 1 ✓]  [Spark 2 ✓]  [Spark 3 ✓]  [Spark 4 ✓]  [Spark 5 ●]          │
+│ ─────────────────────────────────────────────────────────────────────────────│
+│                                                                              │
+│  Spark 5 of 5: Set up referral follow-up workflow                           │
+│  Type: Creation  |  Est. Time: 15 minutes  |  Mode: Integrate               │
+│                                                                              │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │  You've defined your referral sources, created your ask email, and    │ │
+│  │  built your tracking system. Now let's ensure no referral falls       │ │
+│  │  through the cracks.                                                   │ │
+│  │                                                                        │ │
+│  │  Create a simple follow-up workflow that answers:                      │ │
+│  │  • How soon after receiving a referral do you make contact?           │ │
+│  │  • How do you track the conversation status?                           │ │
+│  │  • When do you follow up with the referring client?                    │ │
+│  │  • What triggers a "thank you" to the referrer?                        │ │
+│  │                                                                        │ │
+│  │  ┌──────────────────────────────────────────────────────────────────┐ │ │
+│  │  │ Referral Follow-up Workflow                                      │ │ │
+│  │  │                                                                  │ │ │
+│  │  │ Day 0 (Referral Received):                                       │ │ │
+│  │  │ [Text input field - large]                                       │ │ │
+│  │  │                                                                  │ │ │
+│  │  │ Day 1-3 (Initial Contact):                                       │ │ │
+│  │  │ [Text input field - large]                                       │ │ │
+│  │  │                                                                  │ │ │
+│  │  │ Week 1 (Follow-up):                                              │ │ │
+│  │  │ [Text input field - large]                                       │ │ │
+│  │  │                                                                  │ │ │
+│  │  │ Week 2-4 (Nurture or Thank):                                     │ │ │
+│  │  │ [Text input field - large]                                       │ │ │
+│  │  │                                                                  │ │ │
+│  │  └──────────────────────────────────────────────────────────────────┘ │ │
+│  │                                                                        │ │
+│  │  💡 Tip: Keep it simple. A 3-step workflow is better than 10 steps    │ │
+│  │  you never follow.                                                     │ │
+│  │                                                                        │ │
+│  │  [Save Draft]           [← Previous Spark]     [Complete Spark →]     │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                                                                              │
+│  ℹ️  Need Help?  [View Example]  [Ask AI Assistant]  [Skip for Now]        │
+└──────────────────────────────────────────────────────────────────────────────┘</div>
+        </div>
+        
+        <h3>Option B: All Visible (Overview Mode)</h3>
+        
+        <div class="view-option">
+            <h4>Best For: Seeing the full picture, non-linear work style</h4>
+            
+            <div class="mockup">┌──────────────────────────────────────────────────────────────────────────────────┐
+│  Quest: "Build Your Foundation" (L2→L3)                                     │
+│  Component: Referral System  |  Journey: J2 - Client Acquisition            │
+│                                                                              │
+│  Progress: ████████████████████░░░░░  80% (4/5 Sparks)        Est: 15 mins │
+│  View: [One-at-a-Time]  [All Visible ●]  [Grouped]                          │
+│ ─────────────────────────────────────────────────────────────────────────────│
+│                                                                              │
+│  ✅ Spark 1: Define referral sources                            [Completed] │
+│      Who are your best potential referral sources?                          │
+│      Answer: COIs (accountants, lawyers), existing clients, centers         │
+│      [View Response]  [Edit]                                                │
+│                                                                              │
+│  ✅ Spark 2: Create referral request email                      [Completed] │
+│      Draft your "ask" email that makes referrals easy to give.              │
+│      Deliverable: Email template created                                    │
+│      [View Deliverable]  [Edit]                                             │
+│                                                                              │
+│  ✅ Spark 3: Design referral tracking system                    [Completed] │
+│      How will you track referrals from source to outcome?                   │
+│      Deliverable: Tracking spreadsheet created                              │
+│      [View Deliverable]  [Edit]                                             │
+│                                                                              │
+│  ✅ Spark 4: Build referral incentive structure                 [Completed] │
+│      What value do you provide to people who refer?                         │
+│      Answer: Thank you note + annual appreciation event                     │
+│      [View Response]  [Edit]                                                │
+│                                                                              │
+│  ⏱️ Spark 5: Set up referral follow-up workflow            [▶ Start - 15m] │
+│      Create your follow-up process from referral to thank you.              │
+│      Status: Not started                                                    │
+│      [Start Now]  [Preview]  [Skip]                                         │
+│                                                                              │
+│ ─────────────────────────────────────────────────────────────────────────────│
+│                                                                              │
+│  Once Spark 5 is complete:                                                  │
+│  ✓ Component "Referral System" will advance L2 → L3                         │
+│  ✓ Deliverable "Referral System Documentation" will be created              │
+│  ✓ Quest 3 "Make It Real" will unlock                                       │
+│                                                                              │
+│  [Complete Remaining Spark]  [Mark Quest Complete]  [Exit Quest]            │
+└──────────────────────────────────────────────────────────────────────────────┘</div>
+        </div>
+
+        <!-- SECTION 5: SPARK TYPE VISUALS -->
+        <h2>5. Spark Presentation Types (The Execution Layer)</h2>
+        
+        <p style="margin: 21px 0;">Sparks adapt their visual presentation based on the type of cognitive work required. Here are the 6 core Spark types and their optimal UI patterns:</p>
+        
+        <div class="spark-type">
+            <h4>Type 1: QUESTION Spark</h4>
+            <p><strong>Purpose:</strong> Gather information from user's knowledge</p>
+            <p><strong>UI Pattern:</strong> Form with input fields, optional help text</p>
+            <p><strong>Co-Evolution Mode:</strong> Explore → open-ended, Attune → multiple choice, Integrate → structured fields</p>
+            
+            <div class="mockup" style="margin-top: 13px;">┌─────────────────────────────────────────────────────────────────┐
+│ Spark: "List your 10 most common client questions"         │
+│                                                             │
+│ [Text area - expandable]                                   │
+│ 1. ________________________________________________         │
+│ 2. ________________________________________________         │
+│ 3. ________________________________________________         │
+│ ...                                                         │
+│                                                             │
+│ 💡 Tip: Think about the questions you answer repeatedly    │
+│                                                             │
+│ [+ Add More]  [Save Draft]  [Complete]                     │
+└─────────────────────────────────────────────────────────────┘</div>
+        </div>
+        
+        <div class="spark-type">
+            <h4>Type 2: CREATION Spark</h4>
+            <p><strong>Purpose:</strong> Build something tangible (template, document, system)</p>
+            <p><strong>UI Pattern:</strong> Rich text editor OR structured template with AI assist</p>
+            <p><strong>Co-Evolution Mode:</strong> Explore → freeform, Attune → template selection, Integrate → guided creation</p>
+            
+            <div class="mockup" style="margin-top: 13px;">┌─────────────────────────────────────────────────────────────────┐
+│ Spark: "Draft welcome email template for new clients"      │
+│                                                             │
+│ [Rich text editor with formatting tools]                   │
+│ Subject: _______________________________________________    │
+│                                                             │
+│ Body:                                                       │
+│ ┌─────────────────────────────────────────────────────┐   │
+│ │ [Rich text area with formatting]                    │   │
+│ │                                                      │   │
+│ │ [B] [I] [U] [Link] [Bullet] [Insert Variable]       │   │
+│ └─────────────────────────────────────────────────────┘   │
+│                                                             │
+│ 🤖 AI Options:                                              │
+│ [Generate Draft]  [Improve Clarity]  [Make More Personal]  │
+│                                                             │
+│ [Save Draft]  [Preview]  [Mark Complete]                   │
+└─────────────────────────────────────────────────────────────┘</div>
+        </div>
+        
+        <div class="spark-type">
+            <h4>Type 3: DEFINITION Spark</h4>
+            <p><strong>Purpose:</strong> Clarify exact meaning, set boundaries, establish criteria</p>
+            <p><strong>UI Pattern:</strong> Structured definition fields with examples</p>
+            <p><strong>Co-Evolution Mode:</strong> Explore → brainstorm, Attune → refine, Integrate → finalize with precision</p>
+            
+            <div class="mockup" style="margin-top: 13px;">┌─────────────────────────────────────────────────────────────────┐
+│ Spark: "Define what 'ideal client' means for your practice"│
+│                                                             │
+│ One-sentence definition:                                   │
+│ [Text input - 200 char max]                                │
+│                                                             │
+│ Who IS included (3-5 characteristics):                     │
+│ ☑ [Characteristic 1]                                       │
+│ ☑ [Characteristic 2]                                       │
+│ ☑ [Characteristic 3]                                       │
+│ [+ Add Another]                                            │
+│                                                             │
+│ Who is NOT included (2-3 exclusions):                      │
+│ ☐ [Exclusion 1]                                            │
+│ ☐ [Exclusion 2]                                            │
+│ [+ Add Another]                                            │
+│                                                             │
+│ Success criteria (How will you know this definition works):│
+│ [Text area]                                                │
+│                                                             │
+│ [Save Definition]  [Get AI Feedback]  [Complete]           │
+└─────────────────────────────────────────────────────────────┘</div>
+        </div>
+        
+        <div class="spark-type">
+            <h4>Type 4: DECISION Spark</h4>
+            <p><strong>Purpose:</strong> Make a choice between options, commit to a path</p>
+            <p><strong>UI Pattern:</strong> Comparison view OR ranking interface</p>
+            <p><strong>Co-Evolution Mode:</strong> Explore → see all options, Attune → compare 2-3, Integrate → commit to one</p>
+            
+            <div class="mockup" style="margin-top: 13px;">┌─────────────────────────────────────────────────────────────────┐
+│ Spark: "Identify which meeting prep tasks could be         │
+│ automated"                                                  │
+│                                                             │
+│ Current tasks (select all that could be automated):        │
+│                                                             │
+│ ☑ Send meeting reminder                    High Impact ★★★│
+│ ☑ Prepare client portfolio summary          High Impact ★★★│
+│ ☑ Review client notes from last meeting    Medium Impact ★★│
+│ ☐ Update CRM with meeting details           Low Impact ★  │
+│ ☑ Send thank you email after meeting        High Impact ★★★│
+│ ☐ Personally greet client at door          Can't Automate │
+│                                                             │
+│ Selected: 4 tasks  |  Est. Time Saved: 2.5 hrs/week        │
+│                                                             │
+│ Next step after this Spark:                                │
+│ We'll help you build automation workflows for your         │
+│ selected tasks.                                             │
+│                                                             │
+│ [Confirm Selection]  [Review Again]                        │
+└─────────────────────────────────────────────────────────────┘</div>
+        </div>
+        
+        <div class="spark-type">
+            <h4>Type 5: REFLECTION Spark</h4>
+            <p><strong>Purpose:</strong> Self-assessment, awareness building, pattern recognition</p>
+            <p><strong>UI Pattern:</strong> Scale/slider interface OR reflection questions</p>
+            <p><strong>Co-Evolution Mode:</strong> Explore → open reflection, Recalibrate → structured assessment</p>
+            
+            <div class="mockup" style="margin-top: 13px;">┌─────────────────────────────────────────────────────────────────┐
+│ Spark: "Rate your current capability at client onboarding" │
+│                                                             │
+│ How systematized is your onboarding?                       │
+│                                                             │
+│ L1: Lacking                                          L5: Leading│
+│ (No system)           (Basic)        (Optimized)    (Mastery)│
+│  ●────────────────────────────────────────────────────○    │
+│                           [L2]                              │
+│                                                             │
+│ What makes you rate it this way?                           │
+│ [Text area]                                                │
+│                                                             │
+│ What would "one level better" look like?                   │
+│ [Text area]                                                │
+│                                                             │
+│ Based on your L2 rating, we'll recommend:                  │
+│ → Quest "Build Your Foundation" (L2→L3)                    │
+│ → Focus: Creating documented onboarding process            │
+│                                                             │
+│ [Save Assessment]  [Continue]                              │
+└─────────────────────────────────────────────────────────────┘</div>
+        </div>
+        
+        <div class="spark-type">
+            <h4>Type 6: ACTION Spark</h4>
+            <p><strong>Purpose:</strong> Execute a concrete step, implement something specific</p>
+            <p><strong>UI Pattern:</strong> Checklist OR step-by-step wizard</p>
+            <p><strong>Co-Evolution Mode:</strong> Integrate → focused execution</p>
+            
+            <div class="mockup" style="margin-top: 13px;">┌─────────────────────────────────────────────────────────────────┐
+│ Spark: "Document the first 3 steps of your planning        │
+│ process"                                                    │
+│                                                             │
+│ Walk through your actual process and document each step:   │
+│                                                             │
+│ Step 1: What happens first?                                │
+│ [Text input]                                               │
+│ Who's involved: [Text input]                               │
+│ Tools used: [Text input]                                   │
+│ Time required: [Dropdown: <30m | 30-60m | 1-2hr | 2hr+]   │
+│                                                             │
+│ Step 2: What happens next?                                 │
+│ [Text input]                                               │
+│ Who's involved: [Text input]                               │
+│ Tools used: [Text input]                                   │
+│ Time required: [Dropdown]                                  │
+│                                                             │
+│ Step 3: What's the third step?                             │
+│ [Text input]                                               │
+│ Who's involved: [Text input]                               │
+│ Tools used: [Text input]                                   │
+│ Time required: [Dropdown]                                  │
+│                                                             │
+│ [Save as SOP]  [Add More Steps]  [Complete]               │
+└─────────────────────────────────────────────────────────────┘</div>
+        </div>
+
+        <!-- SECTION 6: DELIVERABLE & OUTCOME VIEWS -->
+        <h2>6. Deliverable & Outcome Presentation</h2>
+        
+        <h3>Deliverable Library View</h3>
+        
+        <div class="visual-example">
+            <h4>User's Artifact Collection</h4>
+            
+            <div class="mockup">┌──────────────────────────────────────────────────────────────────────────────────┐
+│  DELIVERABLES LIBRARY                                                        │
+│                                                                              │
+│  Filter: [All Types ▼]  [All Journeys ▼]  [All Components ▼]                │
+│  Sort: [Recent ▼]    View: [Grid ●] [List]    Search: [____________]        │
+│ ─────────────────────────────────────────────────────────────────────────────│
+│                                                                              │
+│  📄 Email Templates (5)              📊 SOPs (3)                 ✓ (8)      │
+│  ┌────────────────────┐  ┌────────────────────┐  ┌────────────────────┐   │
+│  │ Referral Request   │  │ Client Onboarding  │  │ Ideal Client       │   │
+│  │ Email              │  │ Process            │  │ Profile            │   │
+│  │                    │  │                    │  │                    │   │
+│  │ Created: Nov 4     │  │ Created: Oct 28    │  │ Created: Oct 15    │   │
+│  │ Quest: Build       │  │ Quest: Build       │  │ Quest: Define      │   │
+│  │ Component: J2      │  │ Component: J7      │  │ Component: J1      │   │
+│  │ Validated: ✓       │  │ Validated: ✓       │  │ Validated: ✓       │   │
+│  │                    │  │                    │  │                    │   │
+│  │ [Open] [Edit]      │  │ [Open] [Edit]      │  │ [Open] [Edit]      │   │
+│  │ [Share] [Export]   │  │ [Share] [Export]   │  │ [Share] [Export]   │   │
+│  └────────────────────┘  └────────────────────┘  └────────────────────┘   │
+│                                                                              │
+│  🎯 Most Used:                               📈 Recently Updated:           │
+│  • Welcome Email Template (12 uses)          • Brand Values (2 days ago)     │
+│  • Meeting Agenda (8 uses)                   • Referral System (4 days ago) │
+│  • Client Profile (6 uses)                                                   │
+│                                                                              │
+│  [+ Create New]  [Import from File]  [Bulk Export]                          │
+└──────────────────────────────────────────────────────────────────────────────┘</div>
+        </div>
+        
+        <h3>Outcome Tracking View</h3>
+        
+        <div class="visual-example">
+            <h4>Business Results Dashboard</h4>
+            
+            <div class="mockup">┌──────────────────────────────────────────────────────────────────────────────────┐
+│  OUTCOMES & IMPACT                                                           │
+│                                                                              │
+│  View: [By Component ●] [By Journey] [By Time Period]                       │
+│  Period: [Last 90 Days ▼]                                                   │
+│ ─────────────────────────────────────────────────────────────────────────────│
+│                                                                              │
+│  Component: Referral System (J2 - Client Acquisition)              [L2→L3]  │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  │
+│                                                                              │
+│  📈 Referrals per Month                                                     │
+│      Before Quest: 1.2 avg  →  After Quest: 3.5 avg  [+192% ▲]            │
+│      ┌────┐                                                                 │
+│      │    │    ┌────┐                                                       │
+│      │ 1  │    │ 3  │    ┌────┐                                            │
+│      └────┘    └────┘    │ 4  │                                            │
+│       Sep       Oct      Nov (projection)                                   │
+│                                                                              │
+│  💰 New Client Revenue from Referrals                                       │
+│      Before: $15k/month  →  After: $47k/month  [+213% ▲]                   │
+│                                                                              │
+│  ⏱️ Time Savings                                                            │
+│      Follow-up workflow automation: 2.5 hours/week saved                    │
+│                                                                              │
+│  📊 Additional Metrics:                                                     │
+│      • Referral → Client conversion rate: 45%                               │
+│      • Avg time from referral to first meeting: 4.2 days (was 12 days)     │
+│      • Referrer satisfaction score: 4.8/5.0                                 │
+│                                                                              │
+│  Last Updated: Nov 9, 2025  |  Data Source: CRM + Manual Entry              │
+│  [Update Metrics]  [Add New Outcome]  [Export Report]                       │
+│                                                                              │
+│ ─────────────────────────────────────────────────────────────────────────────│
+│                                                                              │
+│  🏆 Top 3 Performing Components (by Outcome Impact):                        │
+│     1. Referral System (J2) - $32k monthly increase                         │
+│     2. Client Onboarding (J7) - 4.5 hour/client time savings                │
+│     3. Meeting Preparation (J7) - 85% client satisfaction improvement        │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘</div>
+        </div>
+
+        <!-- SECTION 7: STORY TRAIL -->
+        <h2>7. Story Trail (Achievement & Reflection System)</h2>
+        
+        <div class="toggle-group">
+            <h4>🎚️ Story Trail Toggles:</h4>
+            <ul>
+                <li><strong>View:</strong> Timeline | Gallery | List</li>
+                <li><strong>Filter:</strong> All Activities | Completions Only | Level-Ups Only</li>
+                <li><strong>Time Range:</strong> This Week | This Month | This Quarter | All Time</li>
+            </ul>
+        </div>
+        
+        <div class="visual-example">
+            <h4>Achievement Timeline with Reflection</h4>
+            
+            <div class="mockup">┌──────────────────────────────────────────────────────────────────────────────────┐
+│  YOUR STORY TRAIL                                                            │
+│                                                                              │
+│  View: [Timeline ●] [Gallery] [List]    Period: [This Month ▼]              │
+│ ─────────────────────────────────────────────────────────────────────────────│
+│                                                                              │
+│  November 2025                                                               │
+│                                                                              │
+│  🎉 Nov 4 - Component Level Up                                              │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │  REFERRAL SYSTEM advanced from L2 → L3                                 │ │
+│  │                                                                        │ │
+│  │  What you accomplished:                                                │ │
+│  │  ✓ Completed Quest "Build Your Foundation"                            │ │
+│  │  ✓ Created 4 deliverables (email template, tracking system, etc.)     │ │
+│  │  ✓ Invested 3.5 hours of focused work                                 │ │
+│  │                                                                        │ │
+│  │  Early results:                                                        │ │
+│  │  • 3 new referrals received this week (up from 0-1/week)              │ │
+│  │  • Referrers commented on "how easy you made it"                       │ │
+│  │                                                                        │ │
+│  │  Your reflection at the time:                                          │ │
+│  │  "I've been avoiding this for months. Having the step-by-step         │ │
+│  │  Quest made it actually doable. The email template alone has           │ │
+│  │  already paid dividends."                                              │ │
+│  │                                                                        │ │
+│  │  [View Full Quest Details]  [See All Deliverables]                    │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                                                                              │
+│  ✅ Oct 29 - Quest Completed                                                │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │  Completed: "Understand Why This Matters" (L1→L2)                      │ │
+│  │  Component: Referral System                                            │ │
+│  │                                                                        │ │
+│  │  Key insight you captured:                                             │ │
+│  │  "Referrals aren't just cheaper to acquire - they're pre-qualified    │ │
+│  │  and pre-sold. This should be my #1 growth strategy."                  │ │
+│  │                                                                        │ │
+│  │  [View Quest]                                                          │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                                                                              │
+│  📊 This Month's Achievements:                                              │
+│  • 2 Components leveled up                                                  │
+│  • 5 Quests completed                                                       │
+│  • 8 Deliverables created                                                   │
+│  • 12.5 hours invested                                                      │
+│                                                                              │
+│  [Export Story Trail]  [Share Achievements]  [Add Reflection]               │
+└──────────────────────────────────────────────────────────────────────────────┘</div>
+        </div>
+
+        <!-- SECTION 8: CO-EVOLUTION MODE SHIFTS -->
+        <h2>8. Co-Evolution Framework: How UI Changes by Mode</h2>
+        
+        <div class="comparison-grid">
+            <div class="comparison-card">
+                <h4 style="color: #7B2D8E;">EXPLORE Mode</h4>
+                <ul style="margin-top: 13px;">
+                    <li><strong>Layout:</strong> Expansive, spacious</li>
+                    <li><strong>Options:</strong> 5-15+ visible at once</li>
+                    <li><strong>Navigation:</strong> Free, non-linear</li>
+                    <li><strong>Language:</strong> "What's possible..."</li>
+                    <li><strong>Pressure:</strong> None - safe to wander</li>
+                    <li><strong>Spark Types:</strong> Question, Reflection</li>
+                </ul>
+            </div>
+            
+            <div class="comparison-card">
+                <h4 style="color: #00AEEF;">ATTUNE Mode</h4>
+                <ul style="margin-top: 13px;">
+                    <li><strong>Layout:</strong> Comparison views</li>
+                    <li><strong>Options:</strong> 2-3 focused choices</li>
+                    <li><strong>Navigation:</strong> Guided comparison</li>
+                    <li><strong>Language:</strong> "Which resonates..."</li>
+                    <li><strong>Pressure:</strong> Low - test fit</li>
+                    <li><strong>Spark Types:</strong> Decision, Definition</li>
+                </ul>
+            </div>
+            
+            <div class="comparison-card">
+                <h4 style="color: #28a745;">INTEGRATE Mode</h4>
+                <ul style="margin-top: 13px;">
+                    <li><strong>Layout:</strong> Focused, minimal</li>
+                    <li><strong>Options:</strong> One path forward</li>
+                    <li><strong>Navigation:</strong> Linear progression</li>
+                    <li><strong>Language:</strong> "Let's build..."</li>
+                    <li><strong>Pressure:</strong> Medium - commit</li>
+                    <li><strong>Spark Types:</strong> Creation, Action</li>
+                </ul>
+            </div>
+            
+            <div class="comparison-card">
+                <h4 style="color: #ffc107;">RECALIBRATE Mode</h4>
+                <ul style="margin-top: 13px;">
+                    <li><strong>Layout:</strong> Before/after comparison</li>
+                    <li><strong>Options:</strong> Assess & adjust</li>
+                    <li><strong>Navigation:</strong> Review past work</li>
+                    <li><strong>Language:</strong> "What changed..."</li>
+                    <li><strong>Pressure:</strong> Low - reflection</li>
+                    <li><strong>Spark Types:</strong> Reflection, Definition</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SECTION 9: LEVEL-UP CELEBRATIONS -->
+        <h2>9. Level-Up Celebrations & Transitions</h2>
+        
+        <h3>Component Advancement Animation</h3>
+        
+        <div class="visual-example">
+            <h4>What the User Sees When a Component Levels Up</h4>
+            
+            <div class="mockup">┌──────────────────────────────────────────────────────────────────────────────────┐
+│                                                                              │
+│                                                                              │
+│                              🎉 LEVEL UP! 🎉                                │
+│                                                                              │
+│                          REFERRAL SYSTEM                                     │
+│                                                                              │
+│                        [L2] ────────→ [L3]                                  │
+│                       Learning    Launching                                  │
+│                                                                              │
+│              You've advanced from Learning to Launching!                     │
+│                                                                              │
+│  ─────────────────────────────────────────────────────────────────────────  │
+│                                                                              │
+│  What you accomplished:                                                      │
+│  ✓ Completed Quest: "Build Your Foundation"                                 │
+│  ✓ Created 4 deliverables                                                   │
+│  ✓ Invested 3.5 hours                                                       │
+│                                                                              │
+│  What this means:                                                            │
+│  • You now have a basic referral system documented                           │
+│  • You're ready to implement and test it in practice                         │
+│  • Quest 3 "Make It Real" is now unlocked                                    │
+│                                                                              │
+│  Next milestone:                                                             │
+│  Reach L4 (Leveraging) by completing "Make It Real"                          │
+│  Estimated: 45 minutes of focused work                                       │
+│                                                                              │
+│  [🎯 Start Next Quest]  [📊 View Progress]  [✕ Close]                      │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘</div>
+        </div>
+
+        <!-- SECTION 10: IMPLEMENTATION PRIORITIES -->
+        <h2>10. Implementation Priority Matrix</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Priority</th>
+                    <th>Why</th>
+                    <th>Complexity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Component Progress Bars</strong></td>
+                    <td style="background: #28a745; color: white;">CRITICAL</td>
+                    <td>Core visual feedback mechanism</td>
+                    <td>Low</td>
+                </tr>
+                <tr>
+                    <td><strong>Level Badges (L1-L5)</strong></td>
+                    <td style="background: #28a745; color: white;">CRITICAL</td>
+                    <td>Primary status indicator</td>
+                    <td>Low</td>
+                </tr>
+                <tr>
+                    <td><strong>Dashboard Grid View</strong></td>
+                    <td style="background: #28a745; color: white;">CRITICAL</td>
+                    <td>Main entry point, must work well</td>
+                    <td>Medium</td>
+                </tr>
+                <tr>
+                    <td><strong>One-at-a-Time Spark View</strong></td>
+                    <td style="background: #ffc107; color: #1a1a1a;">HIGH</td>
+                    <td>Reduces overwhelm, core UX</td>
+                    <td>Medium</td>
+                </tr>
+                <tr>
+                    <td><strong>Level-Up Celebration</strong></td>
+                    <td style="background: #ffc107; color: #1a1a1a;">HIGH</td>
+                    <td>Reinforces achievement, motivation</td>
+                    <td>Low</td>
+                </tr>
+                <tr>
+                    <td><strong>Component Detail View</strong></td>
+                    <td style="background: #ffc107; color: #1a1a1a;">HIGH</td>
+                    <td>Deep dive on progress</td>
+                    <td>Medium</td>
+                </tr>
+                <tr>
+                    <td><strong>Deliverable Library</strong></td>
+                    <td style="background: #17a2b8; color: white;">MEDIUM</td>
+                    <td>Access to created assets</td>
+                    <td>Medium</td>
+                </tr>
+                <tr>
+                    <td><strong>Story Trail</strong></td>
+                    <td style="background: #17a2b8; color: white;">MEDIUM</td>
+                    <td>Reflection & positive psychology</td>
+                    <td>Medium</td>
+                </tr>
+                <tr>
+                    <td><strong>Outcome Tracking</strong></td>
+                    <td style="background: #17a2b8; color: white;">MEDIUM</td>
+                    <td>Business results validation</td>
+                    <td>High</td>
+                </tr>
+                <tr>
+                    <td><strong>Timeline View</strong></td>
+                    <td style="background: #6c757d; color: white;">NICE TO HAVE</td>
+                    <td>Alternative visualization</td>
+                    <td>Medium</td>
+                </tr>
+                <tr>
+                    <td><strong>Co-Evolution Mode Shifts</strong></td>
+                    <td style="background: #6c757d; color: white;">NICE TO HAVE</td>
+                    <td>Advanced personalization</td>
+                    <td>High</td>
+                </tr>
+                <tr>
+                    <td><strong>All Visible Quest View</strong></td>
+                    <td style="background: #6c757d; color: white;">NICE TO HAVE</td>
+                    <td>Alternative work style</td>
+                    <td>Low</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- FOOTER -->
+        <div style="margin-top: 89px; padding-top: 21px; border-top: 2px solid #e0e0e0; text-align: center; color: #6c757d;">
+            <p><strong>SweetBOS Visual Experience Design System</strong></p>
+            <p>This defines the user interface layer - what users SEE and how they INTERACT with their transformation journey</p>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            }
+        });
+    </script>
+</body>
+</html>

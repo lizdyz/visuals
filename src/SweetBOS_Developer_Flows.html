@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetBOS System Flows - Developer Guide</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #005A9C 0%, #7B2D8E 100%);
+            color: #1a1a1a;
+            padding: 34px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 13px;
+            padding: 55px;
+            box-shadow: 0 21px 55px rgba(0,0,0,0.15);
+        }
+        
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 48px;
+            color: #005A9C;
+            margin-bottom: 21px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+        
+        h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 32px;
+            color: #7B2D8E;
+            margin-top: 55px;
+            margin-bottom: 21px;
+            padding-bottom: 13px;
+            border-bottom: 3px solid #00AEEF;
+            font-weight: 500;
+        }
+        
+        h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+            color: #005A9C;
+            margin-top: 34px;
+            margin-bottom: 13px;
+            font-weight: 500;
+        }
+        
+        .intro {
+            background: #f8f9fa;
+            padding: 21px;
+            border-radius: 8px;
+            margin-bottom: 34px;
+            border-left: 5px solid #00AEEF;
+        }
+        
+        .flow-section {
+            margin-bottom: 55px;
+            page-break-inside: avoid;
+        }
+        
+        .mermaid {
+            background: white;
+            padding: 21px;
+            border-radius: 8px;
+            margin: 21px 0;
+        }
+        
+        .critical-note {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 21px;
+            margin: 21px 0;
+            border-radius: 5px;
+        }
+        
+        .critical-note strong {
+            color: #856404;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+        
+        .rule-box {
+            background: #e7f3ff;
+            border-left: 5px solid #005A9C;
+            padding: 21px;
+            margin: 21px 0;
+            border-radius: 5px;
+        }
+        
+        .rule-box h4 {
+            color: #005A9C;
+            margin-bottom: 13px;
+            font-size: 18px;
+        }
+        
+        ul {
+            margin-left: 21px;
+            margin-top: 8px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        
+        .timestamp {
+            color: #6c757d;
+            font-size: 14px;
+            margin-bottom: 34px;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+            }
+            .flow-section {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SweetBOS System Flows</h1>
+        <p class="timestamp">Developer Reference Guide | Generated: November 9, 2025</p>
+        
+        <div class="intro">
+            <p><strong>Purpose:</strong> This document provides the complete system flows for SweetBOS implementation. These flows represent the corrected architecture discussed in the meeting and supersede any previous implementations.</p>
+        </div>
+
+        <!-- FLOW 1: USER ONBOARDING -->
+        <div class="flow-section">
+            <h2>1. User Onboarding & Payment Flow</h2>
+            
+            <div class="critical-note">
+                <strong>CRITICAL CORRECTION:</strong>
+                Payment MUST occur BEFORE pre-assessment. No free trials. This is an exclusive, paid-tier system.
+            </div>
+            
+            <div class="mermaid">
+                graph TD
+                    A[User Visits Platform] --> B[Email Verification OTP]
+                    B --> C{Verified?}
+                    C -->|No| B
+                    C -->|Yes| D[Redirect to Payment]
+                    D --> E[Stripe Payment Processing]
+                    E --> F{Payment Success?}
+                    F -->|No| D
+                    F -->|Yes| G[Payment Confirmed]
+                    G --> H[Redirect to Pre-Assessment]
+                    H --> I[User Completes Pre-Assessment Questions]
+                    I --> J[Pre-Assessment Submitted]
+                    J --> K[AI Processing Period 48hr]
+                    K --> L[User Books First Session via Calendar]
+                    
+                    style D fill:#ffc107,stroke:#856404,stroke-width:3px
+                    style G fill:#28a745,stroke:#1e7e34,stroke-width:2px
+                    style H fill:#00AEEF,stroke:#005A9C,stroke-width:2px
+                    style K fill:#7B2D8E,stroke:#5a1f69,stroke-width:2px
+            </div>
+            
+            <div class="rule-box">
+                <h4>Implementation Rules:</h4>
+                <ul>
+                    <li><strong>OTP Email:</strong> Use "ask@sweetbot.ai" temporarily, rename to "info@sweetbot.ai" later</li>
+                    <li><strong>Payment Gateway:</strong> Stripe integration required before any assessment access</li>
+                    <li><strong>No Free Trials:</strong> Remove all free trial logic - this is exclusive membership only</li>
+                    <li><strong>Dashboard Redirect:</strong> First-time users go directly to pre-assessment after payment</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FLOW 2: SESSION BOOKING -->
+        <div class="flow-section">
+            <h2>2. Session Creation & Booking Flow</h2>
+            
+            <div class="critical-note">
+                <strong>CRITICAL CORRECTION:</strong>
+                Admin does NOT create sessions. System uses automated booking with sequential rules.
+            </div>
+            
+            <div class="mermaid">
+                graph TD
+                    A[User Completes Pre-Assessment] --> B[AI Processing 48-72hr]
+                    B --> C[Processing Complete]
+                    C --> D[User Views Available Calendar Slots]
+                    D --> E{User Selects Time Slot}
+                    E --> F[System Checks Sequential Rule]
+                    F --> G{Existing Session on Calendar?}
+                    G -->|Yes| H[Block Booking]
+                    H --> I[Show Error: Complete Current Session First]
+                    G -->|No| J[Check Lead Time Rule]
+                    J --> K{48-72hr Lead Time Met?}
+                    K -->|No| L[Block Booking]
+                    L --> M[Show Error: Insufficient Lead Time]
+                    K -->|Yes| N[Temporarily Hold Slot]
+                    N --> O[Create Unique Meeting URL]
+                    O --> P[Send Confirmation to User & Liz]
+                    P --> Q[Slot Locked for All Other Users]
+                    
+                    style F fill:#ffc107,stroke:#856404,stroke-width:3px
+                    style J fill:#ffc107,stroke:#856404,stroke-width:3px
+                    style N fill:#28a745,stroke:#1e7e34,stroke-width:2px
+                    style Q fill:#28a745,stroke:#1e7e34,stroke-width:2px
+            </div>
+            
+            <div class="rule-box">
+                <h4>Sequential Booking Rules (MANDATORY):</h4>
+                <ul>
+                    <li><strong>Rule 1:</strong> Users cannot book multiple sessions if one is already confirmed on calendar</li>
+                    <li><strong>Rule 2:</strong> 48-72 hour minimum lead time required for AI synthesis</li>
+                    <li><strong>Rule 3:</strong> Once slot is claimed (even if unconfirmed), unavailable to others (like plane tickets)</li>
+                    <li><strong>Rule 4:</strong> Unique URL generated per booking prevents duplicate sessions</li>
+                </ul>
+            </div>
+            
+            <div class="rule-box">
+                <h4>Calendar Integration Requirements:</h4>
+                <ul>
+                    <li>Research Calendly alternative that supports custom booking logic</li>
+                    <li>Must support sequential session prevention</li>
+                    <li>Must support minimum lead time enforcement</li>
+                    <li>Must support temporary slot holding during booking process</li>
+                    <li><strong>DELETE:</strong> All admin session creation logic</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FLOW 3: SESSION SEQUENCE -->
+        <div class="flow-section">
+            <h2>3. Universal Session Sequence</h2>
+            
+            <p><strong>Note:</strong> This sequence applies to ALL session types (Mirror, Map, Machine, SweetSync)</p>
+            
+            <div class="mermaid">
+                graph TD
+                    A[User Books Session] --> B[Pre-Assessment Questions]
+                    B --> C[User Submits Responses]
+                    C --> D[AI Processing Period 48-72hr]
+                    D --> E[Liz Reviews AI Synthesis]
+                    E --> F[Live Session Occurs]
+                    F --> G[Post-Session Processing Period]
+                    G --> H[AI Generates Deliverables]
+                    H --> I[User Validates Deliverables]
+                    I --> J{User Approves?}
+                    J -->|No| K[Revisions Required]
+                    K --> H
+                    J -->|Yes| L[Deliverables Finalized]
+                    L --> M[Artifacts Available for Download]
+                    M --> N{Sequential Rule: Allow Next Booking}
+                    
+                    style D fill:#7B2D8E,stroke:#5a1f69,stroke-width:2px
+                    style F fill:#00AEEF,stroke:#005A9C,stroke-width:3px
+                    style G fill:#7B2D8E,stroke:#5a1f69,stroke-width:2px
+                    style L fill:#28a745,stroke:#1e7e34,stroke-width:2px
+            </div>
+            
+            <div class="rule-box">
+                <h4>48-Hour Execution Pattern:</h4>
+                <ul>
+                    <li><strong>Pre-Work:</strong> User completes pre-assessment questions</li>
+                    <li><strong>AI Processing:</strong> 48-72 hour synthesis period</li>
+                    <li><strong>Live Session:</strong> Facilitated conversation</li>
+                    <li><strong>AI Generation:</strong> Post-session deliverable creation</li>
+                    <li><strong>Validation:</strong> User reviews and approves</li>
+                    <li><strong>Deliverables:</strong> Final artifacts provided</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FLOW 4: SYSTEM ARCHITECTURE -->
+        <div class="flow-section">
+            <h2>4. System Architecture: Missions → Journeys → Quests → Sparks</h2>
+            
+            <div class="mermaid">
+                graph TD
+                    A[SweetBOS Platform] --> B[22 Domains]
+                    A --> C[22 Tenets]
+                    A --> D[Universal L1-L5 Maturity Model]
+                    
+                    E[User Enters System] --> F[Selects Mission ~5-8 total]
+                    F --> G[Mission Contains Multiple Journeys]
+                    G --> H[Each Journey Contains Quests]
+                    H --> I[Each Quest Contains Sparks]
+                    
+                    I --> J[Spark = Execution Screen]
+                    J --> K[User Completes Spark Action]
+                    K --> L{Quest Progress}
+                    L --> M[Complete Quest]
+                    M --> N{Journey Progress}
+                    N --> O[Complete Journey]
+                    O --> P{Mission Progress}
+                    P --> Q[Analytics & Story Trail Updated]
+                    
+                    Q --> R[KPIs Tracked Per Quest]
+                    R --> S[Achievements Logged]
+                    S --> T[User Reflects on Progress]
+                    
+                    style F fill:#005A9C,stroke:#003d6b,stroke-width:3px
+                    style G fill:#00AEEF,stroke:#0086b3,stroke-width:2px
+                    style H fill:#7B2D8E,stroke:#5a1f69,stroke-width:2px
+                    style I fill:#ffc107,stroke:#856404,stroke-width:2px
+                    style Q fill:#28a745,stroke:#1e7e34,stroke-width:2px
+            </div>
+            
+            <div class="rule-box">
+                <h4>Hierarchy Definitions:</h4>
+                <ul>
+                    <li><strong>Mission:</strong> Bundle of journeys (like a $100 bill)</li>
+                    <li><strong>Journey:</strong> Bundle of quests (collections for level transitions)</li>
+                    <li><strong>Quest:</strong> Bundle of sparks (3-10 minute atomic actions)</li>
+                    <li><strong>Spark:</strong> Single execution screen - what user DOES on their screen</li>
+                </ul>
+            </div>
+            
+            <div class="rule-box">
+                <h4>Key Principles:</h4>
+                <ul>
+                    <li>Users never "complete all missions" - continuous improvement model</li>
+                    <li>System increases user's benchmark and standards over time</li>
+                    <li>Quests interconnect across journeys (needs flowchart mapping)</li>
+                    <li>Everything maps to 22 Domains and 22 Tenets</li>
+                    <li>Universal L1-L5 maturity tracking across all domains</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FLOW 5: FAQ BUILDER -->
+        <div class="flow-section">
+            <h2>5. FAQ Builder Journey Flow (Intelligent Parsing)</h2>
+            
+            <div class="critical-note">
+                <strong>CRITICAL REQUIREMENT:</strong>
+                System must intelligently parse pasted Q&A content, not require manual separation.
+            </div>
+            
+            <div class="mermaid">
+                graph TD
+                    A[User Enters FAQ Journey] --> B{Input Method?}
+                    
+                    B -->|Manual Entry| C[User Types Single Q&A Pair]
+                    C --> D[System Captures Question]
+                    D --> E[System Captures Answer]
+                    
+                    B -->|Bulk Paste| F[User Pastes Multiple Q&As]
+                    F --> G[AI Parses Content]
+                    G --> H[AI Detects Question Patterns]
+                    H --> I[AI Detects Answer Patterns]
+                    I --> J[AI Separates Q&A Pairs]
+                    J --> K[System Presents Parsed Pairs]
+                    K --> L[User Validates Each Pair]
+                    L --> M{Corrections Needed?}
+                    M -->|Yes| N[User Edits Specific Pairs]
+                    N --> L
+                    
+                    B -->|PDF Upload| O[User Uploads PDF]
+                    O --> P[System Extracts Text]
+                    P --> G
+                    
+                    B -->|Audio Input| Q[User Speaks Q&A]
+                    Q --> R[Speech-to-Text Processing]
+                    R --> G
+                    
+                    M -->|No| S[All Pairs Validated]
+                    S --> T[FAQ Collection Complete]
+                    T --> U[Generate Artifacts]
+                    U --> V[User Downloads or Adds to Google Drive]
+                    
+                    style F fill:#ffc107,stroke:#856404,stroke-width:3px
+                    style G fill:#7B2D8E,stroke:#5a1f69,stroke-width:3px
+                    style K fill:#00AEEF,stroke:#005A9C,stroke-width:2px
+                    style V fill:#28a745,stroke:#1e7e34,stroke-width:2px
+            </div>
+            
+            <div class="rule-box">
+                <h4>Parsing Logic Requirements:</h4>
+                <ul>
+                    <li><strong>Pattern Recognition:</strong> AI identifies question vs answer structures</li>
+                    <li><strong>Multi-Format Support:</strong> Text paste, PDF upload, audio input</li>
+                    <li><strong>Validation Layer:</strong> Users review and correct AI parsing</li>
+                    <li><strong>Confidence Threshold:</strong> Re-ask if AI confidence is uncertain</li>
+                    <li><strong>Framework Enhancement:</strong> Use OCDA framework to enrich extracted Q&As</li>
+                </ul>
+            </div>
+            
+            <div class="rule-box">
+                <h4>User Experience Principles:</h4>
+                <ul>
+                    <li>Advisors have limited time - reduce friction</li>
+                    <li>They likely have existing Q&A documents - enable bulk import</li>
+                    <li>Don't force manual separation of questions and answers</li>
+                    <li>Allow validation but don't require recreation from scratch</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FLOW 6: SPARK PRESENTATION -->
+        <div class="flow-section">
+            <h2>6. Spark Presentation Logic</h2>
+            
+            <p><strong>Concept:</strong> Sparks adapt their presentation based on cognitive function and stage. Not all sparks are simple questions.</p>
+            
+            <div class="mermaid">
+                graph TD
+                    A[System Determines Spark Need] --> B{What's the Cognitive Function?}
+                    
+                    B -->|Information Gathering| C{Best Presentation?}
+                    C -->|Simple Data| D[Form with Input Fields]
+                    C -->|Complex Data| E[Table/Grid Entry]
+                    C -->|Multiple Choice| F[Radio Buttons / Dropdowns]
+                    C -->|Multi-Select| G[Checkboxes]
+                    C -->|Range Selection| H[Sliders]
+                    
+                    B -->|Information Delivery| I{Best Presentation?}
+                    I -->|Overview| J[Infographic Display]
+                    I -->|Detailed| K[Text Paragraphs]
+                    I -->|Comparison| L[Table Display]
+                    I -->|Process| M[Visual Diagram]
+                    
+                    B -->|Validation/Review| N{Best Presentation?}
+                    N -->|Simple Confirm| O[Yes/No Buttons]
+                    N -->|Content Review| P[Side-by-Side Comparison]
+                    N -->|Multi-Item| Q[Checklist with Approve/Reject]
+                    
+                    D --> R[Reduce Cognitive Load]
+                    E --> R
+                    F --> R
+                    G --> R
+                    H --> R
+                    J --> R
+                    K --> R
+                    L --> R
+                    M --> R
+                    O --> R
+                    P --> R
+                    Q --> R
+                    
+                    R --> S[Provide Focused Context to AI]
+                    S --> T[Minimize Context Window Bloat]
+                    
+                    style B fill:#7B2D8E,stroke:#5a1f69,stroke-width:3px
+                    style R fill:#00AEEF,stroke:#005A9C,stroke-width:2px
+                    style S fill:#28a745,stroke:#1e7e34,stroke-width:2px
+            </div>
+            
+            <div class="rule-box">
+                <h4>Co-Evolution Framework Integration:</h4>
+                <ul>
+                    <li><strong>Explore Stage:</strong> Present all possibilities, open-ended inputs</li>
+                    <li><strong>Attune Stage:</strong> Filter to relevant options based on context</li>
+                    <li><strong>Decide Stage:</strong> Force selection from viable choices</li>
+                    <li><strong>Execute Stage:</strong> Action-oriented inputs with clear outcomes</li>
+                </ul>
+            </div>
+            
+            <div class="rule-box">
+                <h4>Design Principles:</h4>
+                <ul>
+                    <li>Every screen interaction should feel like consistent "spark" experience</li>
+                    <li>Pre-assessment should use same spark presentation patterns</li>
+                    <li>Maximum 5 questions per screen to avoid scrolling</li>
+                    <li>Form elements must be functional, not decorative</li>
+                    <li>Progress indicators should be clickable for navigation</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FLOW 7: AUDIT TRAIL -->
+        <div class="flow-section">
+            <h2>7. Story Trail & Analytics System</h2>
+            
+            <div class="mermaid">
+                graph TD
+                    A[User Starts Quest] --> B[Quest Spark Completed]
+                    B --> C[Log Achievement to Story Trail]
+                    C --> D[Track Specific KPIs]
+                    D --> E{Quest Complete?}
+                    E -->|No| B
+                    E -->|Yes| F[Quest Summary Generated]
+                    F --> G[Add to Journey Story Trail]
+                    G --> H{Journey Complete?}
+                    H -->|No| A
+                    H -->|Yes| I[Journey Summary Generated]
+                    I --> J[Add to Mission Analytics]
+                    
+                    K[Parallel: User Views Story Trail] --> L[See All Completed Quests]
+                    L --> M[Review Achievements Per Quest]
+                    M --> N[See KPI Progress]
+                    N --> O[Reflect on Growth]
+                    
+                    P[System Tracks Per Quest] --> Q[Leads Generated]
+                    P --> R[Conversion Rate]
+                    P --> S[Meetings Booked]
+                    P --> T[Client Satisfaction]
+                    P --> U[Time Saved]
+                    
+                    style C fill:#00AEEF,stroke:#005A9C,stroke-width:2px
+                    style F fill:#7B2D8E,stroke:#5a1f69,stroke-width:2px
+                    style I fill:#005A9C,stroke:#003d6b,stroke-width:3px
+                    style O fill:#28a745,stroke:#1e7e34,stroke-width:2px
+            </div>
+            
+            <div class="rule-box">
+                <h4>Story Trail Benefits:</h4>
+                <ul>
+                    <li><strong>Audit Trail:</strong> System logs every interaction and completion</li>
+                    <li><strong>Positive Psychology:</strong> Users reflect on achievements (PERMA model)</li>
+                    <li><strong>Beta Testing:</strong> See user failure logs during testing</li>
+                    <li><strong>Financial Compliance:</strong> Essential for partnerships with fund companies</li>
+                </ul>
+            </div>
+            
+            <div class="rule-box">
+                <h4>Analytics Integration:</h4>
+                <ul>
+                    <li>Specific KPIs tied to each quest</li>
+                    <li>Job-to-be-done metrics per journey</li>
+                    <li>L1-L5 maturity progression tracking</li>
+                    <li>Cross-domain scorecard for complete business view</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- IMPLEMENTATION PRIORITIES -->
+        <div class="flow-section">
+            <h2>8. Implementation Priorities</h2>
+            
+            <div class="rule-box">
+                <h4>Immediate Actions (This Week):</h4>
+                <ol>
+                    <li><strong>Delete admin session creation logic</strong> - users book via calendar only</li>
+                    <li><strong>Change payment flow</strong> - payment before pre-assessment</li>
+                    <li><strong>Remove free trial logic</strong> - paid membership only</li>
+                    <li><strong>Research calendar alternatives</strong> - need sequential booking support</li>
+                    <li><strong>Build FAQ parsing logic</strong> - intelligent Q&A separation</li>
+                </ol>
+            </div>
+            
+            <div class="rule-box">
+                <h4>Documentation Needed from Liz:</h4>
+                <ol>
+                    <li><strong>Flowchart skeleton</strong> - missions, journeys, quests structure with interconnections</li>
+                    <li><strong>Consolidated knowledge base</strong> - single source of truth from Google Docs, Obsidian, Notion</li>
+                    <li><strong>Spark presentation guide</strong> - when to use forms, tables, infographics</li>
+                    <li><strong>Co-evolution framework documentation</strong> - stage-specific UI patterns</li>
+                </ol>
+            </div>
+            
+            <div class="rule-box">
+                <h4>Ask SweetBot Focus Areas:</h4>
+                <ol>
+                    <li><strong>Spark presentation methods</strong> - research best UI patterns for each type</li>
+                    <li><strong>Calendar integration research</strong> - find Calendly alternative with required logic</li>
+                    <li><strong>FAQ parsing algorithm</strong> - AI-powered Q&A extraction and validation</li>
+                    <li><strong>Story trail implementation</strong> - achievement logging and reflection system</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- CRITICAL REMINDERS -->
+        <div class="flow-section">
+            <h2>9. Critical Reminders</h2>
+            
+            <div class="critical-note">
+                <strong>Platform Positioning:</strong>
+                This is NOT just a platform - it's "transformation as a platform." This is disruptive technology grant funding, not platform funding. The experience IS the product.
+            </div>
+            
+            <div class="rule-box">
+                <h4>Core System Principles:</h4>
+                <ul>
+                    <li><strong>No Free Trials:</strong> Exclusive, elite membership for committed advisors</li>
+                    <li><strong>48-Hour Pattern:</strong> Consistent execution across all session types</li>
+                    <li><strong>Sequential Booking:</strong> Users complete current session before booking next</li>
+                    <li><strong>Automated Intelligence:</strong> System fetches and validates information</li>
+                    <li><strong>Modular Framework:</strong> Components reusable across multiple contexts</li>
+                    <li><strong>Continuous Improvement:</strong> Users never "complete" - always raising standards</li>
+                </ul>
+            </div>
+            
+            <div class="rule-box">
+                <h4>What Makes This Unique:</h4>
+                <ul>
+                    <li>Acting as "agent operator" that accelerates advisor business</li>
+                    <li>Access to shared, purpose-built AI agents</li>
+                    <li>Highly niched frameworks generalist tools can't match</li>
+                    <li>Systematic intelligence extraction from trapped expertise</li>
+                    <li>Cross-connection of previously unlinked industries</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div style="margin-top: 89px; padding-top: 21px; border-top: 2px solid #e0e0e0; text-align: center; color: #6c757d;">
+            <p><strong>SweetBOS Developer Reference</strong></p>
+            <p>For questions or clarifications, refer to meeting transcript or request additional documentation from Liz</p>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            }
+        });
+    </script>
+</body>
+</html>
