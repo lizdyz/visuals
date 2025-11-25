@@ -8,6 +8,10 @@ An aviation-themed mental health self-assessment dashboard designed to help indi
 
 **Check Your Lights** transforms mental health assessment into an intuitive aviation cockpit experience. Users evaluate 11 critical life systems (sleep, energy, mood, social connection, etc.) using aviation metaphors like "Fuel Gauge" for sleep and "Altimeter" for mood.
 
+**Two Versions Available:**
+- **Original**: Clean, minimal dark theme with universal appeal
+- **SweetBOS Branded**: Premium brand-integrated version with SweetBOS colors, typography, and design patterns (see `SWEETBOS_BRANDING.md`)
+
 ### Key Features
 
 - **11 Aviation-Themed Gauges**: Each life system is represented by a familiar cockpit instrument
