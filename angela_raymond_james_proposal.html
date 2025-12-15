@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raymond James Partnership Proposal | SweetBot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --purple: #2E3192;
+            --pink: #E91E8C;
+            --cyan: #3B9FE8;
+            --gold: #F7B801;
+            --dark: #0a0a0a;
+            --light: #ffffff;
+            --gray: #666666;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #ffffff;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--purple) 0%, var(--pink) 100%);
+            color: white;
+            padding: 120px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(40px, 40px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.8rem;
+            color: var(--purple);
+            margin: 2rem 0 1rem;
+        }
+
+        /* Resource Cards */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .resource-card {
+            background: white;
+            border: 2px solid #f0f0f0;
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(46, 49, 146, 0.15);
+            border-color: var(--purple);
+        }
+
+        .resource-card h3 {
+            color: var(--purple);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .resource-card a {
+            color: var(--cyan);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .resource-card a:hover {
+            color: var(--pink);
+        }
+
+        /* Insight Box */
+        .insight-box {
+            background: linear-gradient(135deg, var(--purple) 0%, #1a1d5e 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            margin: 40px 0;
+            border-left: 6px solid var(--gold);
+        }
+
+        .insight-box h3 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        /* Cascading Value Diagram */
+        .cascade {
+            background: linear-gradient(to bottom, #f8f9ff, white);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .cascade-item {
+            background: white;
+            border-left: 4px solid var(--purple);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            animation: fadeInLeft 0.6s ease;
+        }
+
+        .cascade-item:nth-child(1) { border-left-color: var(--purple); animation-delay: 0.1s; }
+        .cascade-item:nth-child(2) { border-left-color: var(--pink); animation-delay: 0.2s; }
+        .cascade-item:nth-child(3) { border-left-color: var(--cyan); animation-delay: 0.3s; }
+        .cascade-item:nth-child(4) { border-left-color: var(--gold); animation-delay: 0.4s; }
+        .cascade-item:nth-child(5) { border-left-color: var(--purple); animation-delay: 0.5s; }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .cascade-arrow {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--purple);
+            margin: 10px 0;
+        }
+
+        /* CTA Box */
+        .cta-box {
+            background: linear-gradient(135deg, var(--cyan) 0%, var(--purple) 100%);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .cta-box h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--purple);
+            padding: 16px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 20px 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            background: var(--gold);
+            color: white;
+        }
+
+        /* Pricing Table */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .pricing-card {
+            background: white;
+            border: 3px solid #f0f0f0;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--purple);
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(46, 49, 146, 0.2);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--purple);
+            background: linear-gradient(to bottom, #f8f9ff, white);
+        }
+
+        .pricing-card h3 {
+            color: var(--purple);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-card .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--pink);
+            margin: 20px 0;
+        }
+
+        .pricing-card .credits {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            text-align: left;
+            margin: 20px 0;
+        }
+
+        .pricing-card ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .pricing-card ul li:before {
+            content: '✓';
+            color: var(--cyan);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Credit Menu Table */
+        .credit-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .credit-table th {
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            color: white;
+            padding: 20px;
+            text-align: left;
+            font-size: 1.1rem;
+        }
+
+        .credit-table td {
+            padding: 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .credit-table tr:hover {
+            background: #f8f9ff;
+        }
+
+        .credit-table .credits-col {
+            text-align: center;
+            font-weight: 700;
+            color: var(--purple);
+            font-size: 1.3rem;
+        }
+
+        /* List Styling */
+        ul.checkmark-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        ul.checkmark-list li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        ul.checkmark-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--cyan);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 80px;
+        }
+
+        .footer h3 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .footer a {
+            color: var(--cyan);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: var(--pink);
+        }
+
+        /* Newsletter Signup */
+        .newsletter-box {
+            background: linear-gradient(135deg, var(--gold) 0%, #ff8c00 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .newsletter-box h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-box .cta-button {
+            background: white;
+            color: var(--gold);
+        }
+
+        .newsletter-box .cta-button:hover {
+            background: var(--dark);
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 40px 20px;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .credit-table {
+                font-size: 0.9rem;
+            }
+
+            .credit-table th, .credit-table td {
+                padding: 12px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .hero {
+                background: var(--purple);
+                page-break-after: always;
+            }
+
+            .cta-button {
+                border: 2px solid var(--purple);
+                color: var(--purple);
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<div class="hero">
+    <div class="hero-content">
+        <h1>Raymond James Partnership Proposal</h1>
+        <p class="subtitle">A Strategic Invitation from Elizabeth Dykes</p>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="container">
+
+    <!-- ACT 1: WELCOME TO WHAT I'VE BUILT -->
+    <section class="section">
+        <h2 class="section-title">ACT 1: Welcome to What I've Built</h2>
+
+        <h3 class="section-subtitle">Explore My World</h3>
+        <p>Before we discuss what I can do for Raymond James, let me invite you to explore what I've already created:</p>
+
+        <div class="resource-grid">
+            <div class="resource-card">
+                <h3>📱 LinkedIn Content</h3>
+                <p>20+ years of financial services experience distilled into practical AI literacy content for wealth management professionals.</p>
+                <a href="https://linkedin.com/in/lizdykes" target="_blank">linkedin.com/in/lizdykes →</a>
+            </div>
+
+            <div class="resource-card">
+                <h3>📬 SweetDrop Newsletter</h3>
+                <p>Weekly insights on AI implementation in financial services. Real strategies, zero hype.</p>
+                <a href="https://sweetbot.ai/newsletter" target="_blank">Sign up to receive SweetDrop →</a>
+            </div>
+
+            <div class="resource-card">
+                <h3>💼 SweetHub Portfolio</h3>
+                <p>Examples of real projects, frameworks, and client work.</p>
+                <a href="https://lizdykes.sweetbot.ai" target="_blank">lizdykes.sweetbot.ai →</a>
+            </div>
+        </div>
+
+        <h3 class="section-subtitle">What I've Actually Built: SweetBOS</h3>
+        <p><strong>SweetBOS</strong> isn't a training program. It's a <strong>business optimization operating system</strong> combined with <strong>AI capability building</strong>.</p>
+
+        <p>Think of it as the invisible architecture behind everything I do:</p>
+
+        <div class="insight-box">
+            <h3>The Foundation</h3>
+            <ul class="checkmark-list">
+                <li><strong>9 Core Frameworks</strong> - Structured methodologies for practice transformation</li>
+                <li><strong>9 BizzyBots</strong> - Interpretive lenses (each focused on different aspects of your business)</li>
+                <li><strong>44 Practice Domains</strong> - 22 Build Paths + 22 Run Domains covering every aspect of wealth management</li>
+                <li><strong>L1-L5 Maturity Model</strong> - Progression from Lacking → Learning → Launching → Leveraging → Leading</li>
+                <li><strong>Government Validation</strong> - In ongoing discussions with NRC IRAP for technical innovation recognition</li>
+            </ul>
+        </div>
+
+        <h3 class="section-subtitle">What This Means for You</h3>
+        <p>This isn't about "AI training." This is about <strong>systematizing how your branch operates</strong> and using AI as the accelerant.</p>
+
+        <p>Every custom workshop I build pulls from these 44 practice domains: client communication frameworks, practice transition planning, HNW family engagement strategies, onboarding systemization, compliance documentation, COI relationship building, portfolio review structuring, fee analysis optimization.</p>
+
+        <p><strong>The workshops are your entry point.</strong> But they're backed by a comprehensive transformation platform that can scale with your branch's ambitions.</p>
+
+        <h3 class="section-subtitle">Cascading Value Architecture</h3>
+        <p>When you invest in building capability, the value compounds:</p>
+
+        <div class="cascade">
+            <div class="cascade-item">
+                <strong>WORKSHOP</strong> (75 min hands-on session)
+            </div>
+            <div class="cascade-arrow">↓</div>
+            <div class="cascade-item">
+                <strong>SKILL TRANSFER</strong> (advisors/admin build real assets)
+            </div>
+            <div class="cascade-arrow">↓</div>
+            <div class="cascade-item">
+                <strong>PRACTICE TRANSFORMATION</strong> (apply to everything)
+            </div>
+            <div class="cascade-arrow">↓</div>
+            <div class="cascade-item">
+                <strong>TEAM CAPABILITY</strong> (your entire branch levels up)
+            </div>
+            <div class="cascade-arrow">↓</div>
+            <div class="cascade-item">
+                <strong>BRAND DIFFERENTIATION</strong> (recruitment & retention advantage)
+            </div>
+        </div>
+
+        <p><strong>Example:</strong> An advisor attends the LinkedIn Positioning workshop. They leave with:</p>
+        <ul class="checkmark-list">
+            <li><strong>Completed LinkedIn profile</strong> (immediate asset)</li>
+            <li><strong>Content creation framework</strong> (apply to client letters, market updates, proposals)</li>
+            <li><strong>AI prompting methodology</strong> (use for portfolio reviews, research, compliance)</li>
+            <li><strong>Skill they can teach others</strong> (mentor junior advisors)</li>
+            <li><strong>Competitive advantage</strong> (differentiation in crowded market)</li>
+        </ul>
+
+        <p style="font-size: 1.3rem; font-weight: 700; color: var(--purple); margin-top: 30px;">That's 50x more valuable than the 75 minutes invested.</p>
+    </section>
+
+    <!-- ACT 2: THE REALITY -->
+    <section class="section">
+        <h2 class="section-title">ACT 2: The Reality You're Crystallizing</h2>
+
+        <h3 class="section-subtitle">The Opportunity You're Facing</h3>
+        <p>Angela, you lead one of Raymond James's most important branches. Montreal is fiercely competitive. Top producers have options. Recruitment is challenging.</p>
+
+        <p><strong>Here's what you already know:</strong></p>
+        <ul class="checkmark-list">
+            <li>AI is transforming how advisors work with HNW families</li>
+            <li>Your advisors have expertise trapped in their heads</li>
+            <li>Administrative burden is stealing time from client relationships</li>
+            <li>The branches that help their teams adapt will win the next decade</li>
+        </ul>
+
+        <div class="insight-box">
+            <h3>But here's what you might not have crystallized yet:</h3>
+            <p>You have a 12-18 month window where offering <strong>AI enablement</strong> is a <strong>recruitment and retention differentiator</strong>.</p>
+            <p>Right now, if you tell a top advisor: <em>"We offer comprehensive AI capability building for client communication, practice management, and HNW engagement"</em></p>
+            <p>...that's a competitive advantage.</p>
+            <p>In 18 months? Every dealer will offer this. The window closes.</p>
+            <p style="font-size: 1.2rem; font-weight: 700; margin-top: 20px;">You're not behind. But you're at the starting line with everyone else.</p>
+        </div>
+    </section>
+
+    <!-- ACT 3: GOODWILL OFFER -->
+    <section class="section">
+        <h2 class="section-title">ACT 3: Experience It First (Goodwill Offer)</h2>
+
+        <div class="cta-box">
+            <h2>FREE 60-Minute Webinar<br>Zero Cost, Zero Commitment</h2>
+            <p style="font-size: 1.2rem; margin: 20px 0;">Before you decide anything, I want to offer you something with zero strings attached.</p>
+        </div>
+
+        <h3 class="section-subtitle">"Your Future in Wealth Management: Practical AI Advantage for Financial Advisors"</h3>
+
+        <p><strong>What This Is:</strong></p>
+        <ul class="checkmark-list">
+            <li><strong>60-minute presentation</strong> (I present to your team)</li>
+            <li><strong>Live demonstrations</strong> with real advisory scenarios</li>
+            <li><strong>Extended Q&A</strong> session</li>
+            <li><strong>Practical resources</strong> they can use immediately</li>
+        </ul>
+
+        <p><strong>What Your Team Gets:</strong></p>
+        <ul class="checkmark-list">
+            <li><strong>3 System Prompts</strong> - Ready-to-use templates for client meeting prep, market updates, and communications</li>
+            <li><strong>10 Critical AI Pitfalls</strong> - Strategic insights to navigate implementation challenges</li>
+            <li><strong>Implementation Framework</strong> - Pre and post-use checklists for optimal results</li>
+            <li><strong>Efficiency Multipliers</strong> - Information-gathering strategies to maximize AI effectiveness</li>
+        </ul>
+
+        <div class="insight-box">
+            <h3>Why I'm Offering This Free:</h3>
+            <p>Because I believe in <strong>goodwill first</strong>. Let your advisors and admin team experience my approach. If it resonates, we can discuss next steps. If it doesn't, you've invested 60 minutes and got practical tools anyway.</p>
+            <p style="font-size: 1.2rem; font-weight: 700; margin-top: 20px;">No risk. No commitment. Just value.</p>
+        </div>
+
+        <div style="text-align: center; margin: 40px 0;">
+            <a href="mailto:liz@sweetbot.ai" class="cta-button">Schedule Your Branch's Complimentary Webinar</a>
+        </div>
+    </section>
+
+    <!-- ACT 4: WORKSHOP MODALITIES -->
+    <section class="section">
+        <h2 class="section-title">ACT 4: If You Want More, Here's How We Work Together</h2>
+
+        <h3 class="section-subtitle">Workshop Modalities: Targeted for Your Needs</h3>
+        <p>After the free webinar, if you want to go deeper, workshops are how we work together.</p>
+
+        <div class="resource-grid">
+            <div class="resource-card">
+                <h3>FOR ADVISORS</h3>
+                <p><strong>Client-facing capability building</strong></p>
+                <ul>
+                    <li>LinkedIn Positioning & Content Creation</li>
+                    <li>Tech Stack Optimization & AI Integration</li>
+                    <li>HNW Client Communication Frameworks</li>
+                    <li>Practice Transition Planning</li>
+                    <li>COI Relationship Development</li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <h3>FOR ADMIN TEAM</h3>
+                <p><strong>Operational excellence</strong></p>
+                <ul>
+                    <li>Onboarding Systemization</li>
+                    <li>Compliance Documentation Frameworks</li>
+                    <li>Client Service Templates</li>
+                    <li>Meeting Preparation Optimization</li>
+                    <li>Internal Communication Systems</li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <h3>FOR BOTH</h3>
+                <p><strong>Cross-functional capability</strong></p>
+                <ul>
+                    <li>Custom Workshop Builds (proprietary Raymond James content)</li>
+                    <li>Elite Cohort Programs (VIP relationship building)</li>
+                    <li>Executive Strategy Sessions (leadership alignment)</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3 class="section-subtitle">Workshop Structure (75-Minute Hands-On Sessions)</h3>
+        <p style="font-size: 1.2rem; font-weight: 700;">Not presentations. Not theory. Hands-on building.</p>
+
+        <p>Advisors/admin bring their real work. They leave with:</p>
+        <ul class="checkmark-list">
+            <li><strong>Completed assets</strong> (LinkedIn profile, client letter template, onboarding checklist, etc.)</li>
+            <li><strong>CustomGPT tool</strong> they can continue using</li>
+            <li><strong>Framework</strong> they can apply to everything</li>
+            <li><strong>Email drip cadence</strong> with additional resources</li>
+        </ul>
+
+        <div class="insight-box">
+            <h3>Example Workshop: LinkedIn Positioning for Advisors</h3>
+            <p><strong>Attendees build their complete LinkedIn presence in 75 minutes:</strong></p>
+            <ol style="list-style-position: inside; padding-left: 20px;">
+                <li>Optimized headline and summary</li>
+                <li>3 months of post ideas</li>
+                <li>Content creation prompts</li>
+                <li>Engagement strategy</li>
+                <li>CustomGPT for ongoing content generation</li>
+            </ol>
+            <p style="margin-top: 20px;">They walk out with a <strong>finished, live LinkedIn profile</strong> and the methodology to maintain it.</p>
+        </div>
+
+        <h3 class="section-subtitle">Custom Workshop Builds</h3>
+        <p>Want something specific to Raymond James? I can build proprietary workshops from any of the 44 SweetBOS practice domains:</p>
+        <ul class="checkmark-list">
+            <li>Fee analysis optimization for your specific product shelf</li>
+            <li>Transition planning for book acquisitions</li>
+            <li>HNW family meeting frameworks</li>
+            <li>Portfolio review structuring</li>
+            <li>Annual client communication calendars</li>
+            <li>Compliance documentation for CIRO requirements</li>
+        </ul>
+        <p style="font-size: 1.2rem; font-weight: 700; margin-top: 20px;">You tell me what your branch needs. I build the workshop.</p>
+    </section>
+
+    <!-- Newsletter Signup (First Instance) -->
+    <div class="newsletter-box">
+        <h3>Stay Connected with SweetDrop Newsletter</h3>
+        <p>Weekly insights on AI implementation in wealth management. Real strategies, zero hype.</p>
+        <a href="https://sweetbot.ai/newsletter" target="_blank" class="cta-button">Subscribe to SweetDrop</a>
+    </div>
+
+    <!-- ACT 5: PRICING -->
+    <section class="section">
+        <h2 class="section-title">ACT 5: Pricing Is Simple</h2>
+
+        <h3 class="section-subtitle">Credit-Based Partnership System</h3>
+        <p>Instead of paying per-workshop, you purchase <strong>credits</strong> and allocate them where your branch needs them most.</p>
+
+        <h3 class="section-subtitle">Credit Menu</h3>
+        <table class="credit-table">
+            <thead>
+                <tr>
+                    <th>Workshop Type</th>
+                    <th class="credits-col">Credits Required</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Regional Workshop</strong> (for your Montreal/Brossard branches)</td>
+                    <td class="credits-col">2</td>
+                </tr>
+                <tr>
+                    <td><strong>Custom Workshop Build</strong> (proprietary Raymond James content)</td>
+                    <td class="credits-col">5</td>
+                </tr>
+                <tr>
+                    <td><strong>Elite Cohort Session</strong> (VIP small-group for top producers)</td>
+                    <td class="credits-col">3</td>
+                </tr>
+                <tr>
+                    <td><strong>Executive Strategy Session</strong> (leadership planning)</td>
+                    <td class="credits-col">1</td>
+                </tr>
+                <tr>
+                    <td><strong>FREE Webinar</strong> (60-min presentation)</td>
+                    <td class="credits-col" style="color: var(--gold);">0</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="section-subtitle">Three Package Tiers</h3>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>PILOT PACKAGE</h3>
+                <p>Test the approach</p>
+                <div class="price">$20,000</div>
+                <div class="credits">5 credits</div>
+                <ul>
+                    <li>2 Regional Workshops (4 credits)</li>
+                    <li>1 Executive Strategy Session (1 credit)</li>
+                    <li>Low-risk pilot</li>
+                    <li>Prove value before scaling</li>
+                </ul>
+            </div>
+
+            <div class="pricing-card featured">
+                <h3>QUARTERLY PACKAGE</h3>
+                <p>Sustained capability building</p>
+                <div class="price">$72,000</div>
+                <div class="credits">20 credits</div>
+                <ul>
+                    <li>4 Regional Advisor Workshops (8 credits)</li>
+                    <li>2 Regional Admin Workshops (4 credits)</li>
+                    <li>1 Custom Workshop Build (5 credits)</li>
+                    <li>2 Executive Strategy Sessions (2 credits)</li>
+                    <li>1 Elite Cohort Session (3 credits)</li>
+                </ul>
+            </div>
+
+            <div class="pricing-card">
+                <h3>ANNUAL PACKAGE</h3>
+                <p>Complete branch transformation</p>
+                <div class="price">$250,000</div>
+                <div class="credits">75 credits</div>
+                <ul>
+                    <li>Comprehensive enablement</li>
+                    <li>All teams covered</li>
+                    <li>Custom builds included</li>
+                    <li>Elite cohorts for top producers</li>
+                    <li>Strategic planning sessions</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3 class="section-subtitle">Flexibility Built In</h3>
+        <ul class="checkmark-list">
+            <li>Credits don't expire (use them when your branch is ready)</li>
+            <li>Allocate between advisor and admin focus as needed</li>
+            <li>Adjust strategy based on what's working</li>
+            <li>Start small (Pilot), scale if it works (Quarterly/Annual)</li>
+        </ul>
+    </section>
+
+    <!-- ACT 6: BEYOND WORKSHOPS -->
+    <section class="section">
+        <h2 class="section-title">ACT 6: Beyond Workshops - What Becomes Possible</h2>
+
+        <h3 class="section-subtitle">The Broader SweetBOS Platform</h3>
+        <p>Workshops are your entry point. But if you want to go deeper, here's what else becomes possible:</p>
+
+        <div class="resource-grid">
+            <div class="resource-card">
+                <h3>Mirror ($950)</h3>
+                <p><strong>Diagnostic Assessment</strong></p>
+                <p>Comprehensive practice assessment across all 44 SweetBOS domains. Identifies L1-L5 maturity levels and prioritizes transformation opportunities.</p>
+            </div>
+
+            <div class="resource-card">
+                <h3>Map ($6,500)</h3>
+                <p><strong>Facilitated Transformation</strong></p>
+                <p>4 facilitated sessions building strategic roadmaps for practice optimization.</p>
+            </div>
+
+            <div class="resource-card">
+                <h3>Machine ($14,000)</h3>
+                <p><strong>Comprehensive Build</strong></p>
+                <p>9 comprehensive sessions systematizing your branch's complete operating model.</p>
+            </div>
+
+            <div class="resource-card">
+                <h3>SweetSync ($1,500/month)</h3>
+                <p><strong>Self-Directed Platform</strong></p>
+                <p>Access to the full SweetBOS platform with self-directed Journeys, Quests, and Sparks.</p>
+            </div>
+        </div>
+
+        <p style="font-style: italic; color: var(--gray); margin-top: 30px;">You don't need to understand these options today. They're here if workshops prove valuable and you want to scale deeper.</p>
+    </section>
+
+    <!-- ACT 7: WHY ELIZABETH DYKES -->
+    <section class="section">
+        <h2 class="section-title">ACT 7: Why Elizabeth Dykes</h2>
+
+        <h3 class="section-subtitle">The Bridge Between Your World and What's Coming</h3>
+
+        <p><strong>20+ Years Financial Services Experience</strong></p>
+        <ul class="checkmark-list">
+            <li><strong>Investors Group</strong> (2011-2013) - Advisor, built practice from scratch</li>
+            <li><strong>Dynamic Funds</strong> (2013-2014) - Internal Wholesaler, Greater Toronto Area</li>
+            <li><strong>Standard Life</strong> (2014-2015) - External Wholesaler, Atlantic Canada</li>
+            <li><strong>Bridgehouse Asset Management</strong> (2015-2022) - Institutional Wholesaler, Quebec</li>
+            <li><strong>QWealth</strong> (2022-2023) - Vice President, Private Client Group</li>
+        </ul>
+
+        <p><strong>Certifications & Credentials</strong></p>
+        <ul class="checkmark-list">
+            <li>Chartered Investment Manager (CIM®)</li>
+            <li>Certified Life Coach (CLC)</li>
+            <li>AI Strategy Consultant & Platform Architect</li>
+        </ul>
+
+        <div class="insight-box">
+            <h3>What Makes Me Different</h3>
+            <p>I'm not a tech consultant who learned about finance.<br>
+            I'm not a wholesaler who took an AI course.</p>
+            <p style="font-size: 1.2rem; margin: 20px 0;"><strong>I'm the person who lived your world for 20 years and now builds the systems that help you navigate what's coming.</strong></p>
+            <p><strong>I speak both languages:</strong></p>
+            <ul class="checkmark-list">
+                <li>I understand CIRO compliance, IIROC requirements, and dealer dynamics</li>
+                <li>I understand AI architecture, prompt engineering, and platform design</li>
+            </ul>
+            <p style="font-size: 1.3rem; font-weight: 700; margin-top: 30px;">I'm the bridge.</p>
+        </div>
+
+        <p>And I've built SweetBOS specifically for wealth management professionals who want to transform complexity into clarity.</p>
+    </section>
+
+    <!-- ACT 8: YOUR PATH FORWARD -->
+    <section class="section">
+        <h2 class="section-title">ACT 8: Your Path Forward</h2>
+
+        <h3 class="section-subtitle">The Invitation</h3>
+        <p>Here's what I'm proposing:</p>
+
+        <div class="cascade">
+            <div class="cascade-item">
+                <strong>Step 1: Experience the Free Webinar (No Cost)</strong>
+                <p>Let your advisors and admin team see the approach in action. 60 minutes. Practical tools. Zero pressure.</p>
+            </div>
+            <div class="cascade-arrow">↓</div>
+            <div class="cascade-item">
+                <strong>Step 2: If It Resonates, Choose Your Entry Point</strong>
+                <p>Start with Pilot Package (5 credits, $20K) or go straight to Quarterly (20 credits, $72K) if you're confident. Allocate credits to advisor workshops, admin workshops, or custom builds.</p>
+            </div>
+            <div class="cascade-arrow">↓</div>
+            <div class="cascade-item">
+                <strong>Step 3: See the Cascading Value</strong>
+                <p>Watch what happens when your team gains capability. Skills transfer. Practice transformation. Brand differentiation.</p>
+            </div>
+            <div class="cascade-arrow">↓</div>
+            <div class="cascade-item">
+                <strong>Step 4: Decide What Comes Next</strong>
+                <p>Continue with workshops? Build custom Raymond James content? Go deeper with SweetBOS transformation?</p>
+            </div>
+        </div>
+
+        <p style="font-size: 1.2rem; font-weight: 700; text-align: center; margin-top: 40px;">You're in control of the pace and the investment.</p>
+    </section>
+
+    <!-- Final CTA -->
+    <div class="cta-box">
+        <h2>Let's Start the Conversation</h2>
+        <p style="font-size: 1.2rem; margin: 20px 0;">Book your free webinar and experience the approach with zero commitment.</p>
+        <a href="mailto:liz@sweetbot.ai" class="cta-button">Email: liz@sweetbot.ai</a>
+        <a href="https://linkedin.com/in/lizdykes" target="_blank" class="cta-button">LinkedIn Profile</a>
+        <a href="https://lizdykes.sweetbot.ai" target="_blank" class="cta-button">View Portfolio</a>
+    </div>
+
+    <!-- Newsletter Signup (Second Instance) -->
+    <div class="newsletter-box">
+        <h3>Don't Miss Weekly AI Insights for Financial Services</h3>
+        <p>Join SweetDrop Newsletter - Real strategies, zero hype</p>
+        <a href="https://sweetbot.ai/newsletter" target="_blank" class="cta-button">Subscribe Now</a>
+    </div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <h3>Dare to Redefine the Possible</h3>
+    <p>Where Human Expertise Meets Exponential Intelligence</p>
+    <p style="margin-top: 20px;"><a href="https://www.sweetbot.ai">www.sweetbot.ai</a></p>
+    <p style="margin-top: 40px; font-size: 0.9rem; color: var(--gray);">© 2024 SweetBot. All rights reserved.</p>
+</div>
+
+</body>
+</html>
